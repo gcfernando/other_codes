@@ -1,3 +1,4 @@
+# Developer ::> Gehan Fernando
 # PowerShell Script to Perform System Maintenance Tasks
 
 # Function to display progress in a single line
