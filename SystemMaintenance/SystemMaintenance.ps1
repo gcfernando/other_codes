@@ -9,18 +9,18 @@ function Show-Progress {
 }
 
 # Function to clean up files with error handling
-function Clean-TempFiles {
+function Clear-TempFiles {
     param (
         [string]$Path
     )
 
-    # Get all files in the specified path
-    $files = Get-ChildItem -Path $Path -ErrorAction SilentlyContinue
+    # Get all files and directories in the specified path
+    $items = Get-ChildItem -Path $Path -ErrorAction SilentlyContinue
 
-    foreach ($file in $files) {
+    foreach ($item in $items) {
         try {
-            # Attempt to remove the file
-            Remove-Item -Path $file.FullName -Force -ErrorAction Stop
+            # Attempt to remove the item
+            Remove-Item -Path $item.FullName -Recurse -Force -ErrorAction Stop
             Write-Host "." -NoNewline
         } catch {
             # Log any errors encountered
@@ -62,9 +62,8 @@ try {
 # 4. Driver Issues Check and Fix Issues
 Show-Progress "Checking and Updating Drivers..."
 try {
-    # Update drivers via Device Manager
-    $devMgr = New-Object -ComObject Shell.Application
-    $devMgr.NameSpace("shell:::{20D04FE0-3AEA-1069-A2D8-08002B30309D}").Self.InvokeVerb("Update Driver")
+    # Update drivers using PnPUtil
+    pnputil.exe /scan-devices
     Write-Host "Driver update check initiated."
 } catch {
     Write-Host "Failed to update drivers."
@@ -145,7 +144,7 @@ try {
 # 10. Cleanup the Windows System "All Junk Files"
 Show-Progress "Cleaning Up System Junk Files..."
 try {
-    Clean-TempFiles -Path "$env:TEMP"
+    Clear-TempFiles -Path "$env:TEMP"
     Write-Host "System junk files cleanup completed."
 } catch {
     Write-Host "Failed to clean up system junk files."
