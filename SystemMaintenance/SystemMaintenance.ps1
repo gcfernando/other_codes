@@ -1,5 +1,4 @@
 # Developer ::> Gehan Fernando
-# PowerShell Script to Perform System Maintenance Tasks
 
 # Function to display progress in a single line
 function Show-Progress {
@@ -73,10 +72,31 @@ try {
 # 5. Windows Updates Check Updates
 Show-Progress "Checking for Windows Updates..."
 try {
-    Install-WindowsUpdate -AcceptAll -AutoReboot
+    # Import the PSWindowsUpdate module if it's not already loaded
+    if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate)) {
+        Install-Module -Name PSWindowsUpdate -Force -Scope CurrentUser
+    }
+    Import-Module PSWindowsUpdate
+
+    # Check for and install updates
+    Get-WindowsUpdate -AcceptAll -Install -AutoReboot
     Write-Host "Windows update check and installation completed."
 } catch {
     Write-Host "Failed to check for or install Windows updates."
+    # Detailed error handling
+    Write-Host "Attempting to troubleshoot the issue..."
+    try {
+        # Restart Windows Update service
+        Stop-Service -Name wuauserv -Force
+        Start-Service -Name wuauserv
+        Write-Host "Restarted Windows Update service. Retrying updates..."
+
+        # Retry update check
+        Get-WindowsUpdate -AcceptAll -Install -AutoReboot
+        Write-Host "Windows update check and installation completed after retry."
+    } catch {
+        Write-Host "Retrying updates failed. Please check your network connection or Windows Update settings."
+    }
 }
 
 # 6. Network Diagnostics and Adapter Resets
