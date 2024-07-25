@@ -29,6 +29,54 @@ function Clear-TempFiles {
     }
 }
 
+# Function to analyze crash dump files using WinDbg
+function Invoke-DumpFileAnalysis {
+    param (
+        [string]$DumpPath,
+        [string]$WinDbgPath
+    )
+
+    $dumps = Get-ChildItem -Path $DumpPath -Filter *.dmp -Recurse -ErrorAction SilentlyContinue
+    foreach ($dump in $dumps) {
+        try {
+            Write-Host "Analyzing dump file: $($dump.FullName)"
+            & "$WinDbgPath\windbg.exe" -z $dump.FullName -c "!analyze -v; .logclose; q"
+        } catch {
+            Write-Host "Failed to analyze dump file: $($dump.FullName)"
+        }
+    }
+}
+
+# Function to find WinDbg path
+function Find-WinDbgPath {
+    $winDbgPath = (Get-Command -Name windbg.exe -ErrorAction SilentlyContinue).Source
+    if (-not $winDbgPath) {
+        Write-Host "WinDbg not found. Installing WinDbg..."
+        winget install --id Microsoft.WinDbg --silent
+        $winDbgPath = (Get-Command -Name windbg.exe -ErrorAction SilentlyContinue).Source
+    }
+    return [System.IO.Path]::GetDirectoryName($winDbgPath)
+}
+
+# Function to find dump files in common directories
+function Find-DumpFiles {
+    $dumpPaths = @(
+        "$env:SystemRoot\Minidump",
+        "$env:SystemRoot\MEMORY.DMP",
+        "$env:LOCALAPPDATA\CrashDumps",
+        "$env:USERPROFILE\AppData\Local\CrashDumps"
+    )
+
+    $dumpFiles = @()
+    foreach ($path in $dumpPaths) {
+        if (Test-Path -Path $path) {
+            $dumpFiles += Get-ChildItem -Path $path -Filter *.dmp -Recurse -ErrorAction SilentlyContinue
+        }
+    }
+
+    return $dumpFiles
+}
+
 # Start the script
 Write-Host "Starting system maintenance tasks..."
 
@@ -147,7 +195,46 @@ try {
 # 8. Critical Operating System Issues
 Show-Progress "Checking for Critical OS Issues..."
 try {
-    # This is a placeholder; no direct cmdlet for OS issue check
+    # Check Event Logs for Critical Errors
+    $criticalErrors = Get-WinEvent -LogName System -FilterHashtable @{Level=1} -ErrorAction SilentlyContinue
+    if ($criticalErrors) {
+        Write-Host "Critical errors found in Event Logs:"
+        $criticalErrors | ForEach-Object { Write-Host $_.Message }
+    } else {
+        Write-Host "No critical errors found in Event Logs."
+    }
+
+    # Run System Diagnostics
+    Write-Host "Running System Diagnostics..."
+    $diagResult = Invoke-Expression -Command "msdt.exe /id PerformanceDiagnostic"
+    # Process $diagResult or check its outcome
+    Write-Output $diagResult
+    Write-Host "System Diagnostics run completed."
+
+    # Check for System Restore Points
+    Write-Host "Checking for System Restore Points..."
+    $restorePoints = Get-ComputerRestorePoint
+    if ($restorePoints) {
+        Write-Host "System restore points available."
+    } else {
+        Write-Host "No system restore points found."
+    }
+
+    # Disk Health Check
+    Write-Host "Running Disk Health Check..."
+    $diskHealth = Get-PhysicalDisk | Get-StorageReliabilityCounter
+    if ($diskHealth) {
+        Write-Host "Disk health check completed."
+        $diskHealth | ForEach-Object { Write-Host "Disk ID: $($_.DeviceId), UnrecoverableReadErrors: $($_.UnrecoverableReadErrors)" }
+    } else {
+        Write-Host "Disk health check failed or no data found."
+    }
+
+    # Check System Configuration
+    Write-Host "Checking System Configuration..."
+    Start-Process msconfig
+    Write-Host "System configuration check completed."
+
     Write-Host "Critical OS issue check completed."
 } catch {
     Write-Host "Failed to check for critical OS issues."
@@ -156,8 +243,21 @@ try {
 # 9. Analyze Crash Dump Files "MiniDumps and Dumps"
 Show-Progress "Analyzing Crash Dump Files..."
 try {
-    # Analyzing minidumps and full dumps typically requires tools like WinDbg
-    Write-Host "Crash dump analysis is typically done with external tools."
+    $winDbgPath = Find-WinDbgPath
+
+    if ($winDbgPath) {
+        $dumpFiles = Find-DumpFiles
+        if ($dumpFiles) {
+            foreach ($dump in $dumpFiles) {
+                Invoke-DumpFileAnalysis -DumpPath $dump.DirectoryName -WinDbgPath $winDbgPath
+            }
+            Write-Host "Crash dump analysis completed."
+        } else {
+            Write-Host "No crash dump files found."
+        }
+    } else {
+        Write-Host "Failed to locate or install WinDbg."
+    }
 } catch {
     Write-Host "Failed to analyze crash dump files."
 }
