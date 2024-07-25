@@ -53,7 +53,7 @@ try {
 # 3. CHKDSK Check and Fix Issues
 Show-Progress "Running CHKDSK Scan..."
 try {
-    chkdsk C: /f /r /x
+    chkdsk C: /f /r /x /b
     Write-Host "CHKDSK scan completed successfully. A restart may be required."
 } catch {
     Write-Host "Failed to run CHKDSK scan."
