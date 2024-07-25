@@ -53,9 +53,30 @@ function Find-WinDbgPath {
     if (-not $winDbgPath) {
         Write-Host "WinDbg not found. Installing WinDbg..."
         winget install --id Microsoft.WinDbg --silent
+        Start-Sleep -Seconds 30  # Allow some time for the installation to complete
         $winDbgPath = (Get-Command -Name windbg.exe -ErrorAction SilentlyContinue).Source
     }
-    return [System.IO.Path]::GetDirectoryName($winDbgPath)
+
+    # If Get-Command fails, check common installation paths
+    if (-not $winDbgPath) {
+        $commonPaths = @(
+            "$env:ProgramFiles\Windows Kits\10\Debuggers\x64",
+            "$env:ProgramFiles(x86)\Windows Kits\10\Debuggers\x64"
+        )
+        foreach ($path in $commonPaths) {
+            if (Test-Path -Path "$path\windbg.exe") {
+                $winDbgPath = "$path\windbg.exe"
+                break
+            }
+        }
+    }
+
+    if ($winDbgPath) {
+        return [System.IO.Path]::GetDirectoryName($winDbgPath)
+    } else {
+        Write-Host "WinDbg installation failed or WinDbg executable not found."
+        return $null
+    }
 }
 
 # Function to find dump files in common directories
