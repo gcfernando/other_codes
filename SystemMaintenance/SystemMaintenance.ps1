@@ -25,57 +25,8 @@ function Clear-TempFiles {
         } catch {
             # Log any errors encountered
             Write-Host "." -NoNewline
+            Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Failed to delete: $($item.FullName) - $_"
         }
-    }
-}
-
-# Function to analyze crash dump files using WinDbg
-function Invoke-DumpFileAnalysis {
-    param (
-        [string]$DumpPath,
-        [string]$WinDbgPath
-    )
-
-    $dumps = Get-ChildItem -Path $DumpPath -Filter *.dmp -Recurse -ErrorAction SilentlyContinue
-    foreach ($dump in $dumps) {
-        try {
-            Write-Host "Analyzing dump file: $($dump.FullName)"
-            & "$WinDbgPath\windbg.exe" -z $dump.FullName -c "!analyze -v; .logclose; q"
-        } catch {
-            Write-Host "Failed to analyze dump file: $($dump.FullName)"
-        }
-    }
-}
-
-# Function to find WinDbg path
-function Find-WinDbgPath {
-    $winDbgPath = (Get-Command -Name windbg.exe -ErrorAction SilentlyContinue).Source
-    if (-not $winDbgPath) {
-        Write-Host "WinDbg not found. Installing WinDbg..."
-        winget install --id Microsoft.WinDbg --silent
-        Start-Sleep -Seconds 30  # Allow some time for the installation to complete
-        $winDbgPath = (Get-Command -Name windbg.exe -ErrorAction SilentlyContinue).Source
-    }
-
-    # If Get-Command fails, check common installation paths
-    if (-not $winDbgPath) {
-        $commonPaths = @(
-            "$env:ProgramFiles\Windows Kits\10\Debuggers\x64",
-            "$env:ProgramFiles(x86)\Windows Kits\10\Debuggers\x64"
-        )
-        foreach ($path in $commonPaths) {
-            if (Test-Path -Path "$path\windbg.exe") {
-                $winDbgPath = "$path\windbg.exe"
-                break
-            }
-        }
-    }
-
-    if ($winDbgPath) {
-        return [System.IO.Path]::GetDirectoryName($winDbgPath)
-    } else {
-        Write-Host "WinDbg installation failed or WinDbg executable not found."
-        return $null
     }
 }
 
@@ -108,6 +59,7 @@ try {
     Write-Host "SFC scan completed successfully."
 } catch {
     Write-Host "Failed to run SFC scan."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "SFC scan failed: $_"
 }
 
 # 2. DISM Check and Fix Issues
@@ -117,6 +69,7 @@ try {
     Write-Host "DISM repair completed successfully."
 } catch {
     Write-Host "Failed to run DISM repair."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "DISM repair failed: $_"
 }
 
 # 3. CHKDSK Check and Fix Issues
@@ -126,6 +79,7 @@ try {
     Write-Host "CHKDSK scan completed successfully. A restart may be required."
 } catch {
     Write-Host "Failed to run CHKDSK scan."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "CHKDSK scan failed: $_"
 }
 
 # 4. Driver Issues Check and Fix Issues
@@ -136,14 +90,15 @@ try {
     Write-Host "Driver update check initiated."
 } catch {
     Write-Host "Failed to update drivers."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Driver update check failed: $_"
 }
 
 # 5. Windows Updates Check Updates
 Show-Progress "Checking for Windows Updates..."
 try {
-    # Import the PSWindowsUpdate module if it's not already loaded
+    # Import the PSWindowsUpdate module for all users
     if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate)) {
-        Install-Module -Name PSWindowsUpdate -Force -Scope CurrentUser
+        Install-Module -Name PSWindowsUpdate -Force -Scope AllUsers
     }
     Import-Module PSWindowsUpdate
 
@@ -152,7 +107,9 @@ try {
     Write-Host "Windows update check and installation completed."
 } catch {
     Write-Host "Failed to check for or install Windows updates."
-    # Detailed error handling
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Windows Update check failed: $_"
+    
+    # Attempt to troubleshoot the issue
     Write-Host "Attempting to troubleshoot the issue..."
     try {
         # Restart Windows Update service
@@ -165,6 +122,7 @@ try {
         Write-Host "Windows update check and installation completed after retry."
     } catch {
         Write-Host "Retrying updates failed. Please check your network connection or Windows Update settings."
+        Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Windows Update retry failed: $_"
     }
 }
 
@@ -201,6 +159,7 @@ try {
     Write-Host "Network interface reset completed."
 } catch {
     Write-Host "Failed to reset network settings."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Network reset failed: $_"
 }
 
 # 7. Registry Issue Checks and Fixes
@@ -211,6 +170,17 @@ try {
     Write-Host "Registry issues check and backup completed."
 } catch {
     Write-Host "Failed to check or fix registry issues."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Registry check/backup failed: $_"
+}
+
+# Clear Windows Registry Backups
+Show-Progress "Clearing Registry Backups..."
+try {
+    Clear-TempFiles -Path "$env:TEMP\registry_backup.reg"
+    Write-Host "Registry backup cleanup completed."
+} catch {
+    Write-Host "Failed to clear registry backups."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Registry backup cleanup failed: $_"
 }
 
 # 8. Critical Operating System Issues
@@ -228,7 +198,6 @@ try {
     # Run System Diagnostics
     Write-Host "Running System Diagnostics..."
     $diagResult = Invoke-Expression -Command "msdt.exe /id PerformanceDiagnostic"
-    # Process $diagResult or check its outcome
     Write-Output $diagResult
     Write-Host "System Diagnostics run completed."
 
@@ -259,31 +228,10 @@ try {
     Write-Host "Critical OS issue check completed."
 } catch {
     Write-Host "Failed to check for critical OS issues."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Critical OS issues check failed: $_"
 }
 
-# 9. Analyze Crash Dump Files "MiniDumps and Dumps"
-Show-Progress "Analyzing Crash Dump Files..."
-try {
-    $winDbgPath = Find-WinDbgPath
-
-    if ($winDbgPath) {
-        $dumpFiles = Find-DumpFiles
-        if ($dumpFiles) {
-            foreach ($dump in $dumpFiles) {
-                Invoke-DumpFileAnalysis -DumpPath $dump.DirectoryName -WinDbgPath $winDbgPath
-            }
-            Write-Host "Crash dump analysis completed."
-        } else {
-            Write-Host "No crash dump files found."
-        }
-    } else {
-        Write-Host "Failed to locate or install WinDbg."
-    }
-} catch {
-    Write-Host "Failed to analyze crash dump files."
-}
-
-# 10. Cleanup the Windows System "All Junk Files"
+# 9. Cleanup the Windows System "All Junk Files"
 Show-Progress "Cleaning Up System Junk Files..."
 try {
     Clear-TempFiles -Path "$env:TEMP"
@@ -292,4 +240,29 @@ try {
     Write-Host "Failed to clean up system junk files."
 }
 
-Write-Host "System maintenance tasks completed."
+# 10. Disk Cleanup
+Show-Progress "Running Disk Cleanup..."
+try {
+    Invoke-DiskCleanup
+    Write-Host "Disk cleanup completed."
+} catch {
+    Write-Host "Failed to run disk cleanup."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Disk cleanup failed: $_"
+}
+
+# 11. Find and Remove Dump Files
+Show-Progress "Finding and Removing Dump Files..."
+try {
+    $dumpFiles = Find-DumpFiles
+    foreach ($file in $dumpFiles) {
+        Remove-Item -Path $file.FullName -Force
+        Write-Host "Removed dump file: $($file.FullName)"
+    }
+    Write-Host "Dump file cleanup completed."
+} catch {
+    Write-Host "Failed to find or remove dump files."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Dump file cleanup failed: $_"
+}
+
+# End of Script
+Write-Host "System maintenance tasks completed. Review the log at $env:TEMP\CleanupErrors.log for any errors."
