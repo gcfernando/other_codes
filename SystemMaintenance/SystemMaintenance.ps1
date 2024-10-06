@@ -176,6 +176,8 @@ try {
 # Clear Windows Registry Backups
 Show-Progress "Clearing Registry Backups..."
 try {
+    # Wait before trying to delete registry backup file, ensuring it is not in use
+    Start-Sleep -Seconds 10
     Clear-TempFiles -Path "$env:TEMP\registry_backup.reg"
     Write-Host "Registry backup cleanup completed."
 } catch {
@@ -243,7 +245,8 @@ try {
 # 10. Disk Cleanup
 Show-Progress "Running Disk Cleanup..."
 try {
-    Invoke-DiskCleanup
+    # Use CleanMgr (Windows built-in tool) for disk cleanup
+    Start-Process -FilePath "cleanmgr.exe" -ArgumentList "/sagerun:1" -Wait
     Write-Host "Disk cleanup completed."
 } catch {
     Write-Host "Failed to run disk cleanup."
