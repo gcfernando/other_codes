@@ -93,7 +93,7 @@ try {
     Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Driver update check failed: $_"
 }
 
-# 5. Windows Updates Check Updates
+# 5. Windows Updates Check and Install Updates (without auto reboot)
 Show-Progress "Checking for Windows Updates..."
 try {
     # Import the PSWindowsUpdate module for all users
@@ -102,8 +102,8 @@ try {
     }
     Import-Module PSWindowsUpdate
 
-    # Check for and install updates
-    Get-WindowsUpdate -AcceptAll -Install -AutoReboot
+    # Check for and install updates (without automatic reboot)
+    Get-WindowsUpdate -AcceptAll -Install
     Write-Host "Windows update check and installation completed."
 } catch {
     Write-Host "Failed to check for or install Windows updates."
@@ -117,8 +117,8 @@ try {
         Start-Service -Name wuauserv
         Write-Host "Restarted Windows Update service. Retrying updates..."
 
-        # Retry update check
-        Get-WindowsUpdate -AcceptAll -Install -AutoReboot
+        # Retry update check (without auto reboot)
+        Get-WindowsUpdate -AcceptAll -Install
         Write-Host "Windows update check and installation completed after retry."
     } catch {
         Write-Host "Retrying updates failed. Please check your network connection or Windows Update settings."
@@ -245,8 +245,8 @@ try {
 # 10. Disk Cleanup
 Show-Progress "Running Disk Cleanup..."
 try {
-    # Use CleanMgr (Windows built-in tool) for disk cleanup
-    Start-Process -FilePath "cleanmgr.exe" -ArgumentList "/sagerun:1" -Wait
+    # Use CleanMgr with /verylowdisk switch to run it without requiring user interaction
+    Start-Process -FilePath "cleanmgr.exe" -ArgumentList "/verylowdisk" -Wait
     Write-Host "Disk cleanup completed."
 } catch {
     Write-Host "Failed to run disk cleanup."
