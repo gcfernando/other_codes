@@ -6,6 +6,7 @@ function Show-Progress {
         [string]$Message
     )
     Write-Host "$Message" -NoNewline
+    Write-Host ""  # Ensures a new line after the progress message
 }
 
 # Function to clean up files with error handling
@@ -21,10 +22,9 @@ function Clear-TempFiles {
         try {
             # Attempt to remove the item
             Remove-Item -Path $item.FullName -Recurse -Force -ErrorAction Stop
-            Write-Host "." -NoNewline
+            Write-Host "Deleted: $($item.FullName)"
         } catch {
             # Log any errors encountered
-            Write-Host "." -NoNewline
             Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Failed to delete: $($item.FullName) - $_"
         }
     }
@@ -67,6 +67,11 @@ Show-Progress "Running DISM Repair..."
 try {
     DISM /Online /Cleanup-Image /RestoreHealth
     Write-Host "DISM repair completed successfully."
+    
+    # Start component cleanup after restoring health
+    Show-Progress "Running DISM Component Cleanup..."
+    DISM /Online /Cleanup-Image /StartComponentCleanup
+    Write-Host "DISM component cleanup completed."
 } catch {
     Write-Host "Failed to run DISM repair."
     Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "DISM repair failed: $_"
@@ -227,10 +232,10 @@ try {
     Start-Process msconfig
     Write-Host "System configuration check completed."
 
-    Write-Host "Critical OS issue check completed."
+    Write-Host "Critical OS issue checks completed."
 } catch {
-    Write-Host "Failed to check for critical OS issues."
-    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Critical OS issues check failed: $_"
+    Write-Host "Failed to check critical OS issues."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Critical OS issue check failed: $_"
 }
 
 # 9. Cleanup the Windows System "All Junk Files"
@@ -240,6 +245,7 @@ try {
     Write-Host "System junk files cleanup completed."
 } catch {
     Write-Host "Failed to clean up system junk files."
+    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "System junk cleanup failed: $_"
 }
 
 # 10. Disk Cleanup
@@ -253,17 +259,17 @@ try {
     Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Disk cleanup failed: $_"
 }
 
-# 11. Find and Remove Dump Files
-Show-Progress "Finding and Removing Dump Files..."
+# 11. Dump File Cleanup
+Show-Progress "Cleaning Up Dump Files..."
 try {
     $dumpFiles = Find-DumpFiles
-    foreach ($file in $dumpFiles) {
-        Remove-Item -Path $file.FullName -Force
-        Write-Host "Removed dump file: $($file.FullName)"
+    foreach ($dumpFile in $dumpFiles) {
+        Remove-Item -Path $dumpFile.FullName -Force
+        Write-Host "Deleted dump file: $($dumpFile.FullName)"
     }
     Write-Host "Dump file cleanup completed."
 } catch {
-    Write-Host "Failed to find or remove dump files."
+    Write-Host "Failed to clean up dump files."
     Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "Dump file cleanup failed: $_"
 }
 
