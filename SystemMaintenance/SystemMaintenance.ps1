@@ -52,11 +52,20 @@ function Find-DumpFiles {
 # Start the script
 Write-Host "Starting system maintenance tasks..."
 
-# 1. SFC Check and Fix Issues
+# Log file path for offline repairs
+$logPath = "$env:TEMP\OfflineRepairs.log"
+
+# 1. SFC Check and Fix Issues (with /OFFLOGFILE)
 Show-Progress "Running SFC Scan..."
 try {
-    sfc /scannow
-    Write-Host "SFC scan completed successfully."
+    if (Test-Path $logPath) {
+        sfc /scannow /OFFLOGFILE=$logPath
+        Write-Host "SFC scan completed successfully. Details logged in: $logPath"
+    } else {
+        Write-Host "Log path is not available. Proceeding with default logging..."
+        sfc /scannow
+        Write-Host "SFC scan completed. Check the default log at C:\Windows\Logs\CBS\CBS.log"
+    }
 } catch {
     Write-Host "Failed to run SFC scan."
     Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "SFC scan failed: $_"
@@ -65,13 +74,23 @@ try {
 # 2. DISM Check and Fix Issues
 Show-Progress "Running DISM Repair..."
 try {
-    DISM /Online /Cleanup-Image /RestoreHealth
-    Write-Host "DISM repair completed successfully."
-    
-    # Start component cleanup after restoring health
-    Show-Progress "Running DISM Component Cleanup..."
-    DISM /Online /Cleanup-Image /StartComponentCleanup
-    Write-Host "DISM component cleanup completed."
+    if (Test-LogPath $logPath) {
+        DISM /Online /Cleanup-Image /RestoreHealth /OFFLOGFILE=$logPath
+        Write-Host "DISM repair completed successfully. Details in: $logPath"
+        
+        # Start component cleanup after restoring health
+        Show-Progress "Running DISM Component Cleanup..."
+        DISM /Online /Cleanup-Image /StartComponentCleanup /OFFLOGFILE=$logPath
+        Write-Host "DISM component cleanup completed."
+    } else {
+        Write-Host "Log path is unavailable. Proceeding without /OFFLOGFILE..."
+        DISM /Online /Cleanup-Image /RestoreHealth
+        Write-Host "DISM repair completed successfully. Check default log: C:\Windows\Logs\DISM\dism.log"
+        
+        Show-Progress "Running DISM Component Cleanup..."
+        DISM /Online /Cleanup-Image /StartComponentCleanup
+        Write-Host "DISM component cleanup completed. Check default log: C:\Windows\Logs\DISM\dism.log"
+    }
 } catch {
     Write-Host "Failed to run DISM repair."
     Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "DISM repair failed: $_"
@@ -275,3 +294,4 @@ try {
 
 # End of Script
 Write-Host "System maintenance tasks completed. Review the log at $env:TEMP\CleanupErrors.log for any errors."
+Write-Host "Offline repair details are logged in $logPath."
