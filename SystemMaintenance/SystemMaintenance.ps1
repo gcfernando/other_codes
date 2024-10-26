@@ -1,40 +1,71 @@
 # Developer ::> Gehan Fernando
+# Optimized Windows System Maintenance Script with Original Logic Restored
 
-# Function to display progress in a single line
-function Show-Progress {
-    param (
-        [int]$Percent
+# Initialize logging
+$ErrorActionPreference = "Stop"
+$logFile = Join-Path $env:TEMP "MaintenanceLog.txt"
+$errorLogFile = Join-Path $env:TEMP "CleanupErrors.log"
+$results = @{}
+
+# Helper Functions
+function Write-Log {
+    param(
+        [string]$Message,
+        [string]$Type = "INFO"
     )
-    Write-Host -NoNewline "Verification $Percent% complete.`r"  # Carriage return to overwrite the same line
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logMessage = "$timestamp [$Type] - $Message"
+    
+    # Set console colors based on message type
+    $color = switch ($Type) {
+        "WARNING" { "DarkYellow" }
+        "INFO" { "Green" }
+        "ERROR" { "Red" }
+        "SUMMARY" { "White" }
+        default { "Gray" }
+    }
+    
+    Write-Host $logMessage -ForegroundColor $color
+    Add-Content -Path $logFile -Value $logMessage
 }
 
-# Function to log errors with timestamps
-function Log-Error {
-    param (
+function Write-ErrorLog {
+    param(
         [string]$ErrorMessage
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    Add-Content -Path "$env:TEMP\CleanupErrors.log" -Value "$timestamp - $ErrorMessage"
+    Add-Content -Path $errorLogFile -Value "$timestamp - $ErrorMessage"
+    Write-Log -Message $ErrorMessage -Type "ERROR"
 }
 
-# Function to clean up files with error handling and logging
-function Clear-TempFiles {
+function Show-Progress {
     param (
+        [int]$Percent,
+        [string]$Activity
+    )
+    Write-Progress -Activity $Activity -Status "$Percent% Complete" -PercentComplete $Percent
+}
+
+function Clear-TempFiles {
+    param(
         [string]$Path
     )
-
-    $items = Get-ChildItem -Path $Path -ErrorAction Continue
-    foreach ($item in $items) {
-        try {
-            Remove-Item -Path $item.FullName -Recurse -Force -ErrorAction Stop
-            Write-Host "Deleted: $($item.FullName)"
-        } catch {
-			Log-Error "Failed to delete files."
+    try {
+        if (Test-Path $Path) {
+            Get-ChildItem -Path $Path -Recurse -Force | ForEach-Object {
+                try {
+                    Remove-Item $_.FullName -Force -Recurse -ErrorAction Stop
+                    Write-Log "Deleted: $($_.FullName)" -Type "INFO"
+                } catch {
+                    Write-ErrorLog "Failed to delete: $($_.FullName)"
+                }
+            }
         }
+    } catch {
+        Write-ErrorLog "Error cleaning path $Path : $_"
     }
 }
 
-# Function to find dump files in common directories
 function Find-DumpFiles {
     $dumpPaths = @(
         "$env:SystemRoot\Minidump",
@@ -52,241 +83,243 @@ function Find-DumpFiles {
     return $dumpFiles
 }
 
-# Function to delete CBS and DISM log files
 function Delete-Logs {
-    # Stop the Windows Modules Installer service
     $serviceName = "TrustedInstaller"
     try {
         Stop-Service -Name $serviceName -Force -ErrorAction Stop
-        Write-Host "Stopped Windows Modules Installer service."
+        Write-Log "Stopped Windows Modules Installer service." -Type "INFO"
     } catch {
-		Log-Error "Failed to stop Trusted Installer service."
+        Write-ErrorLog "Failed to stop Trusted Installer service."
+        return
     }
 
-    # Delete CBS log file
     $cbsLogPath = "C:\Windows\Logs\CBS\CBS.log"
     if (Test-Path -Path $cbsLogPath) {
         try {
             Remove-Item -Path $cbsLogPath -Force
-            Write-Host "Deleted CBS.log file."
+            Write-Log "Deleted CBS.log file." -Type "INFO"
         } catch {
-			Log-Error "Failed to delete CBS.log file"
+            Write-ErrorLog "Failed to delete CBS.log file"
         }
     } else {
-        Write-Host "CBS.log file not found."
+        Write-Log "CBS.log file not found." -Type "WARNING"
     }
 
-    # Delete DISM log file
-    $dismLogPath = "C:\Windows\Logs\DISM\dism.log"
-    if (Test-Path -Path $dismLogPath) {
-        try {
-            Remove-Item -Path $dismLogPath -Force
-            Write-Host "Deleted DISM.log file."
-        } catch {
-            Log-Error "Failed to delete DISM.log file"
-        }
-    } else {
-        Write-Host "DISM.log file not found."
-    }
-
-    # Restart the Windows Modules Installer service
     try {
         Start-Service -Name $serviceName -ErrorAction Stop
-        Write-Host "Started Windows Modules Installer service."
+        Write-Log "Started Windows Modules Installer service." -Type "INFO"
     } catch {
-		Log-Error "Failed to stop Trusted Installer service."
+        Write-ErrorLog "Failed to start Trusted Installer service."
     }
 }
 
-# Start the script
-Write-Host "Starting system maintenance tasks..."
-
-# Delete CBS and DISM log files before starting other tasks
-Delete-Logs
-
-# 1. SFC Check and Fix Issues
-Write-Host "Running SFC Scan..."
-try {
-    $process = Start-Process sfc -ArgumentList "/scannow" -PassThru -Wait -NoNewWindow
-    $percent = 0
-    
-    # Simulate updating the progress percentage
-    while ($percent -le 100) {
-        Start-Sleep -Milliseconds 100  # Simulate work done
-        Show-Progress $percent
-        $percent += 1
-    }
-    
-    # Final result of SFC
-    if ($process.ExitCode -eq 0) {
-        Write-Host "SFC found no issues."
-    } elseif ($process.ExitCode -eq 1) {
-        Write-Host "SFC found issues but was unable to fix some of them."
-    } elseif ($process.ExitCode -eq 2) {
-        Write-Host "SFC found issues and successfully fixed them."
-    } else {
-        Write-Host "SFC encountered an error."
-    }
-    Write-Host "SFC scan completed. Check the default log at C:\Windows\Logs\CBS\CBS.log"
-} catch {
-    Log-Error "Fail to scan SFC scan."
-}
-
-# 2. DISM Check and Fix Issues
-Write-Host "Running DISM Repair..."
-try {
-    DISM /Online /Cleanup-Image /RestoreHealth
-    Write-Host "DISM repair completed successfully. Check default log: C:\Windows\Logs\DISM\dism.log"
-    
-    Write-Host "Running DISM Component Cleanup..."
-    DISM /Online /Cleanup-Image /StartComponentCleanup
-    Write-Host "DISM component cleanup completed. Check default log: C:\Windows\Logs\DISM\dism.log"
-} catch {
-    Log-Error "Fail to repair DISM scan."
-}
-
-# 3. CHKDSK Check and Fix Issues
-Write-Host "Running CHKDSK Scan..."
-try {
-    Write-Host "CHKDSK may require a restart and could take time to complete."
-    chkdsk C: /f /r /x /b
-    Write-Host "CHKDSK scan completed successfully. A restart may be required."
-} catch {
-    Log-Error "Failed to run CHKDSK scan."
-}
-
-# 4. Driver Issues Check and Fix Issues
-Write-Host "Checking and Updating Drivers..."
-try {
-    pnputil.exe /scan-devices
-    Write-Host "Driver update check initiated."
-} catch {
-    Log-Error "Driver update check failed."
-}
-
-# 5. Windows Updates Check and Install Updates (without auto reboot)
-Write-Host "Checking for Windows Updates..."
-try {
-    if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate)) {
-        Install-Module -Name PSWindowsUpdate -Force -Scope AllUsers
-    }
-    Import-Module PSWindowsUpdate
-
-    Get-WindowsUpdate -AcceptAll -Install -AutoReboot:$false
-    Write-Host "Windows update check and installation completed."
-} catch {
-    Log-Error "Windows Update check failed."
-    
-    # Retry after restarting the Windows Update service
+function Reset-NetworkStack {
     try {
-        Write-Host "Restarting Windows Update service and retrying updates..."
-        Stop-Service -Name wuauserv -Force
-        Start-Service -Name wuauserv;
-
-        Get-WindowsUpdate -AcceptAll -Install -AutoReboot:$false
-        Write-Host "Windows update check and installation completed after retry."
+        Write-Log "Starting network stack reset..." -Type "INFO"
+        
+        # Get initial adapter states
+        $beforeStates = Get-NetAdapter | Select-Object Name, Status, LinkSpeed
+        
+        # Reset network stack
+        $stackCommands = @(
+            @{cmd="netsh winsock reset"; desc="Winsock Reset"},
+            @{cmd="netsh int ip reset"; desc="IP Stack Reset"},
+            @{cmd="ipconfig /release"; desc="IP Release"},
+            @{cmd="ipconfig /renew"; desc="IP Renew"},
+            @{cmd="ipconfig /flushdns"; desc="DNS Flush"}
+        )
+        
+        foreach ($command in $stackCommands) {
+            Write-Log "Executing: $($command.desc)..." -Type "INFO"
+            $result = Invoke-Expression $command.cmd 2>&1
+            if ($LASTEXITCODE -and $LASTEXITCODE -ne 0) {
+                Write-Log "Warning: $($command.desc) completed with status $LASTEXITCODE" -Type "WARNING"
+            }
+        }
+        
+        # Restart each adapter
+        Get-NetAdapter | ForEach-Object {
+            Write-Log "Restarting adapter: $($_.Name)" -Type "INFO"
+            try {
+                Restart-NetAdapter -Name $_.Name -Confirm:$false
+                Start-Sleep -Seconds 2
+            } catch {
+                Write-ErrorLog "Failed to restart adapter $($_.Name): $_"
+            }
+        }
+        
+        # Get final adapter states and compare
+        Start-Sleep -Seconds 5  # Wait for adapters to stabilize
+        $afterStates = Get-NetAdapter | Select-Object Name, Status, LinkSpeed
+        
+        Write-Log "Network Adapter Status Report:" -Type "SUMMARY"
+        foreach ($adapter in $afterStates) {
+            $before = $beforeStates | Where-Object { $_.Name -eq $adapter.Name }
+            $statusChange = if ($before.Status -ne $adapter.Status) { 
+                "Changed: $($before.Status) -> $($adapter.Status)" 
+            } else { 
+                "Unchanged" 
+            }
+            Write-Log "Adapter: $($adapter.Name) - Status: $($adapter.Status) - Speed: $($adapter.LinkSpeed) - Change: $statusChange" -Type "INFO"
+        }
+        
+        return $true
     } catch {
-        Log-Error "Windows Update retry failed."
+        Write-ErrorLog "Network stack reset failed: $_"
+        return $false
     }
 }
 
-# 6. Network Diagnostics and Adapter Resets
-Write-Host "Resetting Network Settings..."
-try {
-    netsh winsock reset
-    netsh int ip reset
-    ipconfig /release
-    ipconfig /renew
-    ipconfig /flushdns
-    Write-Host "Network settings reset completed."
+function Start-SystemMaintenance {
+    Write-Log "Starting system maintenance tasks..." -Type "INFO"
+    $results["StartTime"] = Get-Date
 
-    # Restart all network adapters
-    Get-NetAdapter | Restart-NetAdapter -Confirm:$false
-    Write-Host "All network adapters have been restarted."
-
-    # Report on network interfaces
-    $networkInterfaces = Get-NetAdapter | Select-Object Name, Status
-    Write-Host "Available Network Interfaces:"
-    Write-Host "{0,-30} {1,-15}" -f "Name", "Status"
-    Write-Host "{0,-30} {1,-15}" -f "----", "------"
-    $networkInterfaces | ForEach-Object {
-        Write-Host "{0,-30} {1,-15}" -f $_.Name, $_.Status
-    }
-} catch {
-    Log-Error "Network reset failed."
-}
-
-# 7. Registry Backup (Backup Only)
-Write-Host "Backing up Registry..."
-try {
-    regedit /e "$env:TEMP\registry_backup.reg"
-    Write-Host "Registry backup completed. No registry changes are made."
-} catch {
-    Log-Error "Registry backup failed."
-}
-
-# Clear the Registry Backup file after backup
-Write-Host "Clearing Registry Backup..."
-try {
-    Start-Sleep -Seconds 10
-    Clear-TempFiles -Path "$env:TEMP\registry_backup.reg"
-    Write-Host "Registry backup cleanup completed."
-} catch {
-    Log-Error "Registry backup cleanup failed."
-}
-
-# 8. Critical OS Issues
-Write-Host "Checking for Critical OS Issues..."
-try {
-    $criticalIssues = Get-WindowsErrorReporting
-    if ($criticalIssues) {
-        Write-Host "Critical OS issues found: $($criticalIssues.Count)"
-    } else {
-        Write-Host "No critical OS issues found."
+    # Delete CBS and DISM logs first
+    Write-Log "Cleaning system logs..." -Type "INFO"
+    Delete-Logs
+    
+    # SFC Check
+    Write-Log "Running SFC Scan..." -Type "INFO"
+    try {
+        $process = Start-Process sfc -ArgumentList "/scannow" -PassThru -Wait -NoNewWindow
+        $percent = 0
+        while ($percent -le 100) {
+            Start-Sleep -Milliseconds 100
+            Show-Progress -Percent $percent -Activity "SFC Scan"
+            $percent += 1
+        }
+        
+        $results["SFC"] = switch ($process.ExitCode) {
+            0 { "No issues found" }
+            1 { "Issues found but some could not be fixed" }
+            2 { "Issues found and fixed" }
+            default { "Error occurred" }
+        }
+        Write-Log "SFC Result: $($results['SFC'])" -Type "INFO"
+    } catch {
+        Write-ErrorLog "SFC scan failed: $_"
     }
 
-    # Check Disk Health
-    Write-Host "Checking Disk Health..."
-    $diskHealth = Get-PhysicalDisk | Get-StorageReliabilityCounter
-    if ($diskHealth) {
-        $diskHealth | ForEach-Object { Write-Host "$($_.DeviceID): Status = $($_.OperationalStatus)" }
-    } else {
-        Write-Host "No disk health information found."
+    # DISM Check
+    Write-Log "Running DISM Repair..." -Type "INFO"
+    try {
+        DISM /Online /Cleanup-Image /RestoreHealth
+        Write-Log "DISM repair completed successfully." -Type "INFO"
+        
+        Write-Log "Running DISM Component Cleanup..." -Type "INFO"
+        DISM /Online /Cleanup-Image /StartComponentCleanup
+        Write-Log "DISM component cleanup completed." -Type "INFO"
+    } catch {
+        Write-ErrorLog "DISM repair failed: $_"
     }
-} catch {
-    Log-Error "Critical OS issue check failed."
-}
 
-# 9. Cleanup System Junk Files
-Write-Host "Cleaning Up System Junk Files..."
-try {
-    Clear-TempFiles -Path "$env:TEMP"
-    Write-Host "System junk files cleanup completed."
-} catch {
-    Log-Error "System junk cleanup failed."
-}
-
-# 10. Disk Cleanup
-Write-Host "Running Disk Cleanup..."
-try {
-    Start-Process -FilePath "cleanmgr.exe" -ArgumentList "/verylowdisk" -Wait
-    Write-Host "Disk cleanup completed."
-} catch {
-    Log-Error "Disk cleanup failed."
-}
-
-# 11. Dump File Cleanup
-Write-Host "Cleaning Up Dump Files..."
-try {
-    $dumpFiles = Find-DumpFiles
-    foreach ($dumpFile in $dumpFiles) {
-        Remove-Item -Path $dumpFile.FullName -Force
-        Write-Host "Deleted dump file: $($dumpFile.FullName)"
+    # CHKDSK Check
+    Write-Log "Running CHKDSK Scan..." -Type "INFO"
+    try {
+        Write-Log "CHKDSK may require a restart and could take time to complete." -Type "WARNING"
+        chkdsk C: /f /r /x /b
+        Write-Log "CHKDSK scan completed successfully." -Type "INFO"
+    } catch {
+        Write-ErrorLog "CHKDSK scan failed: $_"
     }
-    Write-Host "Dump file cleanup completed."
-} catch {
-    Log-Error "Dump file cleanup failed."
+
+    # Driver Check
+    Write-Log "Checking and Updating Drivers..." -Type "INFO"
+    try {
+        pnputil.exe /scan-devices
+        Write-Log "Driver update check completed." -Type "INFO"
+    } catch {
+        Write-ErrorLog "Driver update check failed: $_"
+    }
+
+    # Windows Updates
+    Write-Log "Checking for Windows Updates..." -Type "INFO"
+    try {
+        if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate)) {
+            Install-Module -Name PSWindowsUpdate -Force -Scope AllUsers
+        }
+        Import-Module PSWindowsUpdate
+        Get-WindowsUpdate -AcceptAll -Install -AutoReboot:$false
+        Write-Log "Windows update check and installation completed." -Type "INFO"
+    } catch {
+        Write-ErrorLog "Windows Update failed - attempting service restart..."
+        try {
+            Stop-Service -Name wuauserv -Force
+            Start-Service -Name wuauserv
+            Get-WindowsUpdate -AcceptAll -Install -AutoReboot:$false
+            Write-Log "Windows update completed after service restart." -Type "INFO"
+        } catch {
+            Write-ErrorLog "Windows Update retry failed."
+        }
+    }
+
+    # Network Reset
+    Write-Log "Resetting Network Stack..." -Type "INFO"
+    $results["NetworkReset"] = Reset-NetworkStack
+
+    # Registry Backup
+    Write-Log "Backing up Registry..." -Type "INFO"
+    try {
+        $regBackupPath = "$env:TEMP\registry_backup.reg"
+        regedit /e $regBackupPath
+        Write-Log "Registry backup completed." -Type "INFO"
+        
+        Start-Sleep -Seconds 10
+        if (Test-Path $regBackupPath) {
+            Remove-Item $regBackupPath -Force
+            Write-Log "Registry backup file cleaned up." -Type "INFO"
+        }
+    } catch {
+        Write-ErrorLog "Registry backup operations failed: $_"
+    }
+
+    # Critical OS Issues
+    Write-Log "Checking for Critical OS Issues..." -Type "INFO"
+    try {
+        $criticalIssues = Get-WindowsErrorReporting
+        if ($criticalIssues) {
+            Write-Log "Found $($criticalIssues.Count) critical OS issues." -Type "WARNING"
+        } else {
+            Write-Log "No critical OS issues found." -Type "INFO"
+        }
+
+        $diskHealth = Get-PhysicalDisk | Get-StorageReliabilityCounter
+        foreach ($disk in $diskHealth) {
+            Write-Log "Disk $($disk.DeviceID): Status = $($disk.OperationalStatus)" -Type "INFO"
+        }
+    } catch {
+        Write-ErrorLog "Critical OS issue check failed: $_"
+    }
+
+    # System Cleanup
+    Write-Log "Cleaning Up System..." -Type "INFO"
+    try {
+        Clear-TempFiles -Path $env:TEMP
+        Start-Process -FilePath "cleanmgr.exe" -ArgumentList "/verylowdisk" -Wait
+        Write-Log "System cleanup completed." -Type "INFO"
+
+        $dumpFiles = Find-DumpFiles
+        foreach ($dumpFile in $dumpFiles) {
+            Remove-Item -Path $dumpFile.FullName -Force
+            Write-Log "Deleted dump file: $($dumpFile.FullName)" -Type "INFO"
+        }
+    } catch {
+        Write-ErrorLog "System cleanup operations failed: $_"
+    }
+
+    # Generate Summary
+    $results["EndTime"] = Get-Date
+    $duration = $results["EndTime"] - $results["StartTime"]
+    
+    Write-Log "=== Maintenance Summary ===" -Type "SUMMARY"
+    Write-Log "Duration: $($duration.ToString())" -Type "SUMMARY"
+    Write-Log "SFC Result: $($results['SFC'])" -Type "SUMMARY"
+    Write-Log "DISM Result: Completed" -Type "SUMMARY"
+    Write-Log "Network Reset: $($results['NetworkReset'])" -Type "SUMMARY"
+    Write-Log "Maintenance completed. Check logs for details:" -Type "SUMMARY"
+    Write-Log "  Main log: $logFile" -Type "INFO"
+    Write-Log "  Error log: $errorLogFile" -Type "INFO"
 }
 
-# End of Script
-Write-Host "System maintenance tasks completed. Review the log at $env:TEMP\CleanupErrors.log for any errors."
+# Execute the script
+Start-SystemMaintenance
