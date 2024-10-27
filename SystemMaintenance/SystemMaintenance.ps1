@@ -6,6 +6,8 @@ $ErrorActionPreference = "Stop"
 $logFile = Join-Path $env:TEMP "MaintenanceLog.txt"
 $errorLogFile = Join-Path $env:TEMP "CleanupErrors.log"
 $results = @{}
+# Hashtable to track logged errors
+$loggedErrors = @{}
 
 # Helper Functions
 function Write-Log {
@@ -33,9 +35,18 @@ function Write-ErrorLog {
     param(
         [string]$ErrorMessage
     )
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    Add-Content -Path $errorLogFile -Value "$timestamp - $ErrorMessage"
-    Write-Log -Message $ErrorMessage -Type "ERROR"
+
+    # Check if the error message is already logged
+    if (-not $loggedErrors.ContainsKey($ErrorMessage)) {
+        # Log to the error log file and main log if the error is new
+        $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+        $logMessage = "$timestamp - $ErrorMessage"
+        Add-Content -Path $errorLogFile -Value $logMessage
+        Write-Log -Message $ErrorMessage -Type "ERROR"
+
+        # Mark this error as logged to prevent duplicates
+        $loggedErrors[$ErrorMessage] = $true
+    }
 }
 
 function Show-Progress {
@@ -43,7 +54,7 @@ function Show-Progress {
         [int]$Percent,
         [string]$Activity
     )
-    Write-Progress -Activity $Activity -Status "$Percent% Complete" -PercentComplete $Percent
+    Write-Progress -Activity $Activity -Status "$Percent% Complete" -PercentComplete $Percent -Id 1
 }
 
 function Clear-TempFiles {
@@ -163,6 +174,12 @@ function Reset-NetworkStack {
             Write-Log "Adapter: $($adapter.Name) - Status: $($adapter.Status) - Speed: $($adapter.LinkSpeed) - Change: $statusChange" -Type "INFO"
         }
         
+        # Attempt Wi-Fi reconnect if disconnected
+        Get-NetAdapter | Where-Object { $_.Status -eq "Disconnected" -and $_.Name -like "*Wi-Fi*" } | ForEach-Object {
+            Write-Log "Attempting to reconnect Wi-Fi adapter: $($_.Name)" -Type "INFO"
+            Enable-NetAdapter -Name $_.Name -Confirm:$false
+        }
+        
         return $true
     } catch {
         Write-ErrorLog "Network stack reset failed: $_"
@@ -182,11 +199,10 @@ function Start-SystemMaintenance {
     Write-Log "Running SFC Scan..." -Type "INFO"
     try {
         $process = Start-Process sfc -ArgumentList "/scannow" -PassThru -Wait -NoNewWindow
-        $percent = 0
-        while ($percent -le 100) {
+        Show-Progress -Percent 0 -Activity "SFC Scan"
+        for ($percent = 0; $percent -le 100; $percent++) {
             Start-Sleep -Milliseconds 100
             Show-Progress -Percent $percent -Activity "SFC Scan"
-            $percent += 1
         }
         
         $results["SFC"] = switch ($process.ExitCode) {
@@ -205,7 +221,6 @@ function Start-SystemMaintenance {
     try {
         DISM /Online /Cleanup-Image /RestoreHealth
         Write-Log "DISM repair completed successfully." -Type "INFO"
-        
         Write-Log "Running DISM Component Cleanup..." -Type "INFO"
         DISM /Online /Cleanup-Image /StartComponentCleanup
         Write-Log "DISM component cleanup completed." -Type "INFO"
@@ -321,5 +336,5 @@ function Start-SystemMaintenance {
     Write-Log "  Error log: $errorLogFile" -Type "INFO"
 }
 
-# Execute the script
+# Run maintenance
 Start-SystemMaintenance
