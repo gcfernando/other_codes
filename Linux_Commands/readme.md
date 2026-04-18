@@ -98,5 +98,5 @@ getcap -r / 2>/dev/null
 *Built with care. Shared for free. Use it well.* 🖤
 
 ```
-root@kali:~# ./linux_hacker_bible --help
+root@kali:~# ./gehan_hacker_bible --help
 ```
