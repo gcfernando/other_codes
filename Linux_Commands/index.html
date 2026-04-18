@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linux Hacker's Bible — Complete Command Reference</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ── Header ──────────────────────────────────── -->
+  <header>
+    <div class="header-tag">// classified reference document — complete edition</div>
+    <h1>LINUX <span>HACKER'S</span> BIBLE</h1>
+    <div class="subtitle">
+      COMPLETE COMMAND REFERENCE FOR CYBERSECURITY PROFESSIONALS
+      <span class="blink">_</span>
+    </div>
+    <div class="header-line"></div>
+    <div class="stats-bar">
+      <div class="stat-chip"><strong id="totalCount">0</strong>&nbsp;commands</div>
+      <div class="stat-chip"><strong>16</strong>&nbsp;categories</div>
+      <div class="stat-chip"><strong>real-world</strong>&nbsp;usage for each</div>
+    </div>
+  </header>
+
+  <!-- ── Search & Filter Controls ────────────────── -->
+  <div class="controls">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="search commands, categories, descriptions, usage..."
+        oninput="filterTable()"
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+    <select id="catFilter" onchange="onCatSelect()">
+      <option value="">— all categories —</option>
+    </select>
+    <div class="result-count" id="resultCount"></div>
+  </div>
+
+  <!-- ── Category Pill Buttons ────────────────────── -->
+  <div class="cat-pills" id="catPills"></div>
+
+  <!-- ── Command Table ────────────────────────────── -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Real-World Usage / Examples</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <div class="no-results" id="noResults" style="display:none;">
+      [ no commands match your search ]
+    </div>
+  </div>
+
+  <!-- ── Footer ──────────────────────────────────── -->
+  <footer>
+    // root@kali ~ # stay ethical &nbsp;·&nbsp; hack legally &nbsp;·&nbsp; for educational purposes only
+  </footer>
+
+</div><!-- /.container -->
+
+<!-- Data (must load before app.js) -->
+<script src="data.js"></script>
+<!-- App logic -->
+<script src="app.js"></script>
+
+</body>
+</html>
