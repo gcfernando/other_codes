@@ -1,0 +1,182 @@
+# compose.yml
+#
+# Local development stack for Podman Compose:
+#   - Microsoft SQL Server 2019
+#   - Elasticsearch 9.5.2
+#   - Kibana 9.5.2
+#   - Oracle Database XE 21c
+#
+# IMPORTANT:
+# Passwords are intentionally stored here because this is a single-file
+# local-development setup. Do not use these credentials for production.
+
+# ---------------------------------------------------------------------------
+# VARIABLES - edit these values here
+# ---------------------------------------------------------------------------
+x-variables:
+  sql_username: &sql_username "sa"              # SQL Server built-in admin login
+  sql_password: &sql_password "1qaz2wsx@"
+
+  oracle_username: &oracle_username "ORA"        # Application/schema user
+  oracle_password: &oracle_password "1qaz2wsx@" # Used for ORA, SYS and SYSTEM
+
+  timezone: &timezone "Europe/Stockholm"
+
+  sql_image: &sql_image "mcr.microsoft.com/mssql/server:2019-latest"
+  elasticsearch_image: &elasticsearch_image "docker.elastic.co/elasticsearch/elasticsearch:9.5.2"
+  kibana_image: &kibana_image "docker.elastic.co/kibana/kibana:9.5.2"
+  oracle_image: &oracle_image "docker.io/gvenzl/oracle-xe:21-slim"
+
+services:
+
+  # -------------------------------------------------------------------------
+  # Microsoft SQL Server 2019
+  # -------------------------------------------------------------------------
+  sqlserver:
+    image: *sql_image
+    container_name: sqlserver2019
+    hostname: sqlserver2019
+    restart: unless-stopped
+
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: *sql_password
+      TZ: *timezone
+
+    ports:
+      - "1433:1433"
+
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+    networks:
+      - database_network
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -Q \"SELECT 1\" -No >/dev/null 2>&1 || exit 1"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  # -------------------------------------------------------------------------
+  # Elasticsearch
+  # Security is disabled here intentionally for local development.
+  # -------------------------------------------------------------------------
+  elasticsearch:
+    image: *elasticsearch_image
+    container_name: elasticsearch
+    hostname: elasticsearch
+    restart: unless-stopped
+
+    environment:
+      discovery.type: "single-node"
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+      TZ: *timezone
+
+    ports:
+      - "9200:9200"
+
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+
+    networks:
+      - database_network
+
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -fsS http://localhost:9200/_cluster/health >/dev/null 2>&1 || exit 1"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  # -------------------------------------------------------------------------
+  # Kibana
+  # -------------------------------------------------------------------------
+  kibana:
+    image: *kibana_image
+    container_name: kibana
+    hostname: kibana
+    restart: unless-stopped
+
+    environment:
+      SERVER_HOST: "0.0.0.0"
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+      TZ: *timezone
+
+    ports:
+      - "5601:5601"
+
+    depends_on:
+      - elasticsearch
+
+    networks:
+      - database_network
+
+  # -------------------------------------------------------------------------
+  # Oracle Database Express Edition 21c
+  #
+  # SYS       / 1qaz2wsx@
+  # SYSTEM    / 1qaz2wsx@
+  # ORA       / 1qaz2wsx@
+  # Service   : XEPDB1
+  # Port      : 1521
+  # -------------------------------------------------------------------------
+  oracle:
+    image: *oracle_image
+    container_name: oracle-xe
+    hostname: oracle-xe
+    restart: unless-stopped
+
+    environment:
+      ORACLE_PASSWORD: *oracle_password
+      APP_USER: *oracle_username
+      APP_USER_PASSWORD: *oracle_password
+      TZ: *timezone
+
+    ports:
+      - "1521:1521"
+
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+
+    networks:
+      - database_network
+
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+
+
+# ---------------------------------------------------------------------------
+# Persistent named volumes
+# ---------------------------------------------------------------------------
+volumes:
+  sqlserver_data:
+  elasticsearch_data:
+  oracle_data:
+
+
+# ---------------------------------------------------------------------------
+# Shared container network
+# ---------------------------------------------------------------------------
+networks:
+  database_network:
+    driver: bridge
