@@ -5,10 +5,13 @@
 #   - Elasticsearch 9.5.2
 #   - Kibana 9.5.2
 #   - Oracle Database XE 21c
+#   - MongoDB 8.0
+#   - RabbitMQ 4.3 + Management UI
+#   - MySQL 8.4
 #
 # IMPORTANT:
-# Passwords are intentionally stored here because this is a single-file
-# local-development setup. Do not use these credentials for production.
+# Passwords are intentionally stored here because this is a local-development
+# setup. Do not use these credentials for production.
 
 # ---------------------------------------------------------------------------
 # VARIABLES - edit these values here
@@ -20,12 +23,18 @@ x-variables:
   oracle_username: &oracle_username "ORA"        # Application/schema user
   oracle_password: &oracle_password "1qaz2wsx@" # Used for ORA, SYS and SYSTEM
 
+  default_root_username: &default_root_username "root"
+  default_root_password: &default_root_password "1qaz2wsx@"
+
   timezone: &timezone "Europe/Stockholm"
 
   sql_image: &sql_image "mcr.microsoft.com/mssql/server:2019-latest"
   elasticsearch_image: &elasticsearch_image "docker.elastic.co/elasticsearch/elasticsearch:9.5.2"
   kibana_image: &kibana_image "docker.elastic.co/kibana/kibana:9.5.2"
   oracle_image: &oracle_image "docker.io/gvenzl/oracle-xe:21-slim"
+  mongodb_image: &mongodb_image "docker.io/library/mongo:8.0.30-noble"
+  rabbitmq_image: &rabbitmq_image "docker.io/library/rabbitmq:4.3.5-management"
+  mysql_image: &mysql_image "docker.io/library/mysql:8.4.11"
 
 services:
 
@@ -164,6 +173,119 @@ services:
       retries: 30
       start_period: 60s
 
+  # -------------------------------------------------------------------------
+  # MongoDB
+  #
+  # Username : root
+  # Password : 1qaz2wsx@
+  # Port     : 27017
+  # Auth DB  : admin
+  # -------------------------------------------------------------------------
+  mongodb:
+    image: *mongodb_image
+    container_name: mongodb
+    hostname: mongodb
+    restart: unless-stopped
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: *default_root_username
+      MONGO_INITDB_ROOT_PASSWORD: *default_root_password
+      TZ: *timezone
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongodb_data:/data/db
+
+    networks:
+      - database_network
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mongosh --quiet --host 127.0.0.1 --username \"$$MONGO_INITDB_ROOT_USERNAME\" --password \"$$MONGO_INITDB_ROOT_PASSWORD\" --authenticationDatabase admin --eval \"db.adminCommand({ ping: 1 }).ok\" | grep -q 1 || exit 1"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  # -------------------------------------------------------------------------
+  # RabbitMQ + Management UI
+  #
+  # Username      : root
+  # Password      : 1qaz2wsx@
+  # AMQP port     : 5672
+  # Management UI : http://localhost:15672
+  # -------------------------------------------------------------------------
+  rabbitmq:
+    image: *rabbitmq_image
+    container_name: rabbitmq
+    hostname: rabbitmq
+    restart: unless-stopped
+
+    environment:
+      RABBITMQ_DEFAULT_USER: *default_root_username
+      RABBITMQ_DEFAULT_PASS: *default_root_password
+      TZ: *timezone
+
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+    networks:
+      - database_network
+
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 20
+      start_period: 20s
+
+  # -------------------------------------------------------------------------
+  # MySQL 8.4
+  #
+  # Username : root
+  # Password : 1qaz2wsx@
+  # Port     : 3306
+  # -------------------------------------------------------------------------
+  mysql:
+    image: *mysql_image
+    container_name: mysql
+    hostname: mysql
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: *default_root_password
+      MYSQL_ROOT_HOST: "%"
+      TZ: *timezone
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    networks:
+      - database_network
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" --silent >/dev/null 2>&1 || exit 1"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+
 
 # ---------------------------------------------------------------------------
 # Persistent named volumes
@@ -172,6 +294,9 @@ volumes:
   sqlserver_data:
   elasticsearch_data:
   oracle_data:
+  mongodb_data:
+  rabbitmq_data:
+  mysql_data:
 
 
 # ---------------------------------------------------------------------------
