@@ -1,7 +1,7 @@
 # compose.yml
 #
 # Local development stack for Podman Compose:
-#   - Microsoft SQL Server 2019
+#   - Microsoft SQL Server 2025
 #   - Elasticsearch 9.5.2
 #   - Kibana 9.5.2
 #   - Oracle Database XE 21c
@@ -28,7 +28,7 @@ x-variables:
 
   timezone: &timezone "Europe/Stockholm"
 
-  sql_image: &sql_image "mcr.microsoft.com/mssql/server:2019-latest"
+  sql_image: &sql_image "mcr.microsoft.com/mssql/server:2025-latest"
   elasticsearch_image: &elasticsearch_image "docker.elastic.co/elasticsearch/elasticsearch:9.5.2"
   kibana_image: &kibana_image "docker.elastic.co/kibana/kibana:9.5.2"
   oracle_image: &oracle_image "docker.io/gvenzl/oracle-xe:21-slim"
@@ -39,12 +39,12 @@ x-variables:
 services:
 
   # -------------------------------------------------------------------------
-  # Microsoft SQL Server 2019
+  # Microsoft SQL Server 2025
   # -------------------------------------------------------------------------
   sqlserver:
     image: *sql_image
-    container_name: sqlserver2019
-    hostname: sqlserver2019
+    container_name: sqlserver2025
+    hostname: sqlserver2025
     restart: unless-stopped
 
     environment:
