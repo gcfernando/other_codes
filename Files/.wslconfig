@@ -1,0 +1,28 @@
+[wsl2]
+
+# Maximum RAM available to WSL2
+memory=8GB
+
+# Logical CPU processors available to WSL2
+processors=8
+
+# Disk-backed swap memory
+swap=4GB
+
+# Allow Windows localhost access to WSL services
+localhostForwarding=true
+
+# Keep Windows Firewall integration enabled
+firewall=true
+
+# Use Windows for DNS resolution
+dnsTunneling=true
+
+# Inherit Windows HTTP proxy configuration
+autoProxy=true
+
+
+[experimental]
+
+# Return unused Linux cache memory to Windows
+autoMemoryReclaim=dropCache
