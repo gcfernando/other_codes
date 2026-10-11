@@ -4,7 +4,7 @@
 
 ### 🧸 **39 tools explained as if you are using them for the very first time**
 
-**Claude Code CLI · OpenAI Codex CLI · GitHub Copilot CLI · VS Code**
+**Claude Code · OpenAI Codex · GitHub Copilot · VS Code**
 
 | 🟪 **39 TOOLS** | 🟩 **BEGINNER LEVEL** | 🟧 **OCTOBER 2026** |
 |:---:|:---:|:---:|
@@ -55,7 +55,7 @@ Imagine your AI assistant is a helper in a workshop. 🧰
 
 ### 🧭 Jump straight to your assistant
 
-**🟩 [Codex CLI plugin list](#-codex-cli-my-plugin-list) · 🟧 [Claude Code plugin list](#-claude-code-cli-my-plugin-list) · 🟪 [GitHub Copilot CLI + VS Code list](#-copilot-cli--vs-code-my-plugin-list)**
+**🟩 [Codex plugin list](#-codex-cli-my-plugin-list) · 🟧 [Claude Code plugin list](#-claude-code-cli-my-plugin-list) · 🟪 [GitHub Copilot + VS Code list](#-copilot-cli--vs-code-my-plugin-list)**
 
 **📚 [All 39 explained](#-every-plugin-in-plain-english) · 🩹 [Troubleshooting](#-quick-fixes-when-something-goes-wrong)**
 
@@ -67,14 +67,14 @@ Imagine your AI assistant is a helper in a workshop. 🧰
 
 | 💻 You are using | ✅ To open it (in Terminal) | 📦 Where to install a marketplace plugin | 🚀 Where to ask for help |
 |---|---|---|---|
-| 🟧 **Claude Code CLI** | `claude` | In Claude chat: `/plugin …` | In Claude chat, ask a question |
-| 🟩 **Codex CLI** | `codex` | In Codex: `/plugins` or in Terminal: `codex plugin …` | In Codex chat |
-| 🟪 **Copilot CLI** | `copilot` | In Terminal: `copilot plugin …` | In Copilot chat |
+| 🟧 **Claude Code** | `claude` | In Claude chat: `/plugin …` | In Claude chat, ask a question |
+| 🟩 **Codex** | `codex` | In Codex: `/plugins` or in Terminal: `codex plugin …` | In Codex chat |
+| 🟪 **Copilot** | `copilot` | In Terminal: `copilot plugin …` | In Copilot chat |
 | 💙 **VS Code Copilot** | Open VS Code | Extensions → search `@agentPlugins`; **Agent Customizations** → Discover | Copilot Chat → **Agent** |
 | 💙 **VS Code Codex** | Open VS Code with Codex extension | Follow the **Codex** setup and extension support | Codex's own chat/editor panel |
 
 > [!CAUTION]
-> ⚠️ `gh` is the **GitHub CLI**, but `copilot` is the standalone **GitHub Copilot CLI**. They are different commands. VS Code Copilot and VS Code Codex also have different plugin capabilities.
+> ⚠️ `gh` is the **GitHub CLI**, but `copilot` is the standalone **GitHub Copilot**. They are different commands. VS Code Copilot and VS Code Codex also have different plugin capabilities.
 
 ### ✅ A safe 4-step practice run
 
@@ -87,7 +87,7 @@ Imagine your AI assistant is a helper in a workshop. 🧰
 
 <a id="-codex-cli-my-plugin-list"></a>
 
-## 🟩 Codex CLI — My plugin list
+## 🟩 Codex — My plugin list
 
 ![19 tools](https://img.shields.io/badge/19_tools-16A34A?style=for-the-badge)
 
@@ -135,7 +135,7 @@ Imagine your AI assistant is a helper in a workshop. 🧰
 
 <a id="-claude-code-cli-my-plugin-list"></a>
 
-## 🟧 Claude Code CLI — My plugin list
+## 🟧 Claude Code — My plugin list
 
 ![24 tools](https://img.shields.io/badge/24_tools-EA580C?style=for-the-badge)
 
@@ -193,7 +193,7 @@ Imagine your AI assistant is a helper in a workshop. 🧰
 
 <a id="-copilot-cli--vs-code-my-plugin-list"></a>
 
-## 🟪 Copilot CLI + VS Code — My plugin list
+## 🟪 Copilot + VS Code — My plugin list
 
 ![24 tools](https://img.shields.io/badge/24_tools-7C3AED?style=for-the-badge)
 
@@ -306,9 +306,9 @@ Every plugin provides the **three steps you asked for, fully visible**, plus a s
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Run your usual tests and ask for only failures; check `rtk gain`. |
-| **🟩 Codex CLI** | Inspect `rtk gain` after the agent runs a build. |
-| **🟪 Copilot CLI** | Ask Copilot to run focused tests; note its CLI hook may offer suggestions instead of transparent rewriting. |
+| **🟧 Claude Code** | Run your usual tests and ask for only failures; check `rtk gain`. |
+| **🟩 Codex** | Inspect `rtk gain` after the agent runs a build. |
+| **🟪 Copilot** | Ask Copilot to run focused tests; note its CLI hook may offer suggestions instead of transparent rewriting. |
 | **💙 VS Code** | With Copilot Agent, run focused commands and inspect `rtk gain` in the terminal. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -360,9 +360,9 @@ Read the [quick start](https://github.com/headroomlabs-ai/headroom/blob/main/wik
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Launch with `headroom wrap claude`; compare long-session quality. |
-| **🟩 Codex CLI** | Launch with `headroom wrap codex`; inspect whether relevant diagnostics remain. |
-| **🟪 Copilot CLI** | Launch with `headroom wrap copilot`; compare output and model use. |
+| **🟧 Claude Code** | Launch with `headroom wrap claude`; compare long-session quality. |
+| **🟩 Codex** | Launch with `headroom wrap codex`; inspect whether relevant diagnostics remain. |
+| **🟪 Copilot** | Launch with `headroom wrap copilot`; compare output and model use. |
 | **💙 VS Code** | Use supported agent CLI from VS Code terminal; VS Code Copilot integration can need separate client wiring. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -414,10 +414,10 @@ Pick a permitted memory provider and storage mode. Check `npx claude-mem status`
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Search previous observations about this test failure.” |
-| **🟩 Codex CLI** | “Retrieve relevant memory about the earlier refactor.” |
-| **🟪 Copilot CLI** | “Search memory for the last PR context.” |
-| **💙 VS Code** | Use the memory through the installed coding client; extension compatibility is not identical to Copilot CLI. |
+| **🟧 Claude Code** | “Search previous observations about this test failure.” |
+| **🟩 Codex** | “Retrieve relevant memory about the earlier refactor.” |
+| **🟪 Copilot** | “Search memory for the last PR context.” |
+| **💙 VS Code** | Use the memory through the installed coding client; extension compatibility is not identical to Copilot. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
 
@@ -468,9 +468,9 @@ Dashboard → **Providers**: connect approved model accounts. Dashboard → **En
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Run `omniroute launch` for the maintainer-supported Claude launcher after configuring providers. |
-| **🟩 Codex CLI** | Run `omniroute launch-codex` where supported; verify the intended model route. |
-| **🟪 Copilot CLI** | Follow OmniRoute’s Copilot integration instructions; external model routing is version-dependent. |
+| **🟧 Claude Code** | Run `omniroute launch` for the maintainer-supported Claude launcher after configuring providers. |
+| **🟩 Codex** | Run `omniroute launch-codex` where supported; verify the intended model route. |
+| **🟪 Copilot** | Follow OmniRoute’s Copilot integration instructions; external model routing is version-dependent. |
 | **💙 VS Code** | Use the linked **OmniCopilot** VS Code extension and select its model in Copilot Chat (subject to supported versions). |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -512,7 +512,7 @@ In a terminal: `copilot plugin install chronicle-stats@awesome-copilot`. For VS 
 
 #### ⚙️ STEP 2 · HOW TO CONFIGURE
 
-Install in Copilot CLI, then open its supported **usage canvas / app experience**. For quick basic numbers, you can also use Copilot CLI built-in `/usage` or `/context` without this plugin.
+Install in Copilot, then open its supported **usage canvas / app experience**. For quick basic numbers, you can also use Copilot built-in `/usage` or `/context` without this plugin.
 
 #### 🚀 STEP 3 · HOW TO USE (CLAUDE / CODEX / COPILOT / VS CODE)
 
@@ -522,9 +522,9 @@ Install in Copilot CLI, then open its supported **usage canvas / app experience*
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | For usage details, the extension is primarily intended for the Copilot app canvas (not an ordinary CLI command). |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | For usage details, the extension is primarily intended for the Copilot app canvas (not an ordinary CLI command). |
 | **💙 VS Code** | Open the installed Copilot app **My AI Usage** canvas; requires compatible Copilot app, Node and sign-in. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -585,9 +585,9 @@ Choose the right language backend in Serena; make sure the repository and langua
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Ask: “Use Serena to find the symbol that implements authentication.” |
-| **🟩 Codex CLI** | Ask: “Find callers of `validateOrder` with Serena; edit only the relevant symbols.” |
-| **🟪 Copilot CLI** | Ask: “With Serena, show references to this class.” (requires its MCP registration). |
+| **🟧 Claude Code** | Ask: “Use Serena to find the symbol that implements authentication.” |
+| **🟩 Codex** | Ask: “Find callers of `validateOrder` with Serena; edit only the relevant symbols.” |
+| **🟪 Copilot** | Ask: “With Serena, show references to this class.” (requires its MCP registration). |
 | **💙 VS Code** | Use the **Codex** or **Copilot Agent** surface after its MCP setup, then ask the same symbol-level question. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -625,11 +625,11 @@ Check the installer output for the actual installed location; restart the agent 
 
 #### 📦 STEP 1 · HOW TO INSTALL
 
-**Codex Terminal:** `codex plugin marketplace add upstash/context7` → `codex plugin add context7@context7-marketplace`. **Claude Code chat:** `/plugin marketplace add upstash/context7` → `/plugin install context7@context7-marketplace`. **Copilot CLI Terminal:** `npx ctx7 setup --copilot`. **VS Code Extensions:** search for `Upstash.context7-mcp` and click **Install**.
+**Codex Terminal:** `codex plugin marketplace add upstash/context7` → `codex plugin add context7@context7-marketplace`. **Claude Code chat:** `/plugin marketplace add upstash/context7` → `/plugin install context7@context7-marketplace`. **Copilot Terminal:** `npx ctx7 setup --copilot`. **VS Code Extensions:** search for `Upstash.context7-mcp` and click **Install**.
 
 #### ⚙️ STEP 2 · HOW TO CONFIGURE
 
-**Claude plugin:** restart Claude, run `/mcp`, choose Context7, and sign in. **Copilot CLI:** finish the guided Context7 setup when prompted. **VS Code:** open Command Palette → `MCP: List Servers`; confirm **Context7** is listed. **Codex:** restart Codex and verify the plugin loads. Choose the correct library version before asking for API examples. [Maintainer guide](https://github.com/upstash/context7).
+**Claude plugin:** restart Claude, run `/mcp`, choose Context7, and sign in. **Copilot:** finish the guided Context7 setup when prompted. **VS Code:** open Command Palette → `MCP: List Servers`; confirm **Context7** is listed. **Codex:** restart Codex and verify the plugin loads. Choose the correct library version before asking for API examples. [Maintainer guide](https://github.com/upstash/context7).
 
 #### 🚀 STEP 3 · HOW TO USE (CLAUDE / CODEX / COPILOT / VS CODE)
 
@@ -639,9 +639,9 @@ Check the installer output for the actual installed location; restart the agent 
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Use Context7 docs for the latest Spring Boot testing API.” |
-| **🟩 Codex CLI** | “Use Context7 for the installed library version, then add tests.” |
-| **🟪 Copilot CLI** | “Use Context7 to check the current React Router API.” |
+| **🟧 Claude Code** | “Use Context7 docs for the latest Spring Boot testing API.” |
+| **🟩 Codex** | “Use Context7 for the installed library version, then add tests.” |
+| **🟪 Copilot** | “Use Context7 to check the current React Router API.” |
 | **💙 VS Code** | In Copilot Agent mode: “Use Context7 to verify the API before editing.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -693,9 +693,9 @@ Its installer writes a skill to your workspace or user profile; select the inten
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Use Graphify to locate the order-to-invoice dependency path.” |
-| **🟩 Codex CLI** | “Query Graphify before reading whole modules.” |
-| **🟪 Copilot CLI** | “Use Graphify to identify impacted components.” |
+| **🟧 Claude Code** | “Use Graphify to locate the order-to-invoice dependency path.” |
+| **🟩 Codex** | “Query Graphify before reading whole modules.” |
+| **🟪 Copilot** | “Use Graphify to identify impacted components.” |
 | **💙 VS Code** | Use the generated skills/instructions from the right client; review `graphify-out/GRAPH_REPORT.md` as needed. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -747,9 +747,9 @@ Choose the language-specific variant matching your repository and ensure the cor
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Use LSP definitions and diagnostics to locate the type error.” |
-| **🟩 Codex CLI** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
-| **🟪 Copilot CLI** | Not directly installable as the same native plugin. |
+| **🟧 Claude Code** | “Use LSP definitions and diagnostics to locate the type error.” |
+| **🟩 Codex** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
+| **🟪 Copilot** | Not directly installable as the same native plugin. |
 | **💙 VS Code** | Use through Claude Code in VS Code terminal, or choose an editor-native alternative. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -799,9 +799,9 @@ After installing run `copilot plugin list`; start a new Copilot session. In VS C
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | “Use Context Engineering to plan a refactor across these modules.” |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | “Use Context Engineering to plan a refactor across these modules.” |
 | **💙 VS Code** | Open **Copilot Agent** and ask: “Use Context Engineering to plan a refactor across these modules.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -846,7 +846,7 @@ Run `copilot plugin list`. Open a fresh session or check VS Code’s plugin list
 
 #### 📦 STEP 1 · HOW TO INSTALL
 
-**Claude:** `/plugin install superpowers@claude-plugins-official`. **Codex:** search **Superpowers** in `/plugins`. **Copilot CLI:** follow the [maintainer install guide](https://github.com/obra/superpowers); its plugin marketplace differs from the Claude one.
+**Claude:** `/plugin install superpowers@claude-plugins-official`. **Codex:** search **Superpowers** in `/plugins`. **Copilot:** follow the [maintainer install guide](https://github.com/obra/superpowers); its plugin marketplace differs from the Claude one.
 
 #### ⚙️ STEP 2 · HOW TO CONFIGURE
 
@@ -860,9 +860,9 @@ After installing, start a fresh session. Allow its skills and commands; use one 
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Use Superpowers to brainstorm options, then write tests first.” |
-| **🟩 Codex CLI** | “Use the Superpowers plan-and-execute workflow for this bug.” |
-| **🟪 Copilot CLI** | “Apply a Superpowers TDD workflow to this endpoint.” |
+| **🟧 Claude Code** | “Use Superpowers to brainstorm options, then write tests first.” |
+| **🟩 Codex** | “Use the Superpowers plan-and-execute workflow for this bug.” |
+| **🟪 Copilot** | “Apply a Superpowers TDD workflow to this endpoint.” |
 | **💙 VS Code** | Use the same skill through the installed assistant extension; do not assume every slash command is shared across hosts. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -900,11 +900,11 @@ Check the installer output for the actual installed location; restart the agent 
 
 #### 📦 STEP 1 · HOW TO INSTALL
 
-**Claude:** `/plugin marketplace add DietrichGebert/ponytail` → `/plugin install ponytail@ponytail`. **Codex:** `codex plugin marketplace add DietrichGebert/ponytail` → `codex plugin add ponytail@ponytail`. **Copilot CLI:** `copilot plugin marketplace add DietrichGebert/ponytail` → `copilot plugin install ponytail@ponytail`.
+**Claude:** `/plugin marketplace add DietrichGebert/ponytail` → `/plugin install ponytail@ponytail`. **Codex:** `codex plugin marketplace add DietrichGebert/ponytail` → `codex plugin add ponytail@ponytail`. **Copilot:** `copilot plugin marketplace add DietrichGebert/ponytail` → `copilot plugin install ponytail@ponytail`.
 
 #### ⚙️ STEP 2 · HOW TO CONFIGURE
 
-For Codex, review and trust hooks with `/hooks`. For editor-only Copilot Chat, copy the maintainer’s `.github/copilot-instructions.md` (it is not the same as Copilot CLI plugin hooks).
+For Codex, review and trust hooks with `/hooks`. For editor-only Copilot Chat, copy the maintainer’s `.github/copilot-instructions.md` (it is not the same as Copilot plugin hooks).
 
 #### 🚀 STEP 3 · HOW TO USE (CLAUDE / CODEX / COPILOT / VS CODE)
 
@@ -914,9 +914,9 @@ For Codex, review and trust hooks with `/hooks`. For editor-only Copilot Chat, c
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Apply Ponytail: choose the smallest robust fix.” |
-| **🟩 Codex CLI** | “Use Ponytail and explain which code we avoided adding.” |
-| **🟪 Copilot CLI** | Use a Ponytail slash command listed by your installed Copilot plugin, or ask it by name. |
+| **🟧 Claude Code** | “Apply Ponytail: choose the smallest robust fix.” |
+| **🟩 Codex** | “Use Ponytail and explain which code we avoided adding.” |
+| **🟪 Copilot** | Use a Ponytail slash command listed by your installed Copilot plugin, or ask it by name. |
 | **💙 VS Code** | Open Copilot Chat with the copied rules or use Codex extension with `AGENTS.md`. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -954,7 +954,7 @@ Check the installer output for the actual installed location; restart the agent 
 
 #### 📦 STEP 1 · HOW TO INSTALL
 
-**Codex terminal:** `codex plugin marketplace add addyosmani/agent-skills` → `codex plugin add agent-skills@agent-skills`. **Claude chat:** `/plugin marketplace add addyosmani/agent-skills` → `/plugin install agent-skills@addy-agent-skills`. **Copilot CLI terminal:** `copilot plugin install addyosmani/agent-skills`. **VS Code:** `npx skills add addyosmani/agent-skills` and choose your target agent.
+**Codex terminal:** `codex plugin marketplace add addyosmani/agent-skills` → `codex plugin add agent-skills@agent-skills`. **Claude chat:** `/plugin marketplace add addyosmani/agent-skills` → `/plugin install agent-skills@addy-agent-skills`. **Copilot terminal:** `copilot plugin install addyosmani/agent-skills`. **VS Code:** `npx skills add addyosmani/agent-skills` and choose your target agent.
 
 #### ⚙️ STEP 2 · HOW TO CONFIGURE
 
@@ -968,16 +968,16 @@ Start a fresh session. Install only necessary skills if you want less clutter: `
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Use the test-driven-development skill for this defect.” |
-| **🟩 Codex CLI** | In Codex: `@test-driven-development` or ask to invoke that skill. |
-| **🟪 Copilot CLI** | “Use code-review-and-quality on staged changes.” |
+| **🟧 Claude Code** | “Use the test-driven-development skill for this defect.” |
+| **🟩 Codex** | In Codex: `@test-driven-development` or ask to invoke that skill. |
+| **🟪 Copilot** | “Use code-review-and-quality on staged changes.” |
 | **💙 VS Code** | In Copilot Agent mode invoke `/test-driven-development` if the skill is discovered; or describe it. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
 
 Check the installer output for the actual installed location; restart the agent and ask the example prompt. Confirm the result against the real code/tests.
 
-**⚠️ WATCH OUT:** The short `/spec` or `/review` aliases are Claude-specific; not automatically present in VS Code or Copilot CLI.
+**⚠️ WATCH OUT:** The short `/spec` or `/review` aliases are Claude-specific; not automatically present in VS Code or Copilot.
 
 
 ---
@@ -1022,9 +1022,9 @@ Review the plugin’s listed commands and settings in `/plugin`. Start a fresh s
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Analyze this repo and recommend the smallest useful Claude Code setup.” |
-| **🟩 Codex CLI** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
-| **🟪 Copilot CLI** | Not directly installable as the same native plugin. |
+| **🟧 Claude Code** | “Analyze this repo and recommend the smallest useful Claude Code setup.” |
+| **🟩 Codex** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
+| **🟪 Copilot** | Not directly installable as the same native plugin. |
 | **💙 VS Code** | Use through Claude Code in VS Code terminal, or choose an editor-native alternative. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1074,9 +1074,9 @@ Review the plugin’s listed commands and settings in `/plugin`. Start a fresh s
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Simplify these edited functions without changing behavior; run tests.” |
-| **🟩 Codex CLI** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
-| **🟪 Copilot CLI** | Not directly installable as the same native plugin. |
+| **🟧 Claude Code** | “Simplify these edited functions without changing behavior; run tests.” |
+| **🟩 Codex** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
+| **🟪 Copilot** | Not directly installable as the same native plugin. |
 | **💙 VS Code** | Use through Claude Code in VS Code terminal, or choose an editor-native alternative. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1126,9 +1126,9 @@ Review the plugin’s listed commands and settings in `/plugin`. Start a fresh s
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Use Feature Dev to add user preferences with tests.” |
-| **🟩 Codex CLI** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
-| **🟪 Copilot CLI** | Not directly installable as the same native plugin. |
+| **🟧 Claude Code** | “Use Feature Dev to add user preferences with tests.” |
+| **🟩 Codex** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
+| **🟪 Copilot** | Not directly installable as the same native plugin. |
 | **💙 VS Code** | Use through Claude Code in VS Code terminal, or choose an editor-native alternative. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1178,9 +1178,9 @@ After installing, say **“audit my CLAUDE.md files”** or run `/revise-claude-
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Audit CLAUDE.md for contradictions and unnecessary context.” |
-| **🟩 Codex CLI** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
-| **🟪 Copilot CLI** | Not directly installable as the same native plugin. |
+| **🟧 Claude Code** | “Audit CLAUDE.md for contradictions and unnecessary context.” |
+| **🟩 Codex** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
+| **🟪 Copilot** | Not directly installable as the same native plugin. |
 | **💙 VS Code** | Use through Claude Code in VS Code terminal, or choose an editor-native alternative. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1230,9 +1230,9 @@ After installing run `copilot plugin list`; start a new Copilot session. In VS C
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | “Write a 5-step implementation plan, each step testable.” |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | “Write a 5-step implementation plan, each step testable.” |
 | **💙 VS Code** | Open **Copilot Agent** and ask: “Write a 5-step implementation plan, each step testable.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1282,9 +1282,9 @@ After installing run `copilot plugin list`; start a new Copilot session. In VS C
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | “Use Java Development guidance for a Spring Boot service test.” |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | “Use Java Development guidance for a Spring Boot service test.” |
 | **💙 VS Code** | Open **Copilot Agent** and ask: “Use Java Development guidance for a Spring Boot service test.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1334,9 +1334,9 @@ After installing run `copilot plugin list`; start a new Copilot session. In VS C
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | “Use C# .NET Development rules when refactoring this controller.” |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | “Use C# .NET Development rules when refactoring this controller.” |
 | **💙 VS Code** | Open **Copilot Agent** and ask: “Use C# .NET Development rules when refactoring this controller.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1386,9 +1386,9 @@ After installing run `copilot plugin list`; start a new Copilot session. In VS C
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | “Use Frontend Web Dev to implement this responsive form.” |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | “Use Frontend Web Dev to implement this responsive form.” |
 | **💙 VS Code** | Open **Copilot Agent** and ask: “Use Frontend Web Dev to implement this responsive form.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1438,9 +1438,9 @@ After installing run `copilot plugin list`; start a new Copilot session. In VS C
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | “Where was I? Summarize branch, local diffs and next steps.” |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | “Where was I? Summarize branch, local diffs and next steps.” |
 | **💙 VS Code** | Open **Copilot Agent** and ask: “Where was I? Summarize branch, local diffs and next steps.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1490,9 +1490,9 @@ Read `references/environments.md` in the repository and add its session-activati
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Review the observation log and propose improvements; do not apply them yet.” |
-| **🟩 Codex CLI** | A Codex adaptation may be needed; review the maintainer’s platform guidance. |
-| **🟪 Copilot CLI** | Copilot support needs skill-path and activation adaptation. |
+| **🟧 Claude Code** | “Review the observation log and propose improvements; do not apply them yet.” |
+| **🟩 Codex** | A Codex adaptation may be needed; review the maintainer’s platform guidance. |
+| **🟪 Copilot** | Copilot support needs skill-path and activation adaptation. |
 | **💙 VS Code** | Run through the assistant whose skill path you configured, not as a generic VS Code extension. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1539,7 +1539,7 @@ In Claude Code open `/plugin` to confirm installation, then try the example prom
 
 #### 📦 STEP 1 · HOW TO INSTALL
 
-**Claude terminal:** `claude mcp add playwright npx @playwright/mcp@latest`. **Codex terminal:** `codex mcp add playwright -- npx @playwright/mcp@latest` (confirm local command syntax with `codex mcp add --help`). **Copilot CLI:** open `copilot`, run `/mcp add`, choose **Local / STDIO**, program `npx`, arguments `@playwright/mcp@latest`. **VS Code:** `MCP: Add Server`, choose **Command** = `npx`, args = `@playwright/mcp@latest`.
+**Claude terminal:** `claude mcp add playwright npx @playwright/mcp@latest`. **Codex terminal:** `codex mcp add playwright -- npx @playwright/mcp@latest` (confirm local command syntax with `codex mcp add --help`). **Copilot:** open `copilot`, run `/mcp add`, choose **Local / STDIO**, program `npx`, arguments `@playwright/mcp@latest`. **VS Code:** `MCP: Add Server`, choose **Command** = `npx`, args = `@playwright/mcp@latest`.
 
 #### ⚙️ STEP 2 · HOW TO CONFIGURE
 
@@ -1553,9 +1553,9 @@ Restart/start a new agent session; verify the **playwright** server appears in y
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Open localhost:3000 and verify login with a test account.” |
-| **🟩 Codex CLI** | “Use Playwright to reproduce the button issue and propose a fix.” |
-| **🟪 Copilot CLI** | “Visit the local form and report validation failures.” |
+| **🟧 Claude Code** | “Open localhost:3000 and verify login with a test account.” |
+| **🟩 Codex** | “Use Playwright to reproduce the button issue and propose a fix.” |
+| **🟪 Copilot** | “Visit the local form and report validation failures.” |
 | **💙 VS Code** | Copilot Agent: “Use Playwright to check this screen on desktop width.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1607,9 +1607,9 @@ For a smaller tool surface use `--slim --headless`. If you attach to an existing
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Use Chrome DevTools to find the failing network request.” |
-| **🟩 Codex CLI** | “Investigate console errors and network timing.” |
-| **🟪 Copilot CLI** | “Inspect the JavaScript console for this UI error.” |
+| **🟧 Claude Code** | “Use Chrome DevTools to find the failing network request.” |
+| **🟩 Codex** | “Investigate console errors and network timing.” |
+| **🟪 Copilot** | “Inspect the JavaScript console for this UI error.” |
 | **💙 VS Code** | Copilot Agent: “Check slow requests in Chrome DevTools.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1661,9 +1661,9 @@ After installing run `copilot plugin list`; start a new Copilot session. In VS C
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | “Use Testing Automation to add failing regression tests for this bug.” |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | “Use Testing Automation to add failing regression tests for this bug.” |
 | **💙 VS Code** | Open **Copilot Agent** and ask: “Use Testing Automation to add failing regression tests for this bug.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1713,9 +1713,9 @@ Review the plugin’s listed commands and settings in `/plugin`. Start a fresh s
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Review this PR for missing tests and correctness issues.” |
-| **🟩 Codex CLI** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
-| **🟪 Copilot CLI** | Not directly installable as the same native plugin. |
+| **🟧 Claude Code** | “Review this PR for missing tests and correctness issues.” |
+| **🟩 Codex** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
+| **🟪 Copilot** | Not directly installable as the same native plugin. |
 | **💙 VS Code** | Use through Claude Code in VS Code terminal, or choose an editor-native alternative. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1755,7 +1755,7 @@ In a terminal: `copilot plugin install pr-review@awesome-copilot`. For VS Code, 
 
 #### ⚙️ STEP 2 · HOW TO CONFIGURE
 
-In Copilot CLI, verify the plugin is loaded, open its **read-only PR-review canvas** where supported, and select a PR. It is an interactive extension—not simply a generic chat slash command in every VS Code build.
+In Copilot, verify the plugin is loaded, open its **read-only PR-review canvas** where supported, and select a PR. It is an interactive extension—not simply a generic chat slash command in every VS Code build.
 
 #### 🚀 STEP 3 · HOW TO USE (CLAUDE / CODEX / COPILOT / VS CODE)
 
@@ -1765,9 +1765,9 @@ In Copilot CLI, verify the plugin is loaded, open its **read-only PR-review canv
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | “Open the PR Review interface for this pull request.” |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | “Open the PR Review interface for this pull request.” |
 | **💙 VS Code** | Open the Copilot plugin/extension surface for a read-only diff canvas. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1819,9 +1819,9 @@ Before a review, confirm CLI authentication and check which diff/files will be s
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not a Claude-native plugin; use a separately approved CodeRabbit integration if available. |
-| **🟩 Codex CLI** | “Run a CodeRabbit review on my uncommitted diff.” |
-| **🟪 Copilot CLI** | Not a standard Awesome Copilot plugin; use CodeRabbit separately if enabled. |
+| **🟧 Claude Code** | Not a Claude-native plugin; use a separately approved CodeRabbit integration if available. |
+| **🟩 Codex** | “Run a CodeRabbit review on my uncommitted diff.” |
+| **🟪 Copilot** | Not a standard Awesome Copilot plugin; use CodeRabbit separately if enabled. |
 | **💙 VS Code** | With the Codex extension, invoke the Codex CodeRabbit plugin; do not assume Copilot Chat has it. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1868,7 +1868,7 @@ In Codex open `/plugins` to confirm the plugin appears; then try a harmless test
 
 #### 📦 STEP 1 · HOW TO INSTALL
 
-Needs Docker and a SonarQube Cloud/Server account. In **Copilot CLI**, run `/mcp add`; **Claude** and **Codex** have dedicated config examples in the official repository.
+Needs Docker and a SonarQube Cloud/Server account. In **Copilot**, run `/mcp add`; **Claude** and **Codex** have dedicated config examples in the official repository.
 
 #### ⚙️ STEP 2 · HOW TO CONFIGURE
 
@@ -1882,9 +1882,9 @@ Provide `SONARQUBE_TOKEN` and either `SONARQUBE_ORG` (Cloud) or `SONARQUBE_URL` 
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Show critical SonarQube findings for this repo and suggest a fix plan.” |
-| **🟩 Codex CLI** | “Investigate why our SonarQube quality gate failed.” |
-| **🟪 Copilot CLI** | “List major maintainability issues from SonarQube, read-only.” |
+| **🟧 Claude Code** | “Show critical SonarQube findings for this repo and suggest a fix plan.” |
+| **🟩 Codex** | “Investigate why our SonarQube quality gate failed.” |
+| **🟪 Copilot** | “List major maintainability issues from SonarQube, read-only.” |
 | **💙 VS Code** | In Copilot Agent mode, ask for project quality gate and issue details after MCP setup. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1936,9 +1936,9 @@ Connect required scanning access and restrict the scan to a repo you are authori
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not an Anthropic plugin; use the Claude Security alternative below. |
-| **🟩 Codex CLI** | “Run a Codex Security diff scan on my staged changes.” |
-| **🟪 Copilot CLI** | Not a native Copilot plugin; consider SonarQube/Semgrep or GitHub scanning. |
+| **🟧 Claude Code** | Not an Anthropic plugin; use the Claude Security alternative below. |
+| **🟩 Codex** | “Run a Codex Security diff scan on my staged changes.” |
+| **🟪 Copilot** | Not a native Copilot plugin; consider SonarQube/Semgrep or GitHub scanning. |
 | **💙 VS Code** | Use through the Codex integration where its plugin is offered. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -1990,9 +1990,9 @@ After enabling, code edits may trigger pattern checks and additional model-power
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Use Security Guidance to review auth and input validation changes.” |
-| **🟩 Codex CLI** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
-| **🟪 Copilot CLI** | Not directly installable as the same native plugin. |
+| **🟧 Claude Code** | “Use Security Guidance to review auth and input validation changes.” |
+| **🟩 Codex** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
+| **🟪 Copilot** | Not directly installable as the same native plugin. |
 | **💙 VS Code** | Use through Claude Code in VS Code terminal, or choose an editor-native alternative. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -2044,9 +2044,9 @@ Inside Claude use `/claude-security` to select **Scan codebase**, **Scan changes
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Scan this authorized module for exploitable issues; verify each finding.” |
-| **🟩 Codex CLI** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
-| **🟪 Copilot CLI** | Not directly installable as the same native plugin. |
+| **🟧 Claude Code** | “Scan this authorized module for exploitable issues; verify each finding.” |
+| **🟩 Codex** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
+| **🟪 Copilot** | Not directly installable as the same native plugin. |
 | **💙 VS Code** | Use through Claude Code in VS Code terminal, or choose an editor-native alternative. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -2098,9 +2098,9 @@ Choose the ruleset and repository scope, connect a team account only if necessar
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Review confirmed Semgrep findings and propose narrow fixes.” |
-| **🟩 Codex CLI** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
-| **🟪 Copilot CLI** | Not directly installable as the same native plugin. |
+| **🟧 Claude Code** | “Review confirmed Semgrep findings and propose narrow fixes.” |
+| **🟩 Codex** | Not a Codex plugin; use a corresponding Codex skill/MCP when available. |
+| **🟪 Copilot** | Not directly installable as the same native plugin. |
 | **💙 VS Code** | Use through Claude Code in VS Code terminal, or choose an editor-native alternative. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -2152,9 +2152,9 @@ After installing run `copilot plugin list`; start a new Copilot session. In VS C
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not the same plugin; use equivalent Claude skills or repo instructions. |
-| **🟩 Codex CLI** | Not the same plugin; use equivalent Codex skills or repo instructions. |
-| **🟪 Copilot CLI** | “Audit this API handler against Security Best Practices.” |
+| **🟧 Claude Code** | Not the same plugin; use equivalent Claude skills or repo instructions. |
+| **🟩 Codex** | Not the same plugin; use equivalent Codex skills or repo instructions. |
+| **🟪 Copilot** | “Audit this API handler against Security Best Practices.” |
 | **💙 VS Code** | Open **Copilot Agent** and ask: “Audit this API handler against Security Best Practices.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -2199,7 +2199,7 @@ Run `copilot plugin list`. Open a fresh session or check VS Code’s plugin list
 
 #### 📦 STEP 1 · HOW TO INSTALL
 
-**Copilot CLI:** GitHub MCP is already bundled, so try it before installing anything. **Codex / Claude / VS Code:** follow the [GitHub MCP readme](https://github.com/github/github-mcp-server) and register the supported server for your client.
+**Copilot:** GitHub MCP is already bundled, so try it before installing anything. **Codex / Claude / VS Code:** follow the [GitHub MCP readme](https://github.com/github/github-mcp-server) and register the supported server for your client.
 
 #### ⚙️ STEP 2 · HOW TO CONFIGURE
 
@@ -2213,9 +2213,9 @@ Choose **read-only** and the smallest necessary toolsets first. Prefer supported
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | “Summarize the open PRs in this repository; do not modify anything.” |
-| **🟩 Codex CLI** | “Compare issue acceptance criteria with this patch.” |
-| **🟪 Copilot CLI** | “List failing Actions checks on PR #123.” |
+| **🟧 Claude Code** | “Summarize the open PRs in this repository; do not modify anything.” |
+| **🟩 Codex** | “Compare issue acceptance criteria with this patch.” |
+| **🟪 Copilot** | “List failing Actions checks on PR #123.” |
 | **💙 VS Code** | In Copilot Agent: “Summarize unresolved review comments on the current PR.” |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -2267,10 +2267,10 @@ Follow the OpenAI Platform connection flow if asked. Use the documentation MCP a
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Use OpenAI docs MCP as an alternative to this native Codex plugin. |
-| **🟩 Codex CLI** | “Show the correct Responses API pattern and add a test.” |
-| **🟪 Copilot CLI** | Use docs MCP or Context7 instead of assuming the Codex plugin exists. |
-| **💙 VS Code** | Use Codex extension; the MCP server is shared between Codex CLI and extension. |
+| **🟧 Claude Code** | Use OpenAI docs MCP as an alternative to this native Codex plugin. |
+| **🟩 Codex** | “Show the correct Responses API pattern and add a test.” |
+| **🟪 Copilot** | Use docs MCP or Context7 instead of assuming the Codex plugin exists. |
+| **💙 VS Code** | Use Codex extension; the MCP server is shared between Codex and extension. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
 
@@ -2321,9 +2321,9 @@ Sign in to the right Figma workspace and grant only necessary file access. Provi
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Figma integration differs by client; use an approved Figma MCP server when available. |
-| **🟩 Codex CLI** | “Use the Figma design for this component; follow the project design system.” |
-| **🟪 Copilot CLI** | Requires an appropriate Figma integration; not the Codex plugin itself. |
+| **🟧 Claude Code** | Figma integration differs by client; use an approved Figma MCP server when available. |
+| **🟩 Codex** | “Use the Figma design for this component; follow the project design system.” |
+| **🟪 Copilot** | Requires an appropriate Figma integration; not the Codex plugin itself. |
 | **💙 VS Code** | Use the Codex extension with the Figma plugin, or a separate Copilot-compatible Figma MCP. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -2375,9 +2375,9 @@ Connect only the relevant optional services, and confirm frameworks and deployme
 
 | 🖥️ Assistant | 💬 What to type / where to use it |
 |---|---|
-| **🟧 Claude Code CLI** | Not a Claude plugin; use Feature Dev or relevant web skills. |
-| **🟩 Codex CLI** | “Build an accessible dashboard using our existing stack; add tests.” |
-| **🟪 Copilot CLI** | Not native; use Frontend Web Dev from Awesome Copilot. |
+| **🟧 Claude Code** | Not a Claude plugin; use Feature Dev or relevant web skills. |
+| **🟩 Codex** | “Build an accessible dashboard using our existing stack; add tests.” |
+| **🟪 Copilot** | Not native; use Frontend Web Dev from Awesome Copilot. |
 | **💙 VS Code** | Use through Codex extension after installation. |
 
 #### ✅ STEP 4 · CHECK IT WORKS
@@ -2514,8 +2514,8 @@ Do not access personal browser accounts or production data.
 | 🟩 OpenAI Codex plugin examples | [OpenAI Plugins](https://github.com/openai/plugins) |
 | 🟩 Codex marketplace creation & configuration | [OpenAI developer docs](https://developers.openai.com/plugins/build/plugins) |
 | 🟧 Claude Code plugin marketplace | [Anthropic's official plugin directory](https://github.com/anthropics/claude-plugins-official) |
-| 🟪 GitHub Copilot CLI plugin installation | [GitHub Docs](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing) |
-| 🟪 GitHub Copilot CLI built-in MCP and usage | [GitHub Docs: Using Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/overview) |
+| 🟪 GitHub Copilot plugin installation | [GitHub Docs](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing) |
+| 🟪 GitHub Copilot built-in MCP and usage | [GitHub Docs: Using Copilot](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/overview) |
 | 💙 VS Code agents, MCP and plugin discovery | [VS Code Docs: Agent customizations](https://code.visualstudio.com/docs/agent-customization/overview) |
 | 🧪 Testing and code quality plugin collection | [Awesome Copilot](https://github.com/github/awesome-copilot) |
 | 🧰 Shared coding skills | [Addy Osmani's agent-skills](https://github.com/addyosmani/agent-skills) |
