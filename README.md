@@ -1,8 +1,10 @@
 <div align="center">
 
-# 🌈✨ Gehan's Project Lab ✨🌈
+# 🌈✨ Gehan's Project Lab — Developer Tools, Linux Command Reference & AI Coding Add-ons Guide ✨🌈
 
 ### 🎨 A colorful collection of practical tools, guides, references, and local dev environments 🚀
+
+An **AI coding add-ons beginner's guide** for Claude Code, Codex CLI, GitHub Copilot CLI and VS Code · an **offline Linux command reference** · a **Windows maintenance PowerShell script** · a **Podman Compose database stack** (SQL Server, Oracle, MySQL, MongoDB, Elasticsearch, RabbitMQ) · a **WSL2 `.wslconfig`** · an **LF/CRLF line-ending converter** · an **IPTV playlist directory**.
 
 🐧 Explore Linux commands · 🤖 Learn AI coding add-ons · 📺 Browse IPTV playlists · 🪟 Maintain Windows · 🧰 Spin up a multi-database sandbox — all from one repository.
 
@@ -209,6 +211,30 @@ The services use the `database_network` bridge network and named volumes so thei
 │   └── 📘 readme.md                                # Script overview
 └── 📄 README.md
 ```
+
+---
+
+## ❓ FAQ
+
+**How do I install a Claude Code plugin, MCP server, or Copilot CLI add-on as a beginner?**
+Open the [AI coding add-ons beginner's guide](https://gcfernando.github.io/other_codes/Files/ai_coding_plugins_beginners_guide.html). Every add-on has separate install, configure, and use-in-your-project steps for each supported tool, plus "how to know it worked" checks.
+
+**Is there a Linux command cheat sheet that works offline?**
+Yes — open [`Linux_Commands/index.html`](Linux_Commands/index.html) directly in a browser. It needs no server or build step and lets you search and filter the commands by category.
+
+**How do I run SQL Server, MongoDB, and other databases locally with Podman?**
+Use the [Local Services Stack](#-local-services-stack): `podman compose -f Files/compose.yml up -d` starts all services with persistent volumes. It is for local development only.
+
+**How do I convert line endings between LF and CRLF on Windows?**
+Run [`Files/Convert-LineEndings.ps1`](Files/Convert-LineEndings.ps1) on a file or folder, then check the result with `git ls-files --eol` (see [Line Ending Converter](#-line-ending-converter)).
+
+---
+
+## 🔗 Related repositories
+
+- [Developer knowledge base](https://github.com/gcfernando/document) — Docker, Podman, Git, Azure, SQL, Python, and C# guides and cheat sheets
+- [Python projects](https://github.com/gcfernando/python_codes) — networking, automation, and media scripts
+- [C# and .NET code examples](https://github.com/gcfernando/csharp_codes) — Azure Functions, async, and SQL Server patterns
 
 ---
 
