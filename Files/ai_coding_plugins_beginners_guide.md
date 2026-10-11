@@ -16,7 +16,7 @@
 </div>
 
 > [!NOTE]
-> 🌈 **About the colors:** GitHub Markdown does not allow reliable custom text/background colors. This file uses a horizontal color-keyed status bar, emojis, clear numbered steps and GitHub-friendly callouts. For **full colors, large cards, search and a dark-mode toggle**, open the companion `AI_Coding_Plugins_Visual_Guide_REDESIGNED.html` in your browser. The Markdown file is complete on its own.
+> 🌈 **About the colors:** GitHub Markdown does not allow reliable custom text/background colors. This file uses a horizontal color-keyed status bar, emojis, clear numbered steps and GitHub-friendly callouts. For **full colors, large cards, search and a dark-mode toggle**, open the companion `ai_coding_plugins_beginners_guide.html` in your browser. The Markdown file is complete on its own.
 
 > [!IMPORTANT]
 > ✅ All **39 distinct tools** from our earlier Codex/Claude/Copilot lists are included. The attached engineer's note listed **OmniRoute twice**; it appears once. They are **not all native plugins**: some are skills, MCP servers, command-line tools or hosted integrations. This document does not claim to have installed or tested them on your computer.
