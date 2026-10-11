@@ -1,0 +1,1850 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AI Coding Add-ons — Beginner's Project Guide (2026)</title><style>
+:root{--paper:#f5f8ff;--ink:#26334d;--muted:#667493;--border:#d8e3f5;--card:#fff;--code:#eff4fe;--lav:#eee7ff;--blue:#e6f1ff;--mint:#e3f7ee;--accent:#5c62ee}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper)}
+.hero{padding:58px 22px 50px;background:linear-gradient(125deg,#6546d7 0%,#3266df 53%,#19a4ba 100%);color:white;text-align:center}.hero h1{font-size:clamp(32px,5vw,55px);letter-spacing:-1.8px;line-height:1.1;margin:12px auto;max-width:950px}.hero p{max-width:810px;margin:8px auto 22px;font-size:18px;opacity:.95}.pill{display:inline-block;padding:5px 14px;border:1px solid #ffffff66;border-radius:999px;color:white;background:#ffffff18;font-weight:700;font-size:12px;letter-spacing:.08em}.badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:23px}.badges span{background:#ffffff28;border:1px solid #ffffff52;border-radius:30px;padding:6px 14px;font-weight:600;font-size:13px}
+.shell{display:grid;grid-template-columns:280px minmax(0,1fr);max-width:1600px;margin:0 auto;gap:26px;padding:26px 28px 80px}.sidebar{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;background:white;border-radius:20px;padding:19px;box-shadow:0 9px 35px #2a467016;border:1px solid var(--border)}.sidebar h3{margin:0 0 12px}.sidebar input{width:100%;padding:12px 13px;border:2px solid #dce4f6;border-radius:10px;font-size:14px}.sidebar small{color:var(--muted)}.nav{margin-top:14px;display:flex;flex-direction:column;gap:3px}.nav a{padding:6px 9px;color:var(--ink);border-radius:8px;text-decoration:none;font-size:13px}.nav a:hover{background:#edf1ff;color:#3f49be}.main{min-width:0}.instructions{padding:26px;background:white;border:1px solid var(--border);box-shadow:0 6px 26px #344e7f14;border-radius:18px;margin-bottom:30px}.instructions h1{display:none}.instructions h2{margin-top:24px;color:#393dab}.instructions table{font-size:14px}
+.toolbar{background:white;border:1px solid var(--border);padding:12px 14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border-radius:15px;box-shadow:0 4px 12px #3b52770c;margin:0 0 18px}.toolbar button{background:#e9ecff;color:#4a4bb1;border:0;border-radius:9px;padding:9px 14px;font-weight:700;cursor:pointer}.toolbar button:hover{background:#d5dbff}.toolbar label{font-weight:650;color:#5a6381}.toolbar select{padding:8px;border:1px solid var(--border);border-radius:10px;color:var(--ink);background:white}
+.tool-card{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin:0 0 20px;background:var(--card);border:1px solid var(--border);box-shadow:0 9px 27px #3c529514;border-radius:22px;padding:25px 26px}.tool-number{width:40px;height:40px;display:grid;place-items:center;background:linear-gradient(135deg,#7b6cf4,#41a3e8);color:white;font-weight:900;border-radius:13px;font-size:14px}.article-body{min-width:0}.tool-card h2{margin:0 0 10px;font-size:25px;color:#304c9c;line-height:1.3}.tool-card h3{margin:28px 0 11px;padding:10px 15px;border-radius:10px;border-left:5px solid #9e83ff;color:#3e4278;background:linear-gradient(100deg,#f2ebff,transparent);font-size:18px}.tool-card h3:first-of-type{border-color:#20ba87;background:linear-gradient(100deg,#e7fff4,transparent)}.article-body p{margin:8px 0 12px}.article-body p:has(> strong:first-child){margin-top:14px}.article-body p strong:first-child{color:#33487a}.article-body p:has(> strong:first-child) a{word-break:break-word}.tool-card h3~p strong{color:#4150a1}.tool-card ol{margin:9px 0 17px;padding-left:28px}.tool-card li{margin-bottom:9px;padding-left:3px}.tool-card li::marker{color:#6c59ec;font-weight:800}.tool-card p:has(> strong:first-child){padding:2px 0}.tool-card p:has(strong:first-child) + ol{padding-top:8px}.tool-card h3 + p:has(strong:first-child){margin-top:17px}.tool-card h3 + p strong:has(+ *){color:#304d89}
+pre{background:#232946;color:#f2f5ff;padding:15px;overflow:auto;border-radius:12px;line-height:1.45;position:relative}code{background:var(--code);color:#b42a5f;padding:2px 5px;border-radius:5px;font:0.91em ui-monospace,SFMono-Regular,Consolas,monospace;word-wrap:break-word}pre code{background:transparent;color:inherit;padding:0}a{color:#385dca}blockquote{background:#fff7dc;border-left:5px solid #f2b83e;margin:16px 0;padding:8px 17px;border-radius:0 9px 9px 0}table{width:100%;border-collapse:collapse;margin:13px 0 21px;display:block;overflow-x:auto}th,td{padding:10px 13px;border:1px solid var(--border);text-align:left}th{background:#e9efff}hr{border:0;border-top:1px solid var(--border);margin:26px 0}.none{display:none!important}.copy{border:1px solid #cbdafa;background:#f2f6ff;color:#3645a4;border-radius:7px;cursor:pointer;font-size:12px;font-weight:bold;padding:4px 9px;margin-left:6px}.copy:hover{background:#dae8ff}footer{text-align:center;color:var(--muted);padding:30px}
+.dark{--paper:#11182c;--ink:#e7eafa;--muted:#a0acca;--border:#384462;--card:#202945;--code:#30334b}.dark .sidebar,.dark .instructions,.dark .toolbar{background:#202945}.dark .tool-card h2,.dark .tool-card h3{color:#c5d2ff}.dark .tool-card h3{background:#303555}.dark th{background:#303d61}.dark .nav a,.dark .toolbar select,.dark .sidebar input{color:#eef2ff;background:#252f4c}.dark code{color:#ff98ba}.dark .tool-card p strong:first-child{color:#d5dcff}.dark blockquote{background:#51432d}.dark .toolbar button{background:#38437e;color:white}
+@media(max-width:980px){.shell{grid-template-columns:1fr;padding:15px}.sidebar{position:static;max-height:380px}.tool-card{padding:20px 16px;grid-template-columns:36px minmax(0,1fr);gap:10px}.tool-number{width:32px;height:32px}.hero{padding:38px 16px}.tool-card h2{font-size:21px}}
+</style></head><body><header class="hero"><span class="pill">UPDATED • OCTOBER 2026</span><h1>AI Coding Add-ons<br>Beginner’s Project Guide</h1><p>39 add-ons. Four coding environments. Clear steps to install, configure and use each add-on in a real project.</p><div class="badges"><span>Claude Code CLI</span><span>Codex CLI</span><span>GitHub Copilot CLI</span><span>Visual Studio Code</span></div></header><div class="shell"><aside class="sidebar"><h3>Find an add-on</h3><input id="query" type="search" placeholder="Search: RTK, Context7, testing…" aria-label="Search add-ons"><p><small id="count">39 add-ons shown</small></p><div class="nav"><a href="#card-rtk-rust-token-killer">01 RTK / Rust Token Killer</a><a href="#card-headroom">02 Headroom</a><a href="#card-claude-mem">03 Claude-Mem</a><a href="#card-omniroute">04 OmniRoute</a><a href="#card-chronicle-stats-my-ai-usage">05 Chronicle Stats / My AI Usage</a><a href="#card-serena">06 Serena</a><a href="#card-context7">07 Context7</a><a href="#card-graphify">08 Graphify</a><a href="#card-language-server-plugins">09 Language Server Plugins</a><a href="#card-context-engineering">10 Context Engineering</a><a href="#card-superpowers">11 Superpowers</a><a href="#card-ponytail">12 Ponytail</a><a href="#card-agent-skills-addy-osmani">13 Agent Skills (Addy Osmani)</a><a href="#card-claude-code-setup">14 Claude Code Setup</a><a href="#card-code-simplifier">15 Code Simplifier</a><a href="#card-feature-dev">16 Feature Dev</a><a href="#card-claudemd-management">17 CLAUDE.md Management</a><a href="#card-project-planning">18 Project Planning</a><a href="#card-java-development">19 Java Development</a><a href="#card-c-net-development">20 C# / .NET Development</a><a href="#card-frontend-web-dev">21 Frontend Web Dev</a><a href="#card-where-was-i">22 Where Was I</a><a href="#card-task-observer">23 Task Observer</a><a href="#card-playwright-mcp">24 Playwright MCP</a><a href="#card-chrome-devtools-mcp">25 Chrome DevTools MCP</a><a href="#card-testing-automation">26 Testing Automation</a><a href="#card-pr-review-toolkit">27 PR Review Toolkit</a><a href="#card-pr-review">28 PR Review</a><a href="#card-coderabbit">29 CodeRabbit</a><a href="#card-sonarqube-mcp-server">30 SonarQube MCP Server</a><a href="#card-codex-security">31 Codex Security</a><a href="#card-security-guidance">32 Security Guidance</a><a href="#card-claude-security">33 Claude Security</a><a href="#card-semgrep">34 Semgrep</a><a href="#card-security-best-practices">35 Security Best Practices</a><a href="#card-github-mcp-server">36 GitHub MCP Server</a><a href="#card-openai-developers">37 OpenAI Developers</a><a href="#card-figma-codex-plugin">38 Figma (Codex plugin)</a><a href="#card-build-web-apps-codex">39 Build Web Apps (Codex)</a></div></aside><main class="main"><section class="instructions"><h1>AI Coding Add-ons — Beginner's Project Guide</h1>
+<p><strong>Updated:</strong> 11 October 2026<br />
+<strong>Works with:</strong> Claude Code CLI · Codex CLI · GitHub Copilot CLI · Visual Studio Code (Copilot Chat)</p>
+<p><strong>Your goal:</strong> Pick one add-on and follow only the setup for the coding tool you actually use. Each supported tool has <strong>How to install</strong>, <strong>How to configure</strong>, and <strong>How to use it in your project</strong>. You do not need all 39.</p>
+<h2>Start here — read this once</h2>
+<ol>
+<li><strong>Open your project:</strong> In VS Code click <strong>File → Open Folder</strong> and select your project directory. Start with a <em>non-confidential practice project</em>.</li>
+<li><strong>Open normal Terminal:</strong> In VS Code click <strong>Terminal → New Terminal</strong>. This is where you type setup commands such as <code>rtk --version</code> or <code>npx ...</code> and press <strong>Enter</strong>.</li>
+<li><strong>Open AI chat:</strong> Inside that Terminal type <code>claude</code>, <code>codex</code>, or <code>copilot</code> and press Enter. Once its chat opens, type <strong>English questions</strong> or supported <code>/commands</code> there, not in the normal Terminal.</li>
+<li><strong>VS Code Copilot Chat is different:</strong> Click the Chat icon, select <strong>Agent</strong>, then type English in the message box. Commands like <code>npx</code>, <code>rtk</code>, and <code>docker</code> still belong in <strong>Terminal</strong>, not the message box.</li>
+<li><strong>Only one setup at a time:</strong> Do not combine Claude and Codex instructions unless you truly use both. Installation for one client does not automatically install for another.</li>
+</ol>
+<h3>Small dictionary</h3>
+<table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Very simple meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Plugin</td>
+  <td>An extra feature you install, similar to an app.</td>
+</tr>
+<tr>
+  <td>Skill</td>
+  <td>A set of instructions that tells AI how to carry out a task.</td>
+</tr>
+<tr>
+  <td>MCP server</td>
+  <td>A connector that lets AI access another tool, such as documentation or GitHub.</td>
+</tr>
+<tr>
+  <td>Hook</td>
+  <td>A helper that runs automatically when the coding assistant performs a particular action.</td>
+</tr>
+<tr>
+  <td>Token</td>
+  <td>A small unit of text the AI model processes (not an account password).</td>
+</tr>
+<tr>
+  <td><code>npx</code></td>
+  <td>A Node.js command used to run a package.</td>
+</tr>
+<tr>
+  <td><code>uv</code></td>
+  <td>A tool for installing and running Python-based programs.</td>
+</tr>
+<tr>
+  <td>Proxy / provider</td>
+  <td>A service between your assistant and an AI model / the company serving that model.</td>
+</tr>
+<tr>
+  <td>Credential / API key</td>
+  <td>A secret used to sign in. Never paste secrets into AI chat or source control.</td>
+</tr>
+<tr>
+  <td>PR</td>
+  <td>Pull request: proposed changes to a Git repository.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Before trying any add-on:</strong> Check your employer's rules. Third-party plugins may execute commands, access source code, store session history or send data to outside servers. Start with read-only requests. Do not weaken approvals, share credentials or run unreviewed installers in a company repository.</p>
+<p><strong>Prerequisites (install only if the guide asks for one):</strong> <a href="https://nodejs.org/en/download">Node.js</a> (<code>node --version</code>, <code>npx --version</code>), <a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a> (<code>uv --version</code>), <a href="https://docs.docker.com/get-docker/">Docker</a> (<code>docker --version</code>). If a check fails, use the official link and choose your operating system. Reopen Terminal after an installation.</p>
+<blockquote>
+<p><strong>How to know it worked:</strong> A successful AI answer alone does <strong>not</strong> prove a plugin ran. Look for an installed plugin in the tool's manager, a connected MCP server, a created report, a trace of tool use or real output from a project test.</p>
+</blockquote>
+</section><div class="toolbar"><label>Read only your coding tool: <select id="clientFilter"><option value="all">Show all four</option><option>Claude Code CLI</option><option>Codex CLI</option><option>GitHub Copilot CLI</option><option value="Visual Studio Code">Visual Studio Code</option></select></label><button id="theme" type="button">☾ Dark mode</button></div><article class="tool-card" id="card-rtk-rust-token-killer" data-name="rtk / rust token killer" data-terms="rtk / rust token killer terminal output filter 🧽 like a filter that removes noisy terminal lines before ai reads them."><div class="tool-number">01</div><div class="article-body"><p><a id="rtk-rust-token-killer"></a></p>
+<h2>01. RTK / Rust Token Killer</h2>
+<p><strong>Type:</strong> Terminal output filter<br />
+<strong>In simple words:</strong> Like a filter that removes noisy terminal lines before AI reads them. Directly reduces noisy output from common Git, test, lint and build commands.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/rtk-ai/rtk">https://github.com/rtk-ai/rtk</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li>Open <strong>normal Terminal</strong> (VS Code: <strong>Terminal → New Terminal</strong>). Run <code>rtk --version</code> and <code>rtk gain</code> to see whether the correct RTK is already installed.</li>
+<li>If RTK is missing, choose <strong>one</strong>: Windows PowerShell: <code>winget install rtk-ai.rtk</code>; macOS/Linux with Homebrew: <code>brew install rtk-ai/tap/rtk</code>. For other systems see the <a href="https://www.rtk-ai.app/docs/getting-started/installation/">official installation page</a>.</li>
+<li>Close and reopen Terminal. Run <code>rtk --version</code> and <code>rtk gain</code> again. The first should show a version; the second should show an RTK usage/savings screen. If only the first works, you may have the unrelated RTK package.</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of RTK / Rust Token Killer is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open your <strong>practice project folder</strong> in VS Code (<strong>File → Open Folder</strong>). Open <strong>Terminal → New Terminal</strong>.</li>
+<li>Run <code>rtk init --dry-run</code> to <strong>preview</strong> the RTK settings/files it would create. Nothing is changed yet.</li>
+<li>If permitted, run <code>rtk init</code> without <code>--dry-run</code>. This sets up RTK for <strong>this folder</strong> and Claude Code. Review any hook/instruction files it writes (a hook is an automatic command helper).</li>
+<li>Close and reopen your Claude Code session. Never override an organization policy to enable hooks.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In the same project Terminal, type <code>claude</code> to open Claude Code chat.</li>
+<li>In the <strong>AI chat box</strong>, paste: “Run <code>git status</code> in this project. Do not edit files. Show the result.” Approve only the read-only command if prompted.</li>
+<li>Open a <strong>second normal Terminal</strong> and run <code>rtk gain</code>; compare the usage screen with its earlier value. RTK should have recorded activity <strong>if the command was eligible for rewriting</strong>. If not, check the hook setup or try a supported test/build command.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of RTK / Rust Token Killer is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open your <strong>practice project folder</strong> in VS Code (<strong>File → Open Folder</strong>). Open <strong>Terminal → New Terminal</strong>.</li>
+<li>Run <code>rtk init --codex --dry-run</code> to <strong>preview</strong> the RTK settings/files it would create. Nothing is changed yet.</li>
+<li>If permitted, run <code>rtk init --codex</code> without <code>--dry-run</code>. This sets up RTK for <strong>this folder</strong> and Codex. Review any hook/instruction files it writes (a hook is an automatic command helper).</li>
+<li>Close and reopen your Codex session. Never override an organization policy to enable hooks.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In the same project Terminal, type <code>codex</code> to open Codex chat.</li>
+<li>In the <strong>AI chat box</strong>, paste: “Run <code>git status</code> in this project. Do not edit files. Show the result.” Approve only the read-only command if prompted.</li>
+<li>Open a <strong>second normal Terminal</strong> and run <code>rtk gain</code>; compare the usage screen with its earlier value. RTK should have recorded activity <strong>if the command was eligible for rewriting</strong>. If not, check the hook setup or try a supported test/build command.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of RTK / Rust Token Killer is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open your <strong>practice project folder</strong> in VS Code (<strong>File → Open Folder</strong>). Open <strong>Terminal → New Terminal</strong>.</li>
+<li>Run <code>rtk init --copilot --dry-run</code> to <strong>preview</strong> the RTK settings/files it would create. Nothing is changed yet.</li>
+<li>If permitted, run <code>rtk init --copilot</code> without <code>--dry-run</code>. This sets up RTK for <strong>this folder</strong> and Copilot CLI. Review any hook/instruction files it writes (a hook is an automatic command helper).</li>
+<li>Close and reopen your Copilot CLI session. Never override an organization policy to enable hooks.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In the same project Terminal, type <code>copilot</code> to open Copilot CLI chat.</li>
+<li>In the <strong>AI chat box</strong>, paste: “Run <code>git status</code> in this project. Do not edit files. Show the result.” Approve only the read-only command if prompted.</li>
+<li>Open a <strong>second normal Terminal</strong> and run <code>rtk gain</code>; compare the usage screen with its earlier value. RTK should have recorded activity <strong>if the command was eligible for rewriting</strong>. If not, check the hook setup or try a supported test/build command.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of RTK / Rust Token Killer is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open your <strong>practice project folder</strong> in VS Code (<strong>File → Open Folder</strong>). Open <strong>Terminal → New Terminal</strong>.</li>
+<li>Run <code>rtk init --copilot --dry-run</code> to <strong>preview</strong> the RTK settings/files it would create. Nothing is changed yet.</li>
+<li>If permitted, run <code>rtk init --copilot</code> without <code>--dry-run</code>. This sets up RTK for <strong>this folder</strong> and VS Code Copilot Chat. Review any hook/instruction files it writes (a hook is an automatic command helper).</li>
+<li>Close and reopen your VS Code Copilot Chat session. Never override an organization policy to enable hooks.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open <strong>Copilot Chat → Agent</strong> in the same VS Code folder.</li>
+<li>In the <strong>AI chat box</strong>, paste: “Run <code>git status</code> in this project. Do not edit files. Show the result.” Approve only the read-only command if prompted.</li>
+<li>Open a <strong>second normal Terminal</strong> and run <code>rtk gain</code>; compare the usage screen with its earlier value. RTK should have recorded activity <strong>if the command was eligible for rewriting</strong>. If not, check the hook setup or try a supported test/build command.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> Never replace full logs when details are essential. There is another unrelated <code>rtk</code> project: check <code>rtk gain</code>.</p>
+</div></article><article class="tool-card" id="card-headroom" data-name="headroom" data-terms="headroom advanced ai traffic proxy 🧳 like packing a large suitcase more tightly—less context to send."><div class="tool-number">02</div><div class="article-body"><p><a id="headroom"></a></p>
+<h2>02. Headroom</h2>
+<p><strong>Type:</strong> Advanced AI traffic proxy<br />
+<strong>In simple words:</strong> Like packing a large suitcase more tightly—less context to send. May keep long sessions usable with fewer input tokens.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/headroomlabs-ai/headroom">https://github.com/headroomlabs-ai/headroom</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li><strong>Advanced: approval required.</strong> Headroom can reroute AI requests through a local proxy. Do not use it with company code until the destination, authentication, and retention rules are approved.</li>
+<li>Install <strong>uv</strong> using <a href="https://docs.astral.sh/uv/getting-started/installation/">its official OS instructions</a>. In Terminal check <code>uv --version</code>.</li>
+<li>In Terminal run <code>uv tool install --python 3.13 &quot;headroom-ai[all]&quot;</code>. Then run <code>headroom --version</code>. If the command is missing after installation, try <code>uv tool update-shell</code> and reopen Terminal.</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Headroom is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Read the <a href="https://github.com/headroomlabs-ai/headroom/blob/main/wiki/quickstart.md">Headroom wrapper quickstart</a>. Confirm your normal coding assistant sign-in still works and which provider/data path the proxy uses.</li>
+<li>Run <code>headroom wrap --help</code> and check your installed version supports <code>headroom wrap claude</code>. Stop if it cannot use your approved authentication.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>From a <strong>non-confidential practice project</strong> open Terminal and start <code>headroom wrap claude</code>.</li>
+<li>Ask: “Run the existing tests without editing files. Summarize failures.” Check the Headroom proxy log or savings view and compare with a normal, unwrapped session.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Headroom is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Read the <a href="https://github.com/headroomlabs-ai/headroom/blob/main/wiki/quickstart.md">Headroom wrapper quickstart</a>. Confirm your normal coding assistant sign-in still works and which provider/data path the proxy uses.</li>
+<li>Run <code>headroom wrap --help</code> and check your installed version supports <code>headroom wrap codex</code>. Stop if it cannot use your approved authentication.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>From a <strong>non-confidential practice project</strong> open Terminal and start <code>headroom wrap codex</code>.</li>
+<li>Ask: “Run the existing tests without editing files. Summarize failures.” Check the Headroom proxy log or savings view and compare with a normal, unwrapped session.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Headroom is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Read the <a href="https://github.com/headroomlabs-ai/headroom/blob/main/wiki/quickstart.md">Headroom wrapper quickstart</a>. Confirm your normal coding assistant sign-in still works and which provider/data path the proxy uses.</li>
+<li>Run <code>headroom wrap --help</code> and check your installed version supports <code>headroom wrap copilot</code>. Stop if it cannot use your approved authentication.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>From a <strong>non-confidential practice project</strong> open Terminal and start <code>headroom wrap copilot</code>.</li>
+<li>Ask: “Run the existing tests without editing files. Summarize failures.” Check the Headroom proxy log or savings view and compare with a normal, unwrapped session.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Headroom is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In normal Terminal run <code>headroom copilot-auth login</code>. Follow the browser authorization if offered and permitted.</li>
+<li>Run <code>headroom wrap vscode</code> and <strong>leave its terminal running</strong>. This launches the local proxy; it is not a VS Code theme or standard extension.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open your project in VS Code and use <strong>Copilot Chat → Agent</strong> while the Headroom terminal remains open.</li>
+<li>Ask it to inspect test output. Look for request activity in the Headroom proxy window; compare the answer with ordinary Copilot use. Stop the proxy with Ctrl+C when finished.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> Proxying can affect provider policies, caching and output fidelity. Benchmark with and without it.</p>
+</div></article><article class="tool-card" id="card-claude-mem" data-name="claude-mem" data-terms="claude-mem session memory 🧠 like project notes that are available when you open a new ai session."><div class="tool-number">03</div><div class="article-body"><p><a id="claude-mem"></a></p>
+<h2>03. Claude-Mem</h2>
+<p><strong>Type:</strong> Session memory<br />
+<strong>In simple words:</strong> Like project notes that are available when you open a new AI session. Less re-explanation when you return to a project after a break.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/thedotmack/claude-mem">https://github.com/thedotmack/claude-mem</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li><strong>Privacy check first:</strong> Claude-Mem keeps information from AI sessions. Check whether the selected storage provider, telemetry, and retention are allowed for your project.</li>
+<li>Install a supported Node.js version from <a href="https://nodejs.org/en/download">nodejs.org</a> if <code>npx --version</code> fails. Then in Terminal run <code>npx claude-mem install</code>.</li>
+<li>In the installer <strong>select only the coding tool you use</strong>; choose the permitted memory provider and approve only the requested hooks. The hosted observer may involve a trial or subscription.</li>
+<li>In Terminal run <code>npx claude-mem doctor</code> and <code>npx claude-mem status</code> to see whether the service is healthy.</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Claude-Mem is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Select this assistant in the <code>npx claude-mem install</code> installer; if not listed, <strong>do not force another assistant’s installation files</strong>.</li>
+<li>Restart Claude and use a small non-sensitive test project.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In your project Terminal, start <code>claude</code>. Tell it: “For this project, remember that our example decision is to name the test <code>sample-check</code>.”</li>
+<li>End the session, start a new one, and ask what the project decision was. Check whether the memory is actually available. Do not treat generated recollections as guaranteed facts.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Claude-Mem is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Select this assistant in the <code>npx claude-mem install</code> installer; if not listed, <strong>do not force another assistant’s installation files</strong>.</li>
+<li>Restart Codex and use a small non-sensitive test project.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In your project Terminal, start <code>codex</code>. Tell it: “For this project, remember that our example decision is to name the test <code>sample-check</code>.”</li>
+<li>End the session, start a new one, and ask what the project decision was. Check whether the memory is actually available. Do not treat generated recollections as guaranteed facts.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Claude-Mem is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Select this assistant in the <code>npx claude-mem install</code> installer; if not listed, <strong>do not force another assistant’s installation files</strong>.</li>
+<li>Restart Copilot CLI and use a small non-sensitive test project.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In your project Terminal, start <code>copilot</code>. Tell it: “For this project, remember that our example decision is to name the test <code>sample-check</code>.”</li>
+<li>End the session, start a new one, and ask what the project decision was. Check whether the memory is actually available. Do not treat generated recollections as guaranteed facts.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> Never assume perfect memory. Avoid placing company secrets, tokens or private data into unapproved storage.</p>
+</div></article><article class="tool-card" id="card-omniroute" data-name="omniroute" data-terms="omniroute advanced model router 🚦 like a traffic controller that sends ai requests to selected providers."><div class="tool-number">04</div><div class="article-body"><p><a id="omniroute"></a></p>
+<h2>04. OmniRoute</h2>
+<p><strong>Type:</strong> Advanced model router<br />
+<strong>In simple words:</strong> Like a traffic controller that sends AI requests to selected providers. Can help control model spend, provider outages and routing policies.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/diegosouzapw/OmniRoute">https://github.com/diegosouzapw/OmniRoute</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li><strong>Advanced: approval required.</strong> This changes where AI requests are sent. Use it only with providers/credentials approved by your organization.</li>
+<li>Install Node.js if <code>node --version</code> and <code>npm --version</code> do not work. In normal Terminal run <code>npm install -g omniroute</code>.</li>
+<li>Run <code>omniroute</code> and open the local dashboard URL printed in Terminal (commonly <code>http://localhost:20128</code>).</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of OmniRoute is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In the dashboard open <strong>Providers</strong>. Add an authorized provider using credentials from your organization. Do not paste API keys into chat.</li>
+<li>Open <strong>Endpoints</strong> and confirm the chosen model destination. Consult the <a href="https://github.com/diegosouzapw/OmniRoute/wiki/CLI-Integrations">maintainer integration guide</a> if your installed release differs.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Inside a practice project in normal Terminal run <code>omniroute launch</code>.</li>
+<li>Send: “Explain what this test project contains; do not edit files.” In the OmniRoute dashboard confirm which provider handled the request.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of OmniRoute is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In the dashboard open <strong>Providers</strong>. Add an authorized provider using credentials from your organization. Do not paste API keys into chat.</li>
+<li>Open <strong>Endpoints</strong> and confirm the chosen model destination. Consult the <a href="https://github.com/diegosouzapw/OmniRoute/wiki/CLI-Integrations">maintainer integration guide</a> if your installed release differs.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Inside a practice project in normal Terminal run <code>omniroute launch-codex</code>.</li>
+<li>Send: “Explain what this test project contains; do not edit files.” In the OmniRoute dashboard confirm which provider handled the request.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> Not unlimited free usage: provider quotas, terms and expenses still apply. Treat credentials and outbound code exposure as a security review item.</p>
+</div></article><article class="tool-card" id="card-chronicle-stats-my-ai-usage" data-name="chronicle stats / my ai usage" data-terms="chronicle stats / my ai usage usage viewer 📊 like a dashboard that shows where copilot spends tokens."><div class="tool-number">05</div><div class="article-body"><p><a id="chronicle-stats-my-ai-usage"></a></p>
+<h2>05. Chronicle Stats / My AI Usage</h2>
+<p><strong>Type:</strong> Usage viewer<br />
+<strong>In simple words:</strong> Like a dashboard that shows where Copilot spends tokens. Measures token/credit patterns before optimizing.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/chronicle-stats">https://github.com/github/awesome-copilot/tree/main/plugins/chronicle-stats</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>chronicle-stats</code> appears, run <code>copilot plugin install chronicle-stats@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>chronicle-stats</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “Show session usage for the current Copilot session.”</li>
+<li><strong>Expected:</strong> Built-in usage numbers or a supported usage dashboard—not fabricated usage statistics.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins chronicle-stats</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Show session usage for the current Copilot session.”</li>
+<li><strong>Expected:</strong> Built-in usage numbers or a supported usage dashboard—not fabricated usage statistics.</li>
+</ol>
+<p><strong>Be careful:</strong> The My AI Usage and PR Review experiences may require a Copilot app canvas and are not plain VS Code slash commands.</p>
+</div></article><article class="tool-card" id="card-serena" data-name="serena" data-terms="serena code navigation server 🗺️ like gps for functions and classes: it can find the exact place to edit."><div class="tool-number">06</div><div class="article-body"><p><a id="serena"></a></p>
+<h2>06. Serena</h2>
+<p><strong>Type:</strong> Code navigation server<br />
+<strong>In simple words:</strong> Like GPS for functions and classes: it can find the exact place to edit. Great for understanding unfamiliar projects, targeted edits and large repositories. May avoid reading whole files.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/oraios/serena">https://github.com/oraios/serena</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li>Install <code>uv</code> using the <a href="https://docs.astral.sh/uv/getting-started/installation/">official Windows/macOS/Linux instructions</a> if <code>uv --version</code> does not work.</li>
+<li>Open normal Terminal. Run <code>uv tool install -p 3.13 serena-agent</code> and then <code>serena init</code>. You should see a successful initialization message.</li>
+<li>Run <code>serena --help</code> to check that the command is available. Some projects also need a language server; Serena will report if a dependency is missing.</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Serena is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In your project Terminal run <code>claude mcp add --scope user serena -- serena start-mcp-server --context claude-code --project-from-cwd</code>.</li>
+<li>Start Claude with <code>claude</code>, then type <code>/mcp</code>. Look for a connected <code>serena</code> server.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “Use Serena to find the function that handles user login and show the names of its callers. Do not edit files.”</li>
+<li>You should see file paths and function/class names matching actual project code.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Serena is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In your project Terminal run <code>serena setup codex</code>.</li>
+<li>Start <code>codex</code> and type <code>/mcp</code> to look for the <code>serena</code> connection.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “Use Serena to find the method responsible for saving an order and list its callers. Do not edit files.”</li>
+<li>Check the file paths against the project.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Serena is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Start <code>copilot</code>, type <code>/mcp add</code> inside Copilot chat, choose <strong>Local / STDIO</strong>, and enter server name <code>serena</code>.</li>
+<li>Use the command <code>serena start-mcp-server --context=copilot-cli --project-from-cwd</code>. Save; Copilot should report whether Serena started.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “Use Serena to find the references to the OrderService class. Do not edit anything.”</li>
+<li>Look for symbol references and file paths.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Serena is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open your project in VS Code. Open Command Palette → <strong>MCP: Add Server</strong> → <strong>Command (stdio)</strong>.</li>
+<li>Name it <code>serena</code> and use command <code>serena</code> with arguments <code>start-mcp-server --context=ide --project-from-cwd</code> if supported by your installed Serena release. Confirm the exact editor context in the <a href="https://github.com/oraios/serena/blob/main/docs/02-usage/030_clients.md">maintainer client guide</a>.</li>
+<li>Check <strong>MCP: List Servers</strong> for a running Serena entry.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>Copilot Chat → Agent</strong>, ask Serena to find callers of a class that exists in your project.</li>
+<li>Check that the response references real files.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> Indexing and language support vary by project. Do not confuse symbol search with a guaranteed reduction in billed tokens.</p>
+</div></article><article class="tool-card" id="card-context7" data-name="context7" data-terms="context7 current documentation 📖 like a freshly updated instruction manual for the libraries your app uses."><div class="tool-number">07</div><div class="article-body"><p><a id="context7"></a></p>
+<h2>07. Context7</h2>
+<p><strong>Type:</strong> Current documentation<br />
+<strong>In simple words:</strong> Like a freshly updated instruction manual for the libraries your app uses. Reduces answers based on outdated SDK syntax and repeated rework.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/upstash/context7">https://github.com/upstash/context7</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>normal Terminal</strong>. Check <code>npx --version</code>; if unavailable install Node.js from <a href="https://nodejs.org/en/download">nodejs.org</a>.</li>
+<li>Run <code>npx ctx7 setup --claude</code> and follow its guided prompts.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Choose the offered <strong>MCP</strong> or <strong>CLI + skill</strong> integration. When a web address and short code appear, open the address in your browser and sign in.</li>
+<li>Restart Claude; ask it to check documentation for your project library. You should see a Context7-provided docs lookup, not just a generic answer.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In your project, open <code>claude</code> and ask: “Use Context7 to check the current official API for the version of our HTTP library. Show the source and do not edit code.”</li>
+<li>Confirm the answer includes relevant library docs and version details.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>normal Terminal</strong>. Check <code>npx --version</code>; if unavailable install Node.js from <a href="https://nodejs.org/en/download">nodejs.org</a>.</li>
+<li>Run <code>npx ctx7 setup --codex</code> and follow its guided prompts.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Choose the offered <strong>MCP</strong> or <strong>CLI + skill</strong> integration. When a web address and short code appear, open the address in your browser and sign in.</li>
+<li>Restart Codex; ask it to check documentation for your project library. You should see a Context7-provided docs lookup, not just a generic answer.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In your project, open <code>codex</code> and ask: “Use Context7 to check the current official API for the version of our HTTP library. Show the source and do not edit code.”</li>
+<li>Confirm the answer includes relevant library docs and version details.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Start <code>copilot</code> in a normal Terminal and open <code>/mcp add</code> inside its chat.</li>
+<li>Choose a <strong>remote HTTP MCP server</strong> and enter <code>https://mcp.context7.com/mcp</code> as the URL. Give it the name <code>context7</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Complete any Context7 authorization requested by the client. Use Copilot’s <code>/mcp</code> view to check that the server is connected.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask in Copilot CLI: “Use Context7 to find the official docs for the version of our routing library. Do not edit files.”</li>
+<li>Check that an MCP documentation lookup occurs.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open VS Code and your project folder. Open the Command Palette (<strong>Ctrl+Shift+P</strong> on Windows/Linux; <strong>Cmd+Shift+P</strong> on macOS).</li>
+<li>Choose <strong>MCP: Add Server</strong> → remote <strong>HTTP</strong> (name may vary by VS Code version). Enter <code>https://mcp.context7.com/mcp</code> and name it <code>context7</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Use <strong>MCP: List Servers</strong> to confirm Context7 exists. Approve trust and complete browser sign-in if prompted.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open <strong>Copilot Chat → Agent</strong>. Ask: “Use Context7 to verify the API used by this project. Show which documentation you found; do not edit code.”</li>
+<li>Look for a Context7 server/tool call in the agent activity.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> More retrieved docs can consume more context; ask targeted questions.</p>
+</div></article><article class="tool-card" id="card-graphify" data-name="graphify" data-terms="graphify codebase map 🕸️ like a map of how files, functions, and modules connect."><div class="tool-number">08</div><div class="article-body"><p><a id="graphify"></a></p>
+<h2>08. Graphify</h2>
+<p><strong>Type:</strong> Codebase map<br />
+<strong>In simple words:</strong> Like a map of how files, functions, and modules connect. Helpful when you need an architecture map or must track how changes flow through many modules.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/Graphify-Labs/graphify">https://github.com/Graphify-Labs/graphify</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li>Install <code>uv</code> from <a href="https://docs.astral.sh/uv/getting-started/installation/">Astral’s OS instructions</a> if <code>uv --version</code> fails.</li>
+<li>Run <code>uv tool install graphifyy</code> (<strong>two <code>y</code> letters</strong>), then <code>graphify --help</code>. This installs Graphify once on the computer.</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Graphify is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open a small project in VS Code. In its Terminal run <code>graphify claude install --project</code>.</li>
+<li>Review any new instructions or hook files before using them.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open your project in <code>claude</code> chat and ask: “Use Graphify to map this repository. Show how the API calls the database; do not edit code.”</li>
+<li>Check for a generated <code>graphify-out/GRAPH_REPORT.md</code> or the report path printed by Graphify.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Graphify is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open a small project in VS Code. In its Terminal run <code>graphify codex install --project</code>.</li>
+<li>Review any new instructions or hook files before using them.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open your project in <code>codex</code> chat and ask: “Use Graphify to map this repository. Show how the API calls the database; do not edit code.”</li>
+<li>Check for a generated <code>graphify-out/GRAPH_REPORT.md</code> or the report path printed by Graphify.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Graphify is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open a small project in VS Code. In its Terminal run <code>graphify install --platform copilot --project</code>.</li>
+<li>Review any new instructions or hook files before using them.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open your project in <code>copilot</code> chat and ask: “Use Graphify to map this repository. Show how the API calls the database; do not edit code.”</li>
+<li>Check for a generated <code>graphify-out/GRAPH_REPORT.md</code> or the report path printed by Graphify.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Graphify is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open a small project in VS Code. In its Terminal run <code>graphify vscode install</code>.</li>
+<li>Review any new instructions or hook files before using them.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open your project in Copilot Chat → Agent and ask: “Use Graphify to map this repository. Show how the API calls the database; do not edit code.”</li>
+<li>Check for a generated <code>graphify-out/GRAPH_REPORT.md</code> or the report path printed by Graphify.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> Graph generation adds up-front time and needs refreshing as the code changes.</p>
+</div></article><article class="tool-card" id="card-language-server-plugins" data-name="language server plugins" data-terms="language server plugins language-aware diagnostics 🔤 like giving claude a language-aware dictionary for your code."><div class="tool-number">09</div><div class="article-body"><p><a id="language-server-plugins"></a></p>
+<h2>09. Language Server Plugins</h2>
+<p><strong>Type:</strong> Language-aware diagnostics<br />
+<strong>In simple words:</strong> Like giving Claude a language-aware dictionary for your code. Higher precision for typed languages.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp">https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open your project and identify its language (for example Python or TypeScript).</li>
+<li>Start <code>claude</code>, open <code>/plugin</code> → <strong>Discover</strong>, and select only the matching language server plugin (for example <code>pyright-lsp</code> or <code>typescript-lsp</code>) if available.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Install any additional language-server dependency the selected plugin specifically requests; do not assume one server supports all languages.</li>
+<li>Open the plugin details in <code>/plugin</code>, then restart Claude.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open a file with a known type error, and ask Claude to use LSP diagnostics to locate it. Do not edit code.</li>
+<li>Look for an actual file position and language-server diagnostic, not a generic model guess.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+</div></article><article class="tool-card" id="card-context-engineering" data-name="context engineering" data-terms="context engineering planning skill 🎯 like handing copilot only the pages it actually needs."><div class="tool-number">10</div><div class="article-body"><p><a id="context-engineering"></a></p>
+<h2>10. Context Engineering</h2>
+<p><strong>Type:</strong> Planning skill<br />
+<strong>In simple words:</strong> Like handing Copilot only the pages it actually needs. Keeps AI focused on the right files.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/context-engineering">https://github.com/github/awesome-copilot/tree/main/plugins/context-engineering</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>context-engineering</code> appears, run <code>copilot plugin install context-engineering@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>context-engineering</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “List only the files needed to update the user profile endpoint and why.”</li>
+<li><strong>Expected:</strong> A short file shortlist with reasons.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins context-engineering</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “List only the files needed to update the user profile endpoint and why.”</li>
+<li><strong>Expected:</strong> A short file shortlist with reasons.</li>
+</ol>
+</div></article><article class="tool-card" id="card-superpowers" data-name="superpowers" data-terms="superpowers testing and planning workflow 🧑‍🏫 like a careful coding coach: plan first, test, then build."><div class="tool-number">11</div><div class="article-body"><p><a id="superpowers"></a></p>
+<h2>11. Superpowers</h2>
+<p><strong>Type:</strong> Testing and planning workflow<br />
+<strong>In simple words:</strong> Like a careful coding coach: plan first, test, then build. Helps prevent rushed implementations and untested assumptions.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/obra/superpowers">https://github.com/obra/superpowers</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Start <code>claude</code> inside your project and run <code>/plugin install superpowers@claude-plugins-official</code> in Claude chat.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Claude. Open <code>/plugin</code> and confirm Superpowers is installed.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “Use Superpowers to plan a safe fix for this failing test. First show the plan; do not edit files yet.”</li>
+<li>Expect questions and a short plan before code changes.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Start <code>codex</code>. Type <code>/plugins</code> in Codex chat.</li>
+<li>Search <strong>Superpowers</strong> in the official plugin browser and select <strong>Install Plugin</strong>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Codex; confirm Superpowers appears in <code>/plugins</code>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “Use the Superpowers planning workflow for this bug; make no changes until the plan is reviewed.”</li>
+<li>Check that the assistant proposes a plan and tests.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace add obra/superpowers-marketplace</code>.</li>
+<li>Run <code>copilot plugin install superpowers@superpowers-marketplace</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and look for Superpowers. Restart Copilot CLI.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In your project start <code>copilot</code>. Ask: “Use the Superpowers brainstorming workflow to plan a small bug fix. Stop before changing files.”</li>
+<li>Expect a planning discussion and an agreed scope before implementation.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>Extensions</strong> in VS Code and search <code>@agentPlugins superpowers</code>.</li>
+<li>Install only if a compatible trusted <strong>Superpowers</strong> entry is offered by a configured marketplace. If none exists, do not paste Claude-specific installation commands into Copilot Chat.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Confirm the entry under Agent Plugins, then start a fresh Copilot Chat session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask for a test-first implementation plan; check that the installed Superpowers skill is selected in the agent activity.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> Extra planning, agents and review can <strong>increase</strong> token cost.</p>
+</div></article><article class="tool-card" id="card-ponytail" data-name="ponytail" data-terms="ponytail simpler code workflow ✂️ like a coach that asks: “can we solve this with less code?”"><div class="tool-number">12</div><div class="article-body"><p><a id="ponytail"></a></p>
+<h2>12. Ponytail</h2>
+<p><strong>Type:</strong> Simpler code workflow<br />
+<strong>In simple words:</strong> Like a coach that asks: “Can we solve this with less code?” Encourages less duplication, fewer dependencies and smaller, maintainable changes.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/DietrichGebert/ponytail">https://github.com/DietrichGebert/ponytail</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In Claude chat run <code>/plugin marketplace add DietrichGebert/ponytail</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Then run <code>/plugin install ponytail@ponytail</code>. Restart Claude.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Suggest the smallest safe fix for one test failure; do not omit validation.”</li>
+<li><strong>Expected:</strong> A focused proposed patch and explanation of unchanged behavior.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>codex plugin marketplace add DietrichGebert/ponytail</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>codex plugin add ponytail@ponytail</code>. Inspect changes and restart Codex.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>codex</code> chat with your project open, ask: “Suggest the smallest safe fix for one test failure; do not omit validation.”</li>
+<li><strong>Expected:</strong> A focused proposed patch and explanation of unchanged behavior.</li>
+</ol>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace add DietrichGebert/ponytail</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin install ponytail@ponytail</code>, then <code>copilot plugin list</code>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat with your project open, ask: “Suggest the smallest safe fix for one test failure; do not omit validation.”</li>
+<li><strong>Expected:</strong> A focused proposed patch and explanation of unchanged behavior.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In Extensions search <code>@agentPlugins ponytail</code> and install if available.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>If unavailable, use the maintainer-provided project instructions in <code>.github/copilot-instructions.md</code> only after reviewing them.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Suggest the smallest safe fix for one test failure; do not omit validation.”</li>
+<li><strong>Expected:</strong> A focused proposed patch and explanation of unchanged behavior.</li>
+</ol>
+<p><strong>Be careful:</strong> Less code” must never mean omitting validation, security or error handling.</p>
+</div></article><article class="tool-card" id="card-agent-skills-addy-osmani" data-name="agent skills (addy osmani)" data-terms="agent skills (addy osmani) reusable coding skills 📒 like a toolbox full of small, reusable engineering checklists."><div class="tool-number">13</div><div class="article-body"><p><a id="agent-skills-addy-osmani"></a></p>
+<h2>13. Agent Skills (Addy Osmani)</h2>
+<p><strong>Type:</strong> Reusable coding skills<br />
+<strong>In simple words:</strong> Like a toolbox full of small, reusable engineering checklists. Makes your quality process consistent across assistants.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/addyosmani/agent-skills">https://github.com/addyosmani/agent-skills</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Inside Claude chat run <code>/plugin marketplace add addyosmani/agent-skills</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>/plugin install agent-skills@addy-agent-skills</code> if shown.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Use the test-driven-development skill for this small defect.”</li>
+<li><strong>Expected:</strong> A failing test, then minimal fix, then passing test—if edits are approved.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>codex plugin marketplace add addyosmani/agent-skills</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>codex plugin add agent-skills@agent-skills</code>, then open a new session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>codex</code> chat with your project open, ask: “Use the test-driven-development skill for this small defect.”</li>
+<li><strong>Expected:</strong> A failing test, then minimal fix, then passing test—if edits are approved.</li>
+</ol>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin install addyosmani/agent-skills</code> if supported by your release.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and restart Copilot.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat with your project open, ask: “Use the test-driven-development skill for this small defect.”</li>
+<li><strong>Expected:</strong> A failing test, then minimal fix, then passing test—if edits are approved.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In the project Terminal run <code>npx skills add addyosmani/agent-skills</code>; choose VS Code/Copilot when prompted.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Reopen Copilot Chat → Agent and check that the skill is available.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Use the test-driven-development skill for this small defect.”</li>
+<li><strong>Expected:</strong> A failing test, then minimal fix, then passing test—if edits are approved.</li>
+</ol>
+<p><strong>Be careful:</strong> The short <code>/spec</code> or <code>/review</code> aliases are Claude-specific; not automatically present in VS Code or Copilot.</p>
+</div></article><article class="tool-card" id="card-claude-code-setup" data-name="claude code setup" data-terms="claude code setup claude helper plugin 🪄 like a setup wizard that suggests tools for your project."><div class="tool-number">14</div><div class="article-body"><p><a id="claude-code-setup"></a></p>
+<h2>14. Claude Code Setup</h2>
+<p><strong>Type:</strong> Claude helper plugin<br />
+<strong>In simple words:</strong> Like a setup wizard that suggests tools for your project. Personalized Claude setup, less guesswork.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup">https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In your project folder start <code>claude</code>.</li>
+<li>Inside Claude, open <code>/plugin</code> and look for <code>claude-code-setup</code>. If listed, run <code>/plugin install claude-code-setup@claude-plugins-official</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Claude Code (or reload plugins if offered). Open <code>/plugin</code> to confirm the item is installed.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Inspect this project and suggest only two useful Claude Code settings.”</li>
+<li><strong>Expected:</strong> Two project-specific settings and why they matter.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+</div></article><article class="tool-card" id="card-code-simplifier" data-name="code simplifier" data-terms="code simplifier code cleanup plugin 🧹 like a tidy-up pass that makes changed code easier to read."><div class="tool-number">15</div><div class="article-body"><p><a id="code-simplifier"></a></p>
+<h2>15. Code Simplifier</h2>
+<p><strong>Type:</strong> Code cleanup plugin<br />
+<strong>In simple words:</strong> Like a tidy-up pass that makes changed code easier to read. Readable, maintainable patches.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier">https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In your project folder start <code>claude</code>.</li>
+<li>Inside Claude, open <code>/plugin</code> and look for <code>code-simplifier</code>. If listed, run <code>/plugin install code-simplifier@claude-plugins-official</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Claude Code (or reload plugins if offered). Open <code>/plugin</code> to confirm the item is installed.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Simplify the functions changed in my branch without changing their output.”</li>
+<li><strong>Expected:</strong> Small diff with unchanged test results.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+</div></article><article class="tool-card" id="card-feature-dev" data-name="feature dev" data-terms="feature dev feature-building workflow 🧩 like a step-by-step recipe for building a complete feature."><div class="tool-number">16</div><div class="article-body"><p><a id="feature-dev"></a></p>
+<h2>16. Feature Dev</h2>
+<p><strong>Type:</strong> Feature-building workflow<br />
+<strong>In simple words:</strong> Like a step-by-step recipe for building a complete feature. Better planning for nontrivial features.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev">https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In your project folder start <code>claude</code>.</li>
+<li>Inside Claude, open <code>/plugin</code> and look for <code>feature-dev</code>. If listed, run <code>/plugin install feature-dev@claude-plugins-official</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Claude Code (or reload plugins if offered). Open <code>/plugin</code> to confirm the item is installed.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Plan a tiny settings-page change, list affected files, and stop before editing.”</li>
+<li><strong>Expected:</strong> An ordered task list grounded in this repository.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+</div></article><article class="tool-card" id="card-claudemd-management" data-name="claude.md management" data-terms="claude.md management project instructions 🗒️ like a cleaner for the notes that tell claude how your project works."><div class="tool-number">17</div><div class="article-body"><p><a id="claudemd-management"></a></p>
+<h2>17. CLAUDE.md Management</h2>
+<p><strong>Type:</strong> Project instructions<br />
+<strong>In simple words:</strong> Like a cleaner for the notes that tell Claude how your project works. Cleaner, reusable repo guidance.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management">https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In your project folder start <code>claude</code>.</li>
+<li>Inside Claude, open <code>/plugin</code> and look for <code>claude-md-management</code>. If listed, run <code>/plugin install claude-md-management@claude-plugins-official</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Claude Code (or reload plugins if offered). Open <code>/plugin</code> to confirm the item is installed.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Review CLAUDE.md in this project. Identify outdated instructions without changing them.”</li>
+<li><strong>Expected:</strong> Specific lines and suggested fixes.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+</div></article><article class="tool-card" id="card-project-planning" data-name="project planning" data-terms="project planning planning plugin 🗓️ like turning a huge feature into small, manageable tasks."><div class="tool-number">18</div><div class="article-body"><p><a id="project-planning"></a></p>
+<h2>18. Project Planning</h2>
+<p><strong>Type:</strong> Planning plugin<br />
+<strong>In simple words:</strong> Like turning a huge feature into small, manageable tasks. Clearer scope before implementation.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/project-planning">https://github.com/github/awesome-copilot/tree/main/plugins/project-planning</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>project-planning</code> appears, run <code>copilot plugin install project-planning@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>project-planning</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “Plan this minor feature in three steps with a test for each step.”</li>
+<li><strong>Expected:</strong> A brief ordered plan with test cases.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins project-planning</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Plan this minor feature in three steps with a test for each step.”</li>
+<li><strong>Expected:</strong> A brief ordered plan with test cases.</li>
+</ol>
+</div></article><article class="tool-card" id="card-java-development" data-name="java development" data-terms="java development java workflow plugin ☕ like an experienced java teammate’s coding checklist."><div class="tool-number">19</div><div class="article-body"><p><a id="java-development"></a></p>
+<h2>19. Java Development</h2>
+<p><strong>Type:</strong> Java workflow plugin<br />
+<strong>In simple words:</strong> Like an experienced Java teammate’s coding checklist. Strong defaults for Java projects.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/java-development">https://github.com/github/awesome-copilot/tree/main/plugins/java-development</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>java-development</code> appears, run <code>copilot plugin install java-development@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>java-development</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “Create a JUnit regression-test plan for this Java service using existing conventions.”</li>
+<li><strong>Expected:</strong> Relevant Java/JUnit test location and methods.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins java-development</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Create a JUnit regression-test plan for this Java service using existing conventions.”</li>
+<li><strong>Expected:</strong> Relevant Java/JUnit test location and methods.</li>
+</ol>
+</div></article><article class="tool-card" id="card-c-net-development" data-name="c# / .net development" data-terms="c# / .net development .net workflow plugin 🟣 like a c#/.net teammate’s checklist for code and tests."><div class="tool-number">20</div><div class="article-body"><p><a id="c-net-development"></a></p>
+<h2>20. C# / .NET Development</h2>
+<p><strong>Type:</strong> .NET workflow plugin<br />
+<strong>In simple words:</strong> Like a C#/.NET teammate’s checklist for code and tests. Helps .NET teams stay consistent.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/csharp-dotnet-development">https://github.com/github/awesome-copilot/tree/main/plugins/csharp-dotnet-development</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>csharp-dotnet-development</code> appears, run <code>copilot plugin install csharp-dotnet-development@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>csharp-dotnet-development</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “Show which .NET test project should cover this service bug and propose a test.”</li>
+<li><strong>Expected:</strong> A suitable existing .NET test project and test method.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins csharp-dotnet-development</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Show which .NET test project should cover this service bug and propose a test.”</li>
+<li><strong>Expected:</strong> A suitable existing .NET test project and test method.</li>
+</ol>
+</div></article><article class="tool-card" id="card-frontend-web-dev" data-name="frontend web dev" data-terms="frontend web dev frontend workflow plugin 🌈 like a helpful guide to polished, accessible web interfaces."><div class="tool-number">21</div><div class="article-body"><p><a id="frontend-web-dev"></a></p>
+<h2>21. Frontend Web Dev</h2>
+<p><strong>Type:</strong> Frontend workflow plugin<br />
+<strong>In simple words:</strong> Like a helpful guide to polished, accessible web interfaces. Better frontend conventions and accessibility checks.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/frontend-web-dev">https://github.com/github/awesome-copilot/tree/main/plugins/frontend-web-dev</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>frontend-web-dev</code> appears, run <code>copilot plugin install frontend-web-dev@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>frontend-web-dev</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “Check this page for keyboard accessibility and responsive layout problems.”</li>
+<li><strong>Expected:</strong> Concrete elements and suggested corrections.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins frontend-web-dev</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Check this page for keyboard accessibility and responsive layout problems.”</li>
+<li><strong>Expected:</strong> Concrete elements and suggested corrections.</li>
+</ol>
+</div></article><article class="tool-card" id="card-where-was-i" data-name="where was i" data-terms="where was i resume-work plugin 📌 like a bookmark that reminds you what you were doing yesterday."><div class="tool-number">22</div><div class="article-body"><p><a id="where-was-i"></a></p>
+<h2>22. Where Was I</h2>
+<p><strong>Type:</strong> Resume-work plugin<br />
+<strong>In simple words:</strong> Like a bookmark that reminds you what you were doing yesterday. Easy resumption after interruptions.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/where-was-i">https://github.com/github/awesome-copilot/tree/main/plugins/where-was-i</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>where-was-i</code> appears, run <code>copilot plugin install where-was-i@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>where-was-i</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “Tell me where I stopped in the current Git branch based on commits and unfinished changes.”</li>
+<li><strong>Expected:</strong> Actual current branch, changes and evidence; not imaginary previous chats.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins where-was-i</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Tell me where I stopped in the current Git branch based on commits and unfinished changes.”</li>
+<li><strong>Expected:</strong> Actual current branch, changes and evidence; not imaginary previous chats.</li>
+</ol>
+</div></article><article class="tool-card" id="card-task-observer" data-name="task observer" data-terms="task observer skills observer 👀 like a notebook of repeated mistakes you can convert into better skills."><div class="tool-number">23</div><div class="article-body"><p><a id="task-observer"></a></p>
+<h2>23. Task Observer</h2>
+<p><strong>Type:</strong> Skills observer<br />
+<strong>In simple words:</strong> Like a notebook of repeated mistakes you can convert into better skills. Gradually improves a growing collection of personal skills.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/rebelytics/one-skill-to-rule-them-all">https://github.com/rebelytics/one-skill-to-rule-them-all</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li>In normal Terminal check <code>npx --version</code> (Node.js is required).</li>
+<li>Use only an approved source: <code>npx skills add rebelytics/one-skill-to-rule-them-all --skill task-observer</code>; select the intended agent if prompted.</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Task Observer is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Review the installed skill files in your project/user profile, then restart the chosen agent.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “After this small practice task, summarize which steps improved the workflow.”</li>
+<li><strong>Expected:</strong> A skill note or created observer output at the displayed location.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Task Observer is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Review the installed skill files in your project/user profile, then restart the chosen agent.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>codex</code> chat with your project open, ask: “After this small practice task, summarize which steps improved the workflow.”</li>
+<li><strong>Expected:</strong> A skill note or created observer output at the displayed location.</li>
+</ol>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Task Observer is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Review the installed skill files in your project/user profile, then restart the chosen agent.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat with your project open, ask: “After this small practice task, summarize which steps improved the workflow.”</li>
+<li><strong>Expected:</strong> A skill note or created observer output at the displayed location.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Task Observer is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Review the installed skill files in your project/user profile, then restart the chosen agent.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “After this small practice task, summarize which steps improved the workflow.”</li>
+<li><strong>Expected:</strong> A skill note or created observer output at the displayed location.</li>
+</ol>
+<p><strong>Be careful:</strong> This is not automatic self-editing; review proposed skill changes. Logs may contain sensitive context.</p>
+</div></article><article class="tool-card" id="card-playwright-mcp" data-name="playwright mcp" data-terms="playwright mcp browser test server 🤖 like letting your agent click through your website like a tester."><div class="tool-number">24</div><div class="article-body"><p><a id="playwright-mcp"></a></p>
+<h2>24. Playwright MCP</h2>
+<p><strong>Type:</strong> Browser test server<br />
+<strong>In simple words:</strong> Like letting your agent click through your website like a tester. Reproduces UI bugs and checks real browser behavior.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/microsoft/playwright-mcp">https://github.com/microsoft/playwright-mcp</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li>Install Node.js from <a href="https://nodejs.org/en/download">nodejs.org</a> if <code>node --version</code> and <code>npx --version</code> do not work.</li>
+<li>Before testing <strong>your</strong> site, start your web application using its existing project README. Open its local URL in a browser to confirm it runs. Do not guess <code>localhost:3000</code>; use the address printed by the app.</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Playwright MCP is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In normal Terminal run <code>claude mcp add playwright npx @playwright/mcp@latest</code>.</li>
+<li>Start <code>claude</code> and use <code>/mcp</code> to check <code>playwright</code> is connected.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask the agent to inspect <strong>the exact local URL printed by your running app</strong>; do not provide passwords.</li>
+<li>Expect the tool to navigate the page and report visible elements, console errors, or performance details.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Playwright MCP is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In normal Terminal run <code>codex mcp add playwright npx &quot;@playwright/mcp@latest&quot;</code>.</li>
+<li>Start <code>codex</code>, type <code>/mcp</code>, and check <code>playwright</code> is available.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask Codex to navigate to your running app’s printed URL and inspect the page.</li>
+<li>Check for browser-tool activity and findings relevant to the page.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Playwright MCP is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Start <code>copilot</code> then enter <code>/mcp add</code> in Copilot chat.</li>
+<li>Choose a <strong>Local</strong> server; enter name <code>playwright</code>, command <code>npx</code>, arguments <code>-y @playwright/mcp@latest</code>. Save and confirm it is connected.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask Copilot to visit your running web app URL and report what it sees or what the console shows.</li>
+<li>Look for the browser-tool action in the transcript.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Playwright MCP is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open VS Code Command Palette and choose <strong>MCP: Add Server</strong> → <strong>Command (stdio)</strong>.</li>
+<li>Enter command <code>npx</code> and arguments <code>-y @playwright/mcp@latest</code>; give it the name <code>playwright</code>. Confirm via <strong>MCP: List Servers</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open <strong>Copilot Chat → Agent</strong>. Ask it to inspect the local URL printed by your running app.</li>
+<li>Look for a real browser-tool run, not just a guess based on code.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> Browser tools can expose cookies/pages. Use test accounts, not personal sessions.</p>
+</div></article><article class="tool-card" id="card-chrome-devtools-mcp" data-name="chrome devtools mcp" data-terms="chrome devtools mcp chrome debugging server 🔬 like giving your agent the browser’s error console and network tab."><div class="tool-number">25</div><div class="article-body"><p><a id="chrome-devtools-mcp"></a></p>
+<h2>25. Chrome DevTools MCP</h2>
+<p><strong>Type:</strong> Chrome debugging server<br />
+<strong>In simple words:</strong> Like giving your agent the browser’s error console and network tab. Excellent for frontend performance issues and JavaScript errors.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">https://github.com/ChromeDevTools/chrome-devtools-mcp</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li>Install Node.js from <a href="https://nodejs.org/en/download">nodejs.org</a> if <code>node --version</code> and <code>npx --version</code> do not work.</li>
+<li>Before testing <strong>your</strong> site, start your web application using its existing project README. Open its local URL in a browser to confirm it runs. Do not guess <code>localhost:3000</code>; use the address printed by the app.</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Chrome DevTools MCP is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In normal Terminal run <code>claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest</code>.</li>
+<li>Start <code>claude</code> and use <code>/mcp</code> to check <code>chrome-devtools</code> is connected.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask the agent to inspect <strong>the exact local URL printed by your running app</strong>; do not provide passwords.</li>
+<li>Expect the tool to navigate the page and report visible elements, console errors, or performance details.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Chrome DevTools MCP is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In normal Terminal run <code>codex mcp add chrome-devtools -- npx chrome-devtools-mcp@latest</code>.</li>
+<li>Start <code>codex</code>, type <code>/mcp</code>, and check <code>chrome-devtools</code> is available.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask Codex to navigate to your running app’s printed URL and inspect the page.</li>
+<li>Check for browser-tool activity and findings relevant to the page.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Chrome DevTools MCP is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Start <code>copilot</code> then enter <code>/mcp add</code> in Copilot chat.</li>
+<li>Choose a <strong>Local</strong> server; enter name <code>chrome-devtools</code>, command <code>npx</code>, arguments <code>-y chrome-devtools-mcp@latest</code>. Save and confirm it is connected.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask Copilot to visit your running web app URL and report what it sees or what the console shows.</li>
+<li>Look for the browser-tool action in the transcript.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of Chrome DevTools MCP is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open VS Code Command Palette and choose <strong>MCP: Add Server</strong> → <strong>Command (stdio)</strong>.</li>
+<li>Enter command <code>npx</code> and arguments <code>-y chrome-devtools-mcp@latest</code>; give it the name <code>chrome-devtools</code>. Confirm via <strong>MCP: List Servers</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Open <strong>Copilot Chat → Agent</strong>. Ask it to inspect the local URL printed by your running app.</li>
+<li>Look for a real browser-tool run, not just a guess based on code.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> A live debugging port can grant broad browser control. Avoid it on sensitive sessions.</p>
+</div></article><article class="tool-card" id="card-testing-automation" data-name="testing automation" data-terms="testing automation testing plugin 🧪 like a recipe book for writing and running better tests."><div class="tool-number">26</div><div class="article-body"><p><a id="testing-automation"></a></p>
+<h2>26. Testing Automation</h2>
+<p><strong>Type:</strong> Testing plugin<br />
+<strong>In simple words:</strong> Like a recipe book for writing and running better tests. More reliable unit, integration and E2E tests.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/testing-automation">https://github.com/github/awesome-copilot/tree/main/plugins/testing-automation</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>testing-automation</code> appears, run <code>copilot plugin install testing-automation@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>testing-automation</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “Propose one regression test for this bug and explain where it belongs.”</li>
+<li><strong>Expected:</strong> A test file path and a reproducible failing case.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins testing-automation</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Propose one regression test for this bug and explain where it belongs.”</li>
+<li><strong>Expected:</strong> A test file path and a reproducible failing case.</li>
+</ol>
+</div></article><article class="tool-card" id="card-pr-review-toolkit" data-name="pr review toolkit" data-terms="pr review toolkit code review plugin 🧐 like a team of reviewers checking different mistakes in a pr."><div class="tool-number">27</div><div class="article-body"><p><a id="pr-review-toolkit"></a></p>
+<h2>27. PR Review Toolkit</h2>
+<p><strong>Type:</strong> Code review plugin<br />
+<strong>In simple words:</strong> Like a team of reviewers checking different mistakes in a PR. Thorough review of important PRs.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit">https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In your project folder start <code>claude</code>.</li>
+<li>Inside Claude, open <code>/plugin</code> and look for <code>pr-review-toolkit</code>. If listed, run <code>/plugin install pr-review-toolkit@claude-plugins-official</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Claude Code (or reload plugins if offered). Open <code>/plugin</code> to confirm the item is installed.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Review my uncommitted diff; list correctness risks and supporting line numbers.”</li>
+<li><strong>Expected:</strong> Findings tied to changed files or explicit no-findings.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+</div></article><article class="tool-card" id="card-pr-review" data-name="pr review" data-terms="pr review pr review plugin 🔎 like an easier, grouped view of a github pull request."><div class="tool-number">28</div><div class="article-body"><p><a id="pr-review"></a></p>
+<h2>28. PR Review</h2>
+<p><strong>Type:</strong> PR review plugin<br />
+<strong>In simple words:</strong> Like an easier, grouped view of a GitHub pull request. Makes complex PRs easier to inspect.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/pr-review">https://github.com/github/awesome-copilot/tree/main/plugins/pr-review</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>pr-review</code> appears, run <code>copilot plugin install pr-review@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>pr-review</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “Review pull request number 123 in the approved repository (replace 123).”</li>
+<li><strong>Expected:</strong> Specific PR files and grounded review comments.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins pr-review</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Review pull request number 123 in the approved repository (replace 123).”</li>
+<li><strong>Expected:</strong> Specific PR files and grounded review comments.</li>
+</ol>
+<p><strong>Be careful:</strong> The My AI Usage and PR Review experiences may require a Copilot app canvas and are not plain VS Code slash commands.</p>
+</div></article><article class="tool-card" id="card-coderabbit" data-name="coderabbit" data-terms="coderabbit code review service 🐰 like a second reviewer that checks your changes before you share them."><div class="tool-number">29</div><div class="article-body"><p><a id="coderabbit"></a></p>
+<h2>29. CodeRabbit</h2>
+<p><strong>Type:</strong> Code review service<br />
+<strong>In simple words:</strong> Like a second reviewer that checks your changes before you share them. Extra feedback on risks, complexity and review issues before a PR.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/openai/plugins/blob/main/plugins/coderabbit/skills/coderabbit-review/SKILL.md">https://github.com/openai/plugins/blob/main/plugins/coderabbit/skills/coderabbit-review/SKILL.md</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Start <code>codex</code> and open <code>/plugins</code>.</li>
+<li>Find <strong>CodeRabbit</strong> and install it if your marketplace offers it.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Codex; connect your authorized CodeRabbit/GitHub account if requested.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>codex</code> chat with your project open, ask: “Review my current branch for risks before I open a pull request.”</li>
+<li><strong>Expected:</strong> Visible CodeRabbit review findings or the service-specific result.</li>
+</ol>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> Code review may be processed by an external vendor.</p>
+</div></article><article class="tool-card" id="card-sonarqube-mcp-server" data-name="sonarqube mcp server" data-terms="sonarqube mcp server sonarqube connection 🩺 like bringing a real code-quality report into the ai conversation."><div class="tool-number">30</div><div class="article-body"><p><a id="sonarqube-mcp-server"></a></p>
+<h2>30. SonarQube MCP Server</h2>
+<p><strong>Type:</strong> SonarQube connection<br />
+<strong>In simple words:</strong> Like bringing a real code-quality report into the AI conversation. Grounds the agent in actual static-analysis results instead of guesses.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/SonarSource/sonarqube-mcp-server">https://github.com/SonarSource/sonarqube-mcp-server</a></p>
+<h3>📦 Install on your computer (once)</h3>
+<ol>
+<li><strong>Needs an organization SonarQube account.</strong> Ask for its <strong>Cloud organization key</strong> or <strong>Server URL</strong>, plus permission to read a test project. This cannot be set up correctly without those values.</li>
+<li>Install and start Docker Desktop (or your organization’s approved Docker alternative) from <a href="https://docs.docker.com/get-docker/">Docker’s official site</a>. Run <code>docker --version</code> and confirm Docker actually runs.</li>
+<li>Obtain a <strong>SonarQube user token</strong> through the approved secure method. Never paste it into AI chat, an example command, or a tracked project file. <a href="https://github.com/SonarSource/sonarqube-mcp-server">Official setup</a>.</li>
+</ol>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of SonarQube MCP Server is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Supply <code>SONARQUBE_TOKEN</code> through approved environment/secret storage and set <code>SONARQUBE_ORG</code> (Cloud) or <code>SONARQUBE_URL</code> (Server).</li>
+<li>Run <code>claude mcp list</code> and confirm the connection before using AI chat.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask for a read-only list of SonarQube issues from the permitted test project.</li>
+<li>Expect real rule/issue identifiers. If authentication fails, ask an administrator—not the AI—to check access.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of SonarQube MCP Server is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Supply <code>SONARQUBE_TOKEN</code> through approved environment/secret storage and set <code>SONARQUBE_ORG</code> (Cloud) or <code>SONARQUBE_URL</code> (Server).</li>
+<li>Run <code>codex mcp list</code> and confirm the connection before using AI chat.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask for a read-only list of SonarQube issues from the permitted test project.</li>
+<li>Expect real rule/issue identifiers. If authentication fails, ask an administrator—not the AI—to check access.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of SonarQube MCP Server is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>In the MCP form, supply <code>SONARQUBE_TOKEN</code> securely and either <code>SONARQUBE_ORG</code> (Cloud) or <code>SONARQUBE_URL</code> (Server).</li>
+<li>Save the server and confirm <code>sonarqube</code> appears connected in <code>/mcp</code>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “List three code-quality issues in our approved SonarQube test project. Do not change code.”</li>
+<li>Look for SonarQube issue identifiers and file locations.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<p>Follow the one-time installation above. No second copy of SonarQube MCP Server is needed for this computer.</p>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Configure token and Cloud organization key or Server URL in <strong>secret-safe settings</strong>, not committed files.</li>
+<li>Open <strong>MCP: List Servers</strong>, check it can connect, and restrict permissions to a test project.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>Copilot Chat → Agent</strong> ask for issues in the authorized project.</li>
+<li>Expect grounded SonarQube issues and their locations.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> Requires an existing SonarQube deployment; may not support older self-hosted server versions.</p>
+</div></article><article class="tool-card" id="card-codex-security" data-name="codex security" data-terms="codex security codex security plugin 🧯 like a security inspector that investigates suspicious changes."><div class="tool-number">31</div><div class="article-body"><p><a id="codex-security"></a></p>
+<h2>31. Codex Security</h2>
+<p><strong>Type:</strong> Codex security plugin<br />
+<strong>In simple words:</strong> Like a security inspector that investigates suspicious changes. Structured security review and targeted remediation.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/openai/plugins/blob/main/plugins/codex-security/.codex-plugin/plugin.json">https://github.com/openai/plugins/blob/main/plugins/codex-security/.codex-plugin/plugin.json</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Start <code>codex</code> and open <code>/plugins</code>.</li>
+<li>Find <strong>Codex Security</strong> and install it only if the official marketplace offers it.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Open a new Codex session; use the plugin on a non-confidential test branch first.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>codex</code> chat with your project open, ask: “Do a read-only security review of this test branch and list likely issues.”</li>
+<li><strong>Expected:</strong> Location-specific findings or a clear no-findings result.</li>
+</ol>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> Availability and backend access can depend on your account/organization.</p>
+</div></article><article class="tool-card" id="card-security-guidance" data-name="security guidance" data-terms="security guidance security guidance plugin 🚨 like guardrails that warn when new code looks risky."><div class="tool-number">32</div><div class="article-body"><p><a id="security-guidance"></a></p>
+<h2>32. Security Guidance</h2>
+<p><strong>Type:</strong> Security guidance plugin<br />
+<strong>In simple words:</strong> Like guardrails that warn when new code looks risky. Catches risky patterns early.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance">https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In your project folder start <code>claude</code>.</li>
+<li>Inside Claude, open <code>/plugin</code> and look for <code>security-guidance</code>. If listed, run <code>/plugin install security-guidance@claude-plugins-official</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Claude Code (or reload plugins if offered). Open <code>/plugin</code> to confirm the item is installed.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Check the changed authentication code for common risky patterns without editing.”</li>
+<li><strong>Expected:</strong> Named risky patterns and exact affected lines.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> Availability and command names can vary across marketplace revisions; check <code>/plugin</code> before trying a suggested command.</p>
+</div></article><article class="tool-card" id="card-claude-security" data-name="claude security" data-terms="claude security security review plugin 🕵️ like a deeper security investigation team for authorized repositories."><div class="tool-number">33</div><div class="article-body"><p><a id="claude-security"></a></p>
+<h2>33. Claude Security</h2>
+<p><strong>Type:</strong> Security review plugin<br />
+<strong>In simple words:</strong> Like a deeper security investigation team for authorized repositories. Useful for targeted AppSec reviews.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-security">https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-security</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In your project folder start <code>claude</code>.</li>
+<li>Inside Claude, open <code>/plugin</code> and look for <code>claude-security</code>. If listed, run <code>/plugin install claude-security@claude-plugins-official</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Claude Code (or reload plugins if offered). Open <code>/plugin</code> to confirm the item is installed.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Review access-control code for security mistakes without editing.”</li>
+<li><strong>Expected:</strong> Specific evidence and severity caveats.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> Availability and command names can vary across marketplace revisions; check <code>/plugin</code> before trying a suggested command.</p>
+</div></article><article class="tool-card" id="card-semgrep" data-name="semgrep" data-terms="semgrep code security scanner 🔐 like a security scanner that follows explicit matching rules."><div class="tool-number">34</div><div class="article-body"><p><a id="semgrep"></a></p>
+<h2>34. Semgrep</h2>
+<p><strong>Type:</strong> Code security scanner<br />
+<strong>In simple words:</strong> Like a security scanner that follows explicit matching rules. Deterministic findings that complement AI judgement.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://claude.com/marketplace/plugins/semgrep">https://claude.com/marketplace/plugins/semgrep</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Start <code>claude</code>, then open <code>/plugin</code> → <strong>Discover</strong>.</li>
+<li>Search <strong>Semgrep</strong> and install only if a trusted supported plugin is available.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Provide only authorized project scan access and verify the plugin is enabled.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>claude</code> chat with your project open, ask: “Run the configured Semgrep scan on this practice project; summarize findings.”</li>
+<li><strong>Expected:</strong> Rule IDs/locations or a clean scan, plus command output.</li>
+</ol>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> Availability and command names can vary across marketplace revisions; check <code>/plugin</code> before trying a suggested command.</p>
+</div></article><article class="tool-card" id="card-security-best-practices" data-name="security best practices" data-terms="security best practices security checklist plugin 🛡️ like a checklist for avoiding common coding security mistakes."><div class="tool-number">35</div><div class="article-body"><p><a id="security-best-practices"></a></p>
+<h2>35. Security Best Practices</h2>
+<p><strong>Type:</strong> Security checklist plugin<br />
+<strong>In simple words:</strong> Like a checklist for avoiding common coding security mistakes. Adds structured review criteria.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/awesome-copilot/tree/main/plugins/security-best-practices">https://github.com/github/awesome-copilot/tree/main/plugins/security-best-practices</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In normal Terminal run <code>copilot plugin marketplace browse awesome-copilot</code> and check the plugin name is listed.</li>
+<li>If <code>security-best-practices</code> appears, run <code>copilot plugin install security-best-practices@awesome-copilot</code>. If not listed, stop; the plugin may have been renamed or removed.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>copilot plugin list</code> and check <code>security-best-practices</code> appears, then start a new Copilot session.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>copilot</code> chat inside your project, ask: “Give a security checklist for this API endpoint based on code you can see.”</li>
+<li><strong>Expected:</strong> A checklist linked to real code evidence.</li>
+</ol>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open <strong>VS Code → Extensions</strong>. Search <code>@agentPlugins security-best-practices</code>.</li>
+<li>Open the matching publisher entry. Choose <strong>Install</strong> if available; if not shown, do not assume the CLI plugin is identical.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Check the installed <strong>Agent Plugins</strong> list, then open the project in <strong>Copilot Chat → Agent</strong>.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <strong>VS Code → Copilot Chat → Agent</strong> with your project open, ask: “Give a security checklist for this API endpoint based on code you can see.”</li>
+<li><strong>Expected:</strong> A checklist linked to real code evidence.</li>
+</ol>
+</div></article><article class="tool-card" id="card-github-mcp-server" data-name="github mcp server" data-terms="github mcp server github connection 🌉 like a bridge from your coding assistant to github issues and prs."><div class="tool-number">36</div><div class="article-body"><p><a id="github-mcp-server"></a></p>
+<h2>36. GitHub MCP Server</h2>
+<p><strong>Type:</strong> GitHub connection<br />
+<strong>In simple words:</strong> Like a bridge from your coding assistant to GitHub issues and PRs. Cuts tab switching; enables repo-aware reviews and issue-to-PR workflows.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/github/github-mcp-server">https://github.com/github/github-mcp-server</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Install and start Docker Desktop if allowed; open Terminal and check that <code>docker --version</code> works.</li>
+<li>In normal Terminal run <code>claude mcp add github -e GITHUB_OAUTH_CALLBACK_PORT=8085 -- docker run -i --rm -p 127.0.0.1:8085:8085 -e GITHUB_OAUTH_CALLBACK_PORT ghcr.io/github/github-mcp-server</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Start <code>claude</code>; follow the <strong>GitHub browser sign-in</strong> if the server requests it. Review repository permissions before authorizing.</li>
+<li>Run <code>claude mcp list</code> to confirm <code>github</code> exists; check <code>/mcp</code> inside Claude Code.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask Claude: “List five open issues in our permitted GitHub repository. Do not modify them.”</li>
+<li>Check issue IDs on GitHub.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Ask the GitHub administrator for a <strong>read-only personal-access token</strong> and have it securely provided to your Terminal as environment variable <code>GITHUB_PAT_TOKEN</code> (never type it into AI chat or source files).</li>
+<li>In normal Terminal run <code>codex mcp add github --url https://api.githubcopilot.com/mcp/ --bearer-token-env-var GITHUB_PAT_TOKEN</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Run <code>codex mcp list</code>. Start <code>codex</code>, type <code>/mcp</code> and confirm <code>github</code> tools appear. If access is denied, ask your administrator to check token permissions.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In Codex chat ask: “List five open issues in our approved GitHub repository. Do not modify them.”</li>
+<li>Confirm issue IDs on GitHub.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Start <code>copilot</code> and inspect <code>/mcp</code> and available GitHub tools first; they may already be built in.</li>
+<li>Only if missing, use <code>/mcp add</code> with the <a href="https://github.com/github/github-mcp-server/blob/main/docs/installation-guides/README.md">official GitHub Copilot CLI MCP instructions</a>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Complete the supported GitHub authorization method and restrict token scopes to what you need.</li>
+<li>Confirm GitHub tools appear connected before querying a repo.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “List open issues in the current authorized repository; do not edit anything.”</li>
+<li>Look for matching GitHub issue numbers.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In <strong>Copilot Chat → Agent</strong>, check whether <strong>GitHub tools</strong> are already available. Avoid duplicate setup if they already work.</li>
+<li>If missing, open <strong>Command Palette → MCP: Add Server → HTTP</strong> and enter <code>https://api.githubcopilot.com/mcp/</code>, naming it <code>github</code>. This is the official remote service.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>When VS Code prompts you to connect to GitHub, choose <strong>Allow</strong> and sign in through the browser using the permitted GitHub account.</li>
+<li>Confirm GitHub tools are listed in the agent tool chooser.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “List the open issues in the GitHub repository I have open. Do not post comments.”</li>
+<li>Check real issue numbers and titles.</li>
+</ol>
+<p><strong>Check:</strong> Check Copilot Chat’s agent/tool activity, not just the wording of the answer.</p>
+<p><strong>Be careful:</strong> Approval is needed before merge/write operations. Never put a PAT inside a tracked configuration file.</p>
+</div></article><article class="tool-card" id="card-openai-developers" data-name="openai developers" data-terms="openai developers openai documentation plugin 🧑‍💻 like a guide for building and debugging apps using openai apis."><div class="tool-number">37</div><div class="article-body"><p><a id="openai-developers"></a></p>
+<h2>37. OpenAI Developers</h2>
+<p><strong>Type:</strong> OpenAI documentation plugin<br />
+<strong>In simple words:</strong> Like a guide for building and debugging apps using OpenAI APIs. Safer development with current API behavior and code examples.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://developers.openai.com/learn/developers-codex-plugin">https://developers.openai.com/learn/developers-codex-plugin</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Open a normal Terminal inside your project, start <code>claude</code>.</li>
+<li>Inside <strong>Claude Code chat</strong>, type <code>/plugin marketplace add openai/openai-developers-for-claude</code>.</li>
+<li>Then in Claude chat type <code>/plugin install openai-developers@openai-developers</code>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Claude Code. In <code>/plugin</code>, confirm OpenAI Developers is installed; the Claude variant uses public OpenAI Docs tools and skills, <strong>not</strong> the Codex-only Platform connection.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “Use official OpenAI documentation to explain the current Agents SDK tool definition. Do not edit files.”</li>
+<li>Check for OpenAI documentation references.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>Start <code>codex</code> in your project. In Codex chat type <code>/plugins</code>.</li>
+<li>Search for <strong>OpenAI Developers</strong>, select it and choose <strong>Install plugin</strong>.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Follow any optional OpenAI Platform account-connection prompts only if your work requires that integration.</li>
+<li>Open a new Codex chat.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>Ask: “Using the official OpenAI docs, check if the SDK call in this file is current. Do not change it.”</li>
+<li>Look for docs-linked feedback, not a made-up API call.</li>
+</ol>
+<p><strong>Check:</strong> Read the terminal or agent activity to confirm the add-on was actually used.</p>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> API-related examples should be checked against current model and project settings.</p>
+</div></article><article class="tool-card" id="card-figma-codex-plugin" data-name="figma (codex plugin)" data-terms="figma (codex plugin) design connection 🎨 like letting the coding assistant read your actual design reference."><div class="tool-number">38</div><div class="article-body"><p><a id="figma-codex-plugin"></a></p>
+<h2>38. Figma (Codex plugin)</h2>
+<p><strong>Type:</strong> Design connection<br />
+<strong>In simple words:</strong> Like letting the coding assistant read your actual design reference. Less guesswork about visual details and reusable component conventions.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/openai/plugins/tree/main/plugins/figma">https://github.com/openai/plugins/tree/main/plugins/figma</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In your project folder start <code>codex</code>, then open <code>/plugins</code>.</li>
+<li>Find <strong>Figma</strong> and install only if the official marketplace lists it.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Codex. If the plugin needs an account, connect only your authorized workspace.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>codex</code> chat with your project open, ask: “Compare this permitted Figma frame with the existing button component.”</li>
+<li><strong>Expected:</strong> Design details from the connected authorized Figma file.</li>
+</ol>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> Generated UI still needs responsive and accessibility verification.</p>
+</div></article><article class="tool-card" id="card-build-web-apps-codex" data-name="build web apps (codex)" data-terms="build web apps (codex) web application workflow 🏗️ like a starter toolkit for building and testing web applications."><div class="tool-number">39</div><div class="article-body"><p><a id="build-web-apps-codex"></a></p>
+<h2>39. Build Web Apps (Codex)</h2>
+<p><strong>Type:</strong> Web application workflow<br />
+<strong>In simple words:</strong> Like a starter toolkit for building and testing web applications. Convenient scaffold/workflow for web app development.</p>
+<p><strong>Publisher instructions:</strong> <a href="https://github.com/openai/plugins/tree/main/plugins/build-web-apps">https://github.com/openai/plugins/tree/main/plugins/build-web-apps</a></p>
+<h3>Claude Code CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Codex CLI</h3>
+<p><strong>📦 How to install</strong></p>
+<ol>
+<li>In your project folder start <code>codex</code>, then open <code>/plugins</code>.</li>
+<li>Find <strong>Build Web Apps</strong> and install only if the official marketplace lists it.</li>
+</ol>
+<p><strong>⚙️ How to configure</strong></p>
+<ol>
+<li>Restart Codex. If the plugin needs an account, connect only your authorized workspace.</li>
+</ol>
+<p><strong>🚀 How to use it in your project</strong></p>
+<ol>
+<li>In <code>codex</code> chat with your project open, ask: “Plan a small web page from this repository, then show how to run it locally.”</li>
+<li><strong>Expected:</strong> A runnable local build/run path and expected URL; no deployment without approval.</li>
+</ol>
+<h3>GitHub Copilot CLI</h3>
+<p><strong>No verified installation path for this particular add-on here.</strong> It might have a different, equivalent tool. Do not use another client’s installation instructions.</p>
+<h3>Visual Studio Code (Copilot Chat)</h3>
+<p><strong>Terminal only, not a Copilot Chat add-on.</strong> In VS Code open <strong>Terminal → New Terminal</strong>, then use the Claude/Codex/Copilot CLI instructions above.</p>
+<p><strong>Be careful:</strong> Treat service deployment/payment actions as separate approvals.</p>
+</div></article><footer>Reference guide based on publisher documentation. Review permissions before installing.</footer></main></div><script>
+const byId=id=>document.getElementById(id);
+function filter(){const q=byId('query').value.toLowerCase().trim(), c=byId('clientFilter').value;let count=0;
+ document.querySelectorAll('.tool-card').forEach(card=>{const hit=!q||card.dataset.terms.includes(q)||card.textContent.toLowerCase().includes(q);card.classList.toggle('none',!hit);if(hit)count++;const hs=card.querySelectorAll('h3');let hide=false;hs.forEach(h=>{const t=h.textContent; if(t.includes('Claude Code CLI')||t.includes('Codex CLI')||t.includes('GitHub Copilot CLI')||t.includes('Visual Studio Code'))hide=c!=='all'&&!t.includes(c);let cur=h.nextElementSibling;while(cur&&cur.tagName!=='H3'&&cur.tagName!=='H2'){cur.classList.toggle('none',hide);cur=cur.nextElementSibling;}h.classList.toggle('none',hide);});});byId('count').textContent=count+' add-ons shown';}
+byId('query').addEventListener('input',filter);byId('clientFilter').addEventListener('change',filter);byId('theme').onclick=()=>{document.body.classList.toggle('dark');byId('theme').textContent=document.body.classList.contains('dark')?'☀ Light mode':'☾ Dark mode'};
+document.querySelectorAll('code').forEach(el=>{if(el.parentElement.tagName==='PRE'||el.textContent.length>85)return;const text=el.textContent;if(!text.includes(' ')||text.length<12)return;const b=document.createElement('button');b.className='copy';b.textContent='Copy';b.title='Copy command';b.onclick=()=>navigator.clipboard.writeText(text).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1300)});el.after(b);});
+</script></body></html>
