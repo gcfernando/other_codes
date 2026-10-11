@@ -710,6 +710,28 @@ Each **country/territory** links to its own official `.m3u`. Country assignments
 <a id="how-to-play"></a>
 ## 🧰 How to play
 
+### ⚙️ VLC configuration — Sri Lanka playlist
+
+1. Open [VLC Media Player](https://www.videolan.org/vlc/).
+2. Select **Media → Open Network Stream**.
+
+   ![VLC Media menu with Open Network Stream selected](images/open_media.png)
+
+3. In the **Network** tab, enter this playlist URL:
+
+   ```text
+   https://iptv-org.github.io/iptv/countries/lk.m3u
+   ```
+
+4. Click **Play**.
+5. If the channel list is not visible, select **View → Playlist** or click **Toggle Playlist**.
+
+   ![VLC toolbar with Toggle Playlist highlighted](images/tool_bar.png)
+
+6. Select any channel from the playlist to begin watching.
+
+   ![VLC playlist with a channel selected](images/your_tv.png)
+
 ### 🖥️ VLC Media Player — Windows / macOS / Linux
 
 1. 🎬 Install or open [VLC](https://www.videolan.org/vlc/).
@@ -770,4 +792,3 @@ https://iptv-org.github.io/iptv/languages/eng.m3u
 ### 💜 Happy exploring! 📺 🌍 🍿
 
 [🏠 Back to top](#top) • [🐙 Official IPTV-org on GitHub](https://github.com/iptv-org/iptv)
-
