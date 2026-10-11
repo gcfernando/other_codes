@@ -1,4 +1,6 @@
-# 361 Linux commands every hacker needs — free, offline, one file. 🐧🔐
+# Linux Command Reference for Cybersecurity — 361 Commands, Searchable and Offline 🐧🔐
+
+**361 Linux commands every hacker needs — free, offline, open in any browser.** A searchable cheat sheet of Linux commands for penetration testing, CTFs, digital forensics, and system administration, with a real-world usage example for every command.
 
 ---
 
@@ -10,34 +12,45 @@
 
 | Category | Commands | Focus |
 |---|---|---|
-| 📁 File & Directory | 26 | Navigation, search, attributes |
-| 📝 Text & File Content | 25 | grep, awk, sed, strings, hex |
-| 🔒 Permissions | 13 | chmod, sudo, ACLs, SUID |
+| 📁 File & Directory | 25 | Navigation, search, attributes |
+| 📝 Text & File Content | 26 | grep, awk, sed, strings, hex |
+| 🔒 Permissions | 12 | chmod, sudo, ACLs, SUID |
 | 👤 User Management | 16 | useradd, last, lastb, finger |
 | ⚙️ Process Management | 26 | ps, strace, lsof, cron |
-| 🌐 Networking | 45 | nmap, nc, tcpdump, aircrack |
-| 🔐 Crypto & Hashing | 18 | hashcat, john, hydra, gpg |
-| 🖥️ System Info | 33 | uname, env, journalctl |
-| 📦 Package Management | 15 | apt, pip, gem, cargo |
-| 💾 Disk & Filesystem | 17 | dd, shred, mount, forensics |
+| 🌐 Networking | 52 | nmap, nc, tcpdump, aircrack |
+| 🔐 Crypto & Hashing | 19 | hashcat, john, hydra, gpg |
+| 🖥️ System Info | 32 | uname, env, journalctl |
+| 📦 Package Management | 14 | apt, pip, gem, cargo |
+| 💾 Disk & Filesystem | 15 | dd, shred, mount, forensics |
 | 🐚 Shell & Scripting | 17 | bash, TTY upgrades, traps |
 | 🗜️ Archives | 11 | tar, zip, 7z, rar |
-| 🔗 Remote Access | 15 | ssh tunnels, tmux, rsync |
-| 🔍 Forensics & Logs | 21 | gdb, radare2, volatility |
-| ⬆️ Privilege Escalation | 16 | SUID, capabilities, PrivEsc |
-| 🛠️ Misc Utilities | 43 | docker, kubectl, scripting |
+| 🔗 Remote Access | 14 | ssh tunnels, tmux, rsync |
+| 🔍 Forensics & Logs | 20 | gdb, radare2, volatility |
+| ⬆️ Privilege Escalation (`PrivEsc`) | 16 | SUID, capabilities, PrivEsc |
+| 🛠️ Misc Utilities | 46 | docker, kubectl, scripting |
+| **Total** | **361** | |
+
+Counts are taken from `data.js`.
 
 ---
 
 ## 📦 What You Get
 
 ```
-linux_bible/
+Linux_Commands/
 ├── index.html     ← open in any browser, works offline
 ├── styles.css     ← hacker terminal aesthetic
 ├── data.js        ← all 361 commands + real-world usage
 └── app.js         ← search, filter, category pills
 ```
+
+## ▶️ How to Use It
+
+1. Download or clone the [other_codes repository](https://github.com/gcfernando/other_codes).
+2. Open `Linux_Commands/index.html` in any modern browser — no installation, build step, or web server is needed.
+3. Type in the search box or click a category to filter the commands.
+
+To add or change a command, edit `data.js`: each entry is an array of `[command, category, description, usage]`, where the usage field may contain HTML such as `<code>` and `<br>`.
 
 ---
 
@@ -47,7 +60,7 @@ linux_bible/
 - 🏷️ **Category pills** — click to filter by topic instantly
 - 💻 **Real-world usage** — every command has actual hacker examples
 - 🌑 **Hacker terminal theme** — scanlines, phosphor green, grid
-- 📴 **100% offline** — no internet required after download
+- 📴 **Offline** — no internet required after download (the page can optionally load Google Fonts when online)
 - 🗂️ **Clean code** — HTML, CSS, and JS fully separated
 
 ---
@@ -92,6 +105,14 @@ getcap -r / 2>/dev/null
 - Pentesters doing recon and enumeration
 - Security students preparing for OSCP / CEH / eJPT
 - Anyone who keeps googling the same commands
+
+---
+
+## 🔗 Related
+
+- [Developer tools and guides — repository overview](../README.md)
+- [Python port scanner](https://github.com/gcfernando/python_codes/blob/main/Port%20Scanner/readme.md)
+- [Git, Docker, and Podman command cheat sheets](https://github.com/gcfernando/document)
 
 ---
 
