@@ -46,3 +46,9 @@ defaults:
     values:
       title: "Windows System Maintenance PowerShell Script — SFC, DISM, CHKDSK, Windows Update and Cleanup"
       description: "SystemMaintenance.ps1 is a PowerShell script that automates common Windows maintenance and repair tasks in one run: System File Checker (SFC), DISM image repair and component cleanup, a…"
+
+# Public documentation navigation and presentation.
+repository: gcfernando/other_codes
+theme: jekyll-theme-primer
+projects_hub: https://gcfernando.github.io/gcfernando/projects/
+project_category: "Tools & reference"

@@ -123,3 +123,9 @@ getcap -r / 2>/dev/null
 ```
 root@kali:~# ./gehan_hacker_bible --help
 ```
+
+---
+
+## Documentation links
+
+[Read all Gehan's Project Lab guides online](https://gcfernando.github.io/other_codes/documentation/) · [Project overview](https://gcfernando.github.io/other_codes/) · [All developer projects](https://gcfernando.github.io/gcfernando/projects/)

@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" markdown="1">
 
 # 🌈✨ Gehan's Project Lab — Developer Tools, Linux Command Reference & AI Coding Add-ons Guide ✨🌈
 
@@ -23,7 +23,7 @@ An **AI coding add-ons beginner's guide** for Claude Code, Codex CLI, GitHub Cop
 
 ## 🌟 Featured — AI Coding Add-ons Beginner's Guide 🤖
 
-<div align="center">
+<div align="center" markdown="1">
 
 ### 👉 [🌐 **Open the live guide**](https://gcfernando.github.io/other_codes/Files/ai_coding_plugins_beginners_guide.html) 👈
 
@@ -244,10 +244,16 @@ Run [`Files/Convert-LineEndings.ps1`](Files/Convert-LineEndings.ps1) on a file o
 
 ---
 
-<div align="center">
+<div align="center" markdown="1">
 
 ### 💡 Learn something. 🔨 Build something. 🔐 Keep it safe. 🌈
 
 [![Star](https://img.shields.io/badge/⭐_Enjoying_the_lab%3F-Star_the_repo-FFD700?style=for-the-badge)](https://github.com/gcfernando/other_codes)
 
 </div>
+
+---
+
+## Documentation links
+
+[Read all Gehan's Project Lab guides online](https://gcfernando.github.io/other_codes/documentation/) · [Project overview](https://gcfernando.github.io/other_codes/) · [All developer projects](https://gcfernando.github.io/gcfernando/projects/)

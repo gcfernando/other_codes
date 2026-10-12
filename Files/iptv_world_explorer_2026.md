@@ -402,7 +402,7 @@ Each **country/territory** links to its own official `.m3u`. Country assignments
 
 > 🧭 **Reading tip:** Expand a letter group to see its official three-letter language filename and link. The catalog also contains an `undefined.m3u` language group.
 
-<details>
+<details markdown="1">
 <summary><strong>💗 Languages A–F</strong> — 53 playlists</summary>
 
 | 🗣️ Language | 📡 Channels* | ▶️ Playlist |
@@ -463,7 +463,7 @@ Each **country/territory** links to its own official `.m3u`. Country assignments
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>💛 Languages G–L</strong> — 59 playlists</summary>
 
 | 🗣️ Language | 📡 Channels* | ▶️ Playlist |
@@ -530,7 +530,7 @@ Each **country/territory** links to its own official `.m3u`. Country assignments
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>💚 Languages M–R</strong> — 37 playlists</summary>
 
 | 🗣️ Language | 📡 Channels* | ▶️ Playlist |
@@ -575,7 +575,7 @@ Each **country/territory** links to its own official `.m3u`. Country assignments
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>💙 Languages S–Z</strong> — 55 playlists</summary>
 
 | 🗣️ Language | 📡 Channels* | ▶️ Playlist |
@@ -638,7 +638,7 @@ Each **country/territory** links to its own official `.m3u`. Country assignments
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>🩶 Languages Other</strong> — 1 playlists</summary>
 
 | 🗣️ Language | 📡 Channels* | ▶️ Playlist |
@@ -792,3 +792,9 @@ https://iptv-org.github.io/iptv/languages/eng.m3u
 ### 💜 Happy exploring! 📺 🌍 🍿
 
 [🏠 Back to top](#top) • [🐙 Official IPTV-org on GitHub](https://github.com/iptv-org/iptv)
+
+---
+
+## Documentation links
+
+[Read all Gehan's Project Lab guides online](https://gcfernando.github.io/other_codes/documentation/) · [Project overview](https://gcfernando.github.io/other_codes/) · [All developer projects](https://gcfernando.github.io/gcfernando/projects/)

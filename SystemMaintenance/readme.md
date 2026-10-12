@@ -66,3 +66,9 @@ The same messages are printed to the console in colour as the script runs.
 
 - [FixNetwork — Python script for Windows network troubleshooting](https://github.com/gcfernando/python_codes/blob/main/FixNetwork/readme.md)
 - [Developer tools and guides — repository overview](../README.md)
+
+---
+
+## Documentation links
+
+[Read all Gehan's Project Lab guides online](https://gcfernando.github.io/other_codes/documentation/) · [Project overview](https://gcfernando.github.io/other_codes/) · [All developer projects](https://gcfernando.github.io/gcfernando/projects/)

@@ -1,4 +1,4 @@
-﻿# AI Coding Add-ons — Beginner's Project Guide
+# AI Coding Add-ons — Beginner's Project Guide
 
 **Updated:** 11 October 2026  
 **Works with:** Claude Code CLI · Codex CLI · GitHub Copilot CLI · Visual Studio Code (Copilot Chat)
@@ -2420,3 +2420,9 @@ This guide was rebuilt from the original 39-add-on list and its beginner-readine
 **Testing limit:** The instructions were reviewed against publisher documentation, but they have **not** been executed on your computer, against company policy or across every OS/release.
 
 **Key platform references:** [Claude plugins](https://code.claude.com/docs/en/plugins) · [Codex plugins](https://developers.openai.com/plugins/) · [GitHub Copilot CLI plugins](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing) · [VS Code agent plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins) · [OpenAI Developers](https://developers.openai.com/learn/developers-codex-plugin).
+
+---
+
+## Documentation links
+
+[Read all Gehan's Project Lab guides online](https://gcfernando.github.io/other_codes/documentation/) · [Project overview](https://gcfernando.github.io/other_codes/) · [All developer projects](https://gcfernando.github.io/gcfernando/projects/)
