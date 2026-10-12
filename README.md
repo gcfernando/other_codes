@@ -82,7 +82,7 @@ Open [`Linux_Commands/index.html`](Linux_Commands/index.html) in a browser — n
 Open [`Files/iptv_world_explorer_2026.md`](Files/iptv_world_explorer_2026.md) on GitHub and click any playlist link, or copy it into a player that supports M3U network playlists.
 
 - 🌍 Browse by **country**, 🎭 **category**, 🗣️ **language**, or 🗺️ **region**
-- 🎬 Includes a picture-by-picture **VLC setup guide** for the 🇱🇰 Sri Lanka playlist, using the screenshots in [`Files/images/`](Files/images/)
+- 🎬 Includes a picture-by-picture **VLC setup guide** for the 🇱🇰 Sri Lanka playlist, using the screenshots in [the repository's images folder](https://github.com/gcfernando/other_codes/tree/main/Files/images)
 - 🛠️ Includes a **playback troubleshooting** table
 
 > 📡 **These are live third-party playlist links.** Channels may be offline, geo-restricted, or unsupported by your player. Respect broadcaster rights, subscriptions, and local law.

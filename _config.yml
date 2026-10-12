@@ -1,0 +1,48 @@
+# GitHub Pages documentation site; does not configure application deployment.
+url: "https://gcfernando.github.io"
+baseurl: "/other_codes"
+title: "Gehan's Project Lab"
+description: "Developer tools and guides: AI coding add-ons, an offline Linux command reference, Windows maintenance, containers and IPTV playlists."
+lang: "en"
+plugins:
+  - jekyll-sitemap
+include:
+  - .wslconfig
+exclude:
+  - packages
+  - bin
+  - obj
+  - node_modules
+  - vendor
+  - tests
+  - .claude
+  - .agents
+  - .codex
+defaults:
+  - scope:
+      path: "Files/ai_coding_plugins_beginners_guide.md"
+    values:
+      title: "AI Coding Add-ons — Beginner's Project Guide"
+      description: "A beginner’s guide to 39 AI coding add-ons, with installation, configuration and usage steps for Claude Code, Codex CLI, GitHub Copilot CLI and VS Code."
+      canonical_url: "https://gcfernando.github.io/other_codes/Files/ai_coding_plugins_beginners_guide.html"
+      sitemap: false
+  - scope:
+      path: "Files/iptv_world_explorer_2026.md"
+    values:
+      title: "IPTV World Explorer 2026"
+      description: "Browse IPTV-org playlists by country, category, language and region, with a guide to opening playlists in VLC."
+  - scope:
+      path: "Linux_Commands/readme.md"
+    values:
+      title: "Linux Command Reference for Cybersecurity — 361 Commands, Searchable and Offline 🐧🔐"
+      description: "A searchable offline reference of 361 Linux commands across 16 categories, with practical examples for cybersecurity and system administration."
+  - scope:
+      path: "README.md"
+    values:
+      title: "🌈✨ Gehan's Project Lab — Developer Tools, Linux Command Reference & AI Coding Add-ons Guide ✨🌈"
+      description: "Developer tools and guides: AI coding add-ons, an offline Linux command reference, Windows maintenance, containers and IPTV playlists."
+  - scope:
+      path: "SystemMaintenance/readme.md"
+    values:
+      title: "Windows System Maintenance PowerShell Script — SFC, DISM, CHKDSK, Windows Update and Cleanup"
+      description: "SystemMaintenance.ps1 is a PowerShell script that automates common Windows maintenance and repair tasks in one run: System File Checker (SFC), DISM image repair and component cleanup, a…"

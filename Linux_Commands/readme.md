@@ -52,6 +52,8 @@ Linux_Commands/
 
 To add or change a command, edit `data.js`: each entry is an array of `[command, category, description, usage]`, where the usage field may contain HTML such as `<code>` and `<br>`.
 
+After editing `data.js`, run `node generate-static.cjs` in this folder and commit the updated `index.html`. The generator embeds the same command reference in the HTML so it remains readable without JavaScript; search and filtering still run in the browser. Run `node generate-static.cjs --check` to verify the embedded table is current. Node.js is only needed for maintenance, not for browsing the reference.
+
 ---
 
 ## ✨ Features

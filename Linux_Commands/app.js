@@ -10,14 +10,28 @@ let activeCat = '';
 
 /* ── Helpers ──────────────────────────────────────── */
 
+function escapeHTML(text) {
+  return String(text).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function usageHTML(text) {
+  return escapeHTML(text)
+    .replace(/&lt;(\/?)code&gt;/g, '<$1code>')
+    .replace(/&lt;br\s*\/?&gt;/g, '<br>');
+}
+
 /**
  * Highlight all occurrences of query string inside text.
  * Returns original text when query is empty.
  */
 function highlight(text, q) {
-  if (!q) return text;
+  if (!q) return escapeHTML(text);
   const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return text.replace(new RegExp('(' + escaped + ')', 'gi'), '<mark>$1</mark>');
+  return text.split(new RegExp('(' + escaped + ')', 'gi'))
+    .map((part, index) => index % 2 ? '<mark>' + escapeHTML(part) + '</mark>' : escapeHTML(part))
+    .join('');
 }
 
 /* ── Build UI ─────────────────────────────────────── */
@@ -112,14 +126,14 @@ function filterTable() {
       <td>
         <span class="cat-badge"
           style="background:${st.bg};color:${st.col};border:1px solid ${st.border};">
-          ${category}
+          ${escapeHTML(category)}
         </span>
       </td>
       <td>
         <span class="desc-text">${highlight(desc, q)}</span>
       </td>
       <td>
-        <span class="usage-text">${usage}</span>
+        <span class="usage-text">${usageHTML(usage)}</span>
       </td>
     `;
 

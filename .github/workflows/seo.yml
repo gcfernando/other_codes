@@ -1,0 +1,25 @@
+name: Static reference validation
+
+on:
+  push:
+    paths:
+      - 'Linux_Commands/**'
+      - '.github/workflows/seo.yml'
+  pull_request:
+    paths:
+      - 'Linux_Commands/**'
+      - '.github/workflows/seo.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node Linux_Commands/seo.test.cjs
+      - run: node --check Linux_Commands/app.js
