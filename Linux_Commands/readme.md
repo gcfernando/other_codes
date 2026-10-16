@@ -36,7 +36,7 @@ Counts are taken from `data.js`.
 
 ## 📦 What You Get
 
-```
+```text
 Linux_Commands/
 ├── index.html     ← open in any browser, works offline
 ├── styles.css     ← hacker terminal aesthetic
@@ -120,7 +120,7 @@ getcap -r / 2>/dev/null
 
 *Built with care. Shared for free. Use it well.* 🖤
 
-```
+```text
 root@kali:~# ./gehan_hacker_bible --help
 ```
 

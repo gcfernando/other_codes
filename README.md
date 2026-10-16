@@ -2,7 +2,9 @@
 
 # 🌈✨ Gehan's Project Lab — Developer Tools, Linux Command Reference & AI Coding Add-ons Guide ✨🌈
 
-### 🎨 A colorful collection of practical tools, guides, references, and local dev environments 🚀
+<a id="-a-colorful-collection-of-practical-tools-guides-references-and-local-dev-environments-"></a>
+
+Developer tools, reference guides and local service examples
 
 An **AI coding add-ons beginner's guide** for Claude Code, Codex CLI, GitHub Copilot CLI and VS Code · an **offline Linux command reference** · a **Windows maintenance PowerShell script** · a **Podman Compose database stack** (SQL Server, Oracle, MySQL, MongoDB, Elasticsearch, RabbitMQ) · a **WSL2 `.wslconfig`** · an **LF/CRLF line-ending converter** · an **IPTV playlist directory**.
 
