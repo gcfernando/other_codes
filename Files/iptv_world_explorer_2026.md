@@ -1,6 +1,6 @@
 <!-- 🎨 2026 IPTV-ORG PLAYLIST DIRECTORY | Designed for GitHub Markdown -->
 <a id="top"></a>
-<h1 align="center">🌈📺 IPTV WORLD EXPLORER 🌍✨</h1>
+<h1 align="center">IPTV-org Playlist Directory — Countries, Languages and Categories</h1>
 
 <p align="center"><strong>🇦🇫 🇸🇪 🇮🇳 🇺🇸 🇯🇵 Discover public IPTV playlists around the globe 🎬</strong></p>
 
@@ -8,7 +8,7 @@
 
 ![Categories: 31](https://img.shields.io/badge/Categories-31-f59e0b?style=for-the-badge) ![Regions: 42](https://img.shields.io/badge/Regions-42-06b6d4?style=for-the-badge) ![Checked against source: 11 Oct 2026](https://img.shields.io/badge/Checked%20against%20source-11%20Oct%202026-64748b?style=for-the-badge)
 
-**🎨 A visual, easy-to-navigate guide to the official [IPTV-org](https://github.com/iptv-org/iptv) playlist directory.**
+**Browse public IPTV playlists by country, language, category and region in this guide to the [IPTV-org](https://github.com/iptv-org/iptv) playlist directory.** Open an M3U playlist in a compatible player; the links below describe a dated directory snapshot.
 
 🗓️ **Directory snapshot:** 11 October 2026 &nbsp; • &nbsp; 🧬 **Source revision:** [`3914a407`](https://github.com/iptv-org/iptv/blob/3914a407afc720fc9c86a38e74bd5ffa2d77f92e/PLAYLISTS.md)
 

@@ -1,10 +1,10 @@
 # Linux Command Reference for Cybersecurity — 361 Commands, Searchable and Offline 🐧🔐
 
-**361 Linux commands every hacker needs — free, offline, open in any browser.** A searchable cheat sheet of Linux commands for penetration testing, CTFs, digital forensics, and system administration, with a real-world usage example for every command.
+**A searchable, offline reference for 361 Linux commands** used in system administration, penetration testing, CTFs and digital forensics. Browse commands by category or search their descriptions and usage examples in any browser.
 
 ---
 
-> *A complete command reference for cybersecurity professionals — from recon to privilege escalation, forensics to reverse engineering.*
+> *Examples span reconnaissance, permissions, networking, forensics and reverse engineering. Tool availability and options depend on the installed packages and Linux distribution.*
 
 ---
 
@@ -60,7 +60,7 @@ After editing `data.js`, run `node generate-static.cjs` in this folder and commi
 
 - 🔎 **Live search** — filter by command name, category, or usage
 - 🏷️ **Category pills** — click to filter by topic instantly
-- 💻 **Real-world usage** — every command has actual hacker examples
+- 💻 **Usage examples** — each command includes an example to read and adapt
 - 🌑 **Hacker terminal theme** — scanlines, phosphor green, grid
 - 📴 **Offline** — no internet required after download (the page can optionally load Google Fonts when online)
 - 🗂️ **Clean code** — HTML, CSS, and JS fully separated

@@ -1,6 +1,6 @@
 <div align="center" markdown="1">
 
-# 🌈✨ Gehan's Project Lab — Developer Tools, Linux Command Reference & AI Coding Add-ons Guide ✨🌈
+# Gehan's Project Lab — Developer Tools, Linux and AI Coding Guides
 
 <a id="-a-colorful-collection-of-practical-tools-guides-references-and-local-dev-environments-"></a>
 

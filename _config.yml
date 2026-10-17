@@ -29,23 +29,23 @@ defaults:
   - scope:
       path: "Files/iptv_world_explorer_2026.md"
     values:
-      title: "IPTV World Explorer 2026"
+      title: "IPTV-org Playlist Directory — Countries, Languages and Categories"
       description: "Browse IPTV-org playlists by country, category, language and region, with a guide to opening playlists in VLC."
   - scope:
       path: "Linux_Commands/readme.md"
     values:
-      title: "Linux Command Reference for Cybersecurity — 361 Commands, Searchable and Offline 🐧🔐"
+      title: "Linux Command Reference — Offline Search and Security Examples"
       description: "A searchable offline reference of 361 Linux commands across 16 categories, with practical examples for cybersecurity and system administration."
   - scope:
       path: "README.md"
     values:
-      title: "🌈✨ Gehan's Project Lab — Developer Tools, Linux Command Reference & AI Coding Add-ons Guide ✨🌈"
+      title: "Gehan's Project Lab — Developer Tools, Linux and AI Coding Guides"
       description: "Developer tools and guides: AI coding add-ons, an offline Linux command reference, Windows maintenance, containers and IPTV playlists."
   - scope:
       path: "SystemMaintenance/readme.md"
     values:
-      title: "Windows System Maintenance PowerShell Script — SFC, DISM, CHKDSK, Windows Update and Cleanup"
-      description: "SystemMaintenance.ps1 is a PowerShell script that automates common Windows maintenance and repair tasks in one run: System File Checker (SFC), DISM image repair and component cleanup, a…"
+      title: "Windows Maintenance PowerShell Script — SFC, DISM and Cleanup"
+      description: "Review a PowerShell maintenance script for Windows: SFC, DISM, CHKDSK, Windows Update and cleanup, with run instructions and operational cautions."
 
 # Public documentation navigation and presentation.
 repository: gcfernando/other_codes
